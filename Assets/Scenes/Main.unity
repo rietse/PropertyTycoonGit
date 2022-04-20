@@ -318,7 +318,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5290914878721714093, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
   m_PrefabInstance: {fileID: 1190795143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &140613587
+--- !u!114 &140613586
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -327,28 +327,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 140613585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734c18484e0a0d649b370578557299d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bed50b0b77ffad4db97c95b10ab22b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaces: []
-  idNum: 0
-  type: 0
-  colour: 0
-  spaceName: 
-  price: 0
-  rent0: 0
-  rent1: 0
-  rent2: 0
-  rent3: 0
-  rent4: 0
-  rent5: 0
-  developmentLevel: 0
+  idNum: 5
+  type: 7
+  spaceName: Income Tax
 --- !u!1 &223918862 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2807840174995073216, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
   m_PrefabInstance: {fileID: 1190795143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &223918864
+--- !u!114 &223918863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,22 +347,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 223918862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734c18484e0a0d649b370578557299d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bed50b0b77ffad4db97c95b10ab22b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaces: []
-  idNum: 0
-  type: 0
-  colour: 0
-  spaceName: 
-  price: 0
-  rent0: 0
-  rent1: 0
-  rent2: 0
-  rent3: 0
-  rent4: 0
-  rent5: 0
-  developmentLevel: 0
+  idNum: 8
+  type: 5
+  spaceName: Oppurtunity Knocks
 --- !u!1 &295121193 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8761687866237429855, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
@@ -1040,7 +1020,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7140187028727296514, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
   m_PrefabInstance: {fileID: 1190795143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &741101035
+--- !u!114 &741101034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1049,14 +1029,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 741101033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734c18484e0a0d649b370578557299d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e7c7fdd7613911418c201a0eea1d52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaces: []
-  idNum: 0
-  type: 0
-  colour: 0
-  spaceName: 
+  idNum: 12
+  type: 6
+  spaceName: Skywalker Drive
+  colour: 2
   price: 0
   rent0: 0
   rent1: 0
@@ -1196,7 +1175,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7765756538568239476, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
   m_PrefabInstance: {fileID: 1190795143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1094183833
+--- !u!114 &1094183832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1205,28 +1184,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1094183831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734c18484e0a0d649b370578557299d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bed50b0b77ffad4db97c95b10ab22b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaces: []
-  idNum: 0
-  type: 0
-  colour: 0
-  spaceName: 
-  price: 0
-  rent0: 0
-  rent1: 0
-  rent2: 0
-  rent3: 0
-  rent4: 0
-  rent5: 0
-  developmentLevel: 0
+  idNum: 11
+  type: 1
+  spaceName: Jail/Just Visiting
 --- !u!1 &1189250254 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6661948242277272233, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
   m_PrefabInstance: {fileID: 1190795143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1189250256
+--- !u!114 &1189250255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1235,21 +1204,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1189250254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734c18484e0a0d649b370578557299d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e7c7fdd7613911418c201a0eea1d52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaces: []
-  idNum: 0
-  type: 0
+  idNum: 2
+  type: 6
+  spaceName: The Old Creek
   colour: 0
-  spaceName: 
-  price: 0
-  rent0: 0
-  rent1: 0
-  rent2: 0
-  rent3: 0
-  rent4: 0
-  rent5: 0
+  price: 60
+  rent0: 2
+  rent1: 10
+  rent2: 30
+  rent3: 90
+  rent4: 160
+  rent5: 250
   developmentLevel: 0
 --- !u!1001 &1190795143
 PrefabInstance:
@@ -1552,6 +1520,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
+--- !u!1 &1190795144 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5247692164600893723, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
+  m_PrefabInstance: {fileID: 1190795143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1190795145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190795144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7c7fdd7613911418c201a0eea1d52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idNum: 7
+  type: 6
+  spaceName: The Angels Delight
+  colour: 1
+  price: 100
+  rent0: 6
+  rent1: 30
+  rent2: 60
+  rent3: 270
+  rent4: 400
+  rent5: 550
+  developmentLevel: 0
 --- !u!1 &1237539477 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5760737940663428377, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
@@ -1741,7 +1738,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -8431292346734129380, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
   m_PrefabInstance: {fileID: 1190795143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1369672016
+--- !u!114 &1369672015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1750,22 +1747,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369672014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734c18484e0a0d649b370578557299d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bed50b0b77ffad4db97c95b10ab22b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaces: []
-  idNum: 0
+  idNum: 1
   type: 0
-  colour: 0
-  spaceName: 
-  price: 0
-  rent0: 0
-  rent1: 0
-  rent2: 0
-  rent3: 0
-  rent4: 0
-  rent5: 0
-  developmentLevel: 0
+  spaceName: Go
 --- !u!1 &1417084309 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -135521848476798614, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
@@ -2028,7 +2015,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -397721483938868173, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
   m_PrefabInstance: {fileID: 1190795143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1651249552
+--- !u!114 &1651249551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2037,22 +2024,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1651249550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734c18484e0a0d649b370578557299d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 79ebfb227c7f7f94ab2d9d3d6c5491e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaces: []
-  idNum: 0
-  type: 0
-  colour: 0
-  spaceName: 
-  price: 0
-  rent0: 0
-  rent1: 0
-  rent2: 0
-  rent3: 0
-  rent4: 0
-  rent5: 0
-  developmentLevel: 0
+  idNum: 6
+  type: 8
+  spaceName: Brighton Station
+  statPrice: 200
 --- !u!1 &1759558323 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2435143962954797509, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
@@ -2197,7 +2175,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -3734977921765604305, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
   m_PrefabInstance: {fileID: 1190795143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1936071232
+--- !u!114 &1936071231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2206,28 +2184,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1936071230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734c18484e0a0d649b370578557299d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e7c7fdd7613911418c201a0eea1d52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaces: []
-  idNum: 0
-  type: 0
+  idNum: 4
+  type: 6
+  spaceName: Gangsters Paradise
   colour: 0
-  spaceName: 
-  price: 0
-  rent0: 0
-  rent1: 0
-  rent2: 0
-  rent3: 0
-  rent4: 0
-  rent5: 0
+  price: 60
+  rent0: 4
+  rent1: 20
+  rent2: 60
+  rent3: 180
+  rent4: 320
+  rent5: 450
   developmentLevel: 0
 --- !u!1 &1955636087 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7692178113787802086, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
   m_PrefabInstance: {fileID: 1190795143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1955636089
+--- !u!114 &1955636088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2236,21 +2213,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1955636087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734c18484e0a0d649b370578557299d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e7c7fdd7613911418c201a0eea1d52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaces: []
-  idNum: 0
-  type: 0
-  colour: 0
-  spaceName: 
-  price: 0
-  rent0: 0
-  rent1: 0
-  rent2: 0
-  rent3: 0
-  rent4: 0
-  rent5: 0
+  idNum: 9
+  type: 6
+  spaceName: Potter Avenue
+  colour: 1
+  price: 100
+  rent0: 6
+  rent1: 30
+  rent2: 90
+  rent3: 270
+  rent4: 400
+  rent5: 550
   developmentLevel: 0
 --- !u!1 &1973439532 stripped
 GameObject:
@@ -2317,7 +2293,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5033941422248811115, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
   m_PrefabInstance: {fileID: 1190795143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1995986105
+--- !u!114 &1995986104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2326,22 +2302,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1995986103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734c18484e0a0d649b370578557299d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bed50b0b77ffad4db97c95b10ab22b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaces: []
-  idNum: 0
-  type: 0
-  colour: 0
-  spaceName: 
-  price: 0
-  rent0: 0
-  rent1: 0
-  rent2: 0
-  rent3: 0
-  rent4: 0
-  rent5: 0
-  developmentLevel: 0
+  idNum: 3
+  type: 4
+  spaceName: Pot Luck
 --- !u!1 &1998121467 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7071503904623714142, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
@@ -2585,7 +2551,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5326086101900026359, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
   m_PrefabInstance: {fileID: 1190795143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2119487019
+--- !u!114 &2119487018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2594,19 +2560,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2119487017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734c18484e0a0d649b370578557299d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e7c7fdd7613911418c201a0eea1d52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaces: []
-  idNum: 0
-  type: 0
-  colour: 0
-  spaceName: 
-  price: 0
-  rent0: 0
-  rent1: 0
-  rent2: 0
-  rent3: 0
-  rent4: 0
-  rent5: 0
+  idNum: 10
+  type: 6
+  spaceName: Granger Drive
+  colour: 1
+  price: 120
+  rent0: 8
+  rent1: 40
+  rent2: 100
+  rent3: 300
+  rent4: 450
+  rent5: 600
   developmentLevel: 0
