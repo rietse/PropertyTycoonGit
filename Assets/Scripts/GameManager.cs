@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         if (noOfPlayers == 0)
         {
             //get number of players once we can choose how many are gonna play, for now I'm just setting it to two so I can test this works, we are also gonna chuck this somewhere else, it's just here to remind us to code this lol - E
-            noOfPlayers = 2;
+            noOfPlayers = 5;
         }
         InitialisePlayers();
     }
@@ -24,9 +24,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("q"))
         {
             NextPlayer();
+        }
+        if (Input.GetKeyDown("w"))
+        {
+            MovePlayer(RollDice());
         }
     }
 
@@ -36,15 +40,17 @@ public class GameManager : MonoBehaviour
         playerList.Add(player1);
         playerList.Add(player2);
 
-        if (noOfPlayers == 3)
+        if (noOfPlayers >= 3)
         {
             playerList.Add(player3);
-        } else if (noOfPlayers == 4)
+        }
+        if (noOfPlayers >= 4)
         {
             playerList.Add(player4);
-        } else if (noOfPlayers == 5)
+        }
+        if (noOfPlayers == 5)
         {
-            playerList.Add(player2);
+            playerList.Add(player5);
         }
         SetOffsets();
     }
@@ -89,10 +95,21 @@ public class GameManager : MonoBehaviour
         {
             SetCurrentPlayer((GetCurrentPlayer() + 1));
         }
+        playerList[currentPlayer - 1].GetComponent<PlayerController>().SetMoneyText(currentPlayer.ToString());
     }
 
-    void MovePlayer()
+    void MovePlayer(int d)
     {
-        playerList[currentPlayer].GetComponent<PlayerController>().Move();
+        playerList[currentPlayer - 1].GetComponent<PlayerController>().Move(d);
+    }
+
+    public int RollDice()
+    {
+        //moved the code from MovementController.cs to here in line with the documentation and also having this in a central GSM is easier for me - E
+        int d1 = Random.Range(1, 6);
+        int d2 = Random.Range(1, 6);
+        int diceResult = d1 + d2;
+        print(diceResult);
+        return diceResult;
     }
 }

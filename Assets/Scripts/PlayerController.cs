@@ -6,17 +6,17 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     public Board board;
-    public MovementController mc;
     private Vector3 offset = new Vector3(0.0f,0.0f,0.0f);
+    private string currPlayerNo = "";
     private int currentPos;
-    private int currentMoney;
+    public int currentMoney;
     public TextMeshProUGUI moneyText;
     public string name;
 
     void Start()
     {
         currentMoney = 1500;
-        SetMoneyText();
+        SetMoneyText(currPlayerNo);
     }
 
 
@@ -36,23 +36,24 @@ public class PlayerController : MonoBehaviour
         transform.position += offset;
     }
 
-    void SetMoneyText()
+    public void SetMoneyText(string playerNo)
     {
-        moneyText.text = "Current Money: £" + currentMoney.ToString();
+        currPlayerNo = playerNo;
+        moneyText.text = "Player " + currPlayerNo + " Current Money: £" + currentMoney.ToString();
     }
 
-    public void Move()
+    public void Move(int d)
     {
 
-        if ((currentPos + mc.diceResult) > 39)
+        if ((currentPos + d) > 39)
         {
-            int i = (currentPos + mc.diceResult) - 40;
+            int i = (currentPos + d) - 40;
             currentPos = i;
             PassGo();
         }
         else
         {
-            currentPos += mc.diceResult;
+            currentPos += d;
         }
         transform.position = board.spaces[currentPos].transform.position + offset;
     }
@@ -60,6 +61,6 @@ public class PlayerController : MonoBehaviour
     public void PassGo()
     {
         currentMoney += 200;
-        SetMoneyText();
+        SetMoneyText(currPlayerNo);
     }
 }

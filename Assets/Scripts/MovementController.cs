@@ -9,7 +9,7 @@ public class MovementController : MonoBehaviour
 
     public void MovePlayer()
     {
-        player.Move();
+        //player.Move();
     }
 
     public void RollDice()
