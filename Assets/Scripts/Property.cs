@@ -16,4 +16,9 @@ public class Property : Space
     public int rent5;
 
     public int developmentLevel = 0;
+
+    public int GetPrice()
+    {
+        return price;
+    }
 }

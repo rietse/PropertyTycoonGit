@@ -27,4 +27,9 @@ public class ButtonScripts : MonoBehaviour
     {
         gsm.GetComponent<GameManager>().PurchaseProperty();
     }
+
+    public void Sell()
+    {
+        gsm.GetComponent<GameManager>().SellProperty();
+    }
 }

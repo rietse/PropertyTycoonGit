@@ -9,9 +9,6 @@ public class GameManager : MonoBehaviour
     public int currentPlayer = 1;
     public int noOfPlayers = 0;
     public List<PlayerController> playerList = new List<PlayerController>();
-    
-    public enum SpaceStatus { p1, p2, p3, p4, p5, unowned, special}
-    public List<SpaceStatus> spaceStatus = new List<SpaceStatus>();
 
     private int currentRoll;
 
@@ -114,6 +111,11 @@ public class GameManager : MonoBehaviour
 
     public void PurchaseProperty()
     {
-        playerList[currentPlayer - 1].PurchaseProperty();
+        playerList[currentPlayer - 1].PurchaseProperty(currentPlayer);
+    }
+
+    public void SellProperty()
+    {
+        playerList[currentPlayer - 1].SellProperty(currentPlayer);
     }
 }

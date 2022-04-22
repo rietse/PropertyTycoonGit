@@ -8,4 +8,13 @@ public class Space : MonoBehaviour
     public enum Type { GO, JAIL, PARK, GOJAIL, POT, OPP, PROP, TAX, STAT, UTIL }
     public Type type;
     public string spaceName;
+
+    public string GetType()
+    {
+        return type.ToString();
+    }
+    public string GetName()
+    {
+        return spaceName;
+    }
 }
