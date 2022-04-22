@@ -22,4 +22,9 @@ public class ButtonScripts : MonoBehaviour
     {
         gsm.GetComponent<GameManager>().NextPlayer();
     }
+
+    public void Buy()
+    {
+        gsm.GetComponent<GameManager>().PurchaseProperty();
+    }
 }

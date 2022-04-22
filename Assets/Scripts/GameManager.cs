@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject player1, player2, player3, player4, player5;
+    public Board board;
+    public PlayerController player1, player2, player3, player4, player5;
     public int currentPlayer = 1;
     public int noOfPlayers = 0;
-    public List<GameObject> playerList = new List<GameObject>();
+    public List<PlayerController> playerList = new List<PlayerController>();
+    
+    public enum SpaceStatus { p1, p2, p3, p4, p5, unowned, special}
+    public List<SpaceStatus> spaceStatus = new List<SpaceStatus>();
 
     private int currentRoll;
 
@@ -52,11 +56,11 @@ public class GameManager : MonoBehaviour
     void SetOffsets()
     {
         //so I can actually tell whats happening and the spheres aren't inside each other - E
-        player1.GetComponent<PlayerController>().SetOffset(0.0f, 0.0f);
-        player2.GetComponent<PlayerController>().SetOffset(2.0f, 0.0f);
-        player3.GetComponent<PlayerController>().SetOffset(-2.0f, 0.0f);
-        player4.GetComponent<PlayerController>().SetOffset(0.0f, 2.0f);
-        player5.GetComponent<PlayerController>().SetOffset(0.0f, -2.0f);
+        player1.SetOffset(0.0f, 0.0f);
+        player2.SetOffset(2.0f, 0.0f);
+        player3.SetOffset(-2.0f, 0.0f);
+        player4.SetOffset(0.0f, 2.0f);
+        player5.SetOffset(0.0f, -2.0f);
     }
 
     int GetNoOfPlayers()
@@ -90,12 +94,12 @@ public class GameManager : MonoBehaviour
         {
             SetCurrentPlayer((GetCurrentPlayer() + 1));
         }
-        playerList[currentPlayer - 1].GetComponent<PlayerController>().SetMoneyText(currentPlayer.ToString());
+        playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
     }
 
     public void MovePlayer()
     {
-        playerList[currentPlayer - 1].GetComponent<PlayerController>().Move(currentRoll);
+        playerList[currentPlayer - 1].Move(currentRoll);
     }
 
     public void RollDice()
@@ -106,5 +110,10 @@ public class GameManager : MonoBehaviour
         int diceResult = d1 + d2;
         print(diceResult);
         currentRoll = diceResult;
+    }
+
+    public void PurchaseProperty()
+    {
+        playerList[currentPlayer - 1].PurchaseProperty();
     }
 }

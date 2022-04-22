@@ -63,4 +63,9 @@ public class PlayerController : MonoBehaviour
         currentMoney += 200;
         SetMoneyText(currPlayerNo);
     }
+
+    public void PurchaseProperty()
+    {
+
+    }
 }
