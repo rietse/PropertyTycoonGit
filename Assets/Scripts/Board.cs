@@ -13,13 +13,15 @@ public class Board : MonoBehaviour
         spaces = GameObject.FindGameObjectsWithTag("Space");
         players = GameObject.FindGameObjectsWithTag("Player");
         InitialiseSpaceStates();
+    }
 
+    public void InitialisePlayerPositions()
+    {
         foreach (GameObject p in players)
         {
             p.transform.position = spaces[0].transform.position;
             p.GetComponent<PlayerController>().OffsetPlayer();
         }
-
     }
 
     void InitialiseSpaceStates()

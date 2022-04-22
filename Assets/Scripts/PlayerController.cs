@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public int currentMoney;
     public TextMeshProUGUI moneyText;
     public string name;
+    public bool isBankrupt = false;
 
     void Start()
     {
@@ -23,6 +24,21 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public int GetMoney()
+    {
+        return currentMoney;
+    }
+
+    public void SetBankrupt()
+    {
+        isBankrupt = true;
+    }
+
+    public bool GetBankrupt()
+    {
+        return isBankrupt;
     }
 
     public void SetOffset(float x, float z)

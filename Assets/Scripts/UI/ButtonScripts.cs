@@ -32,4 +32,9 @@ public class ButtonScripts : MonoBehaviour
     {
         gsm.GetComponent<GameManager>().SellProperty();
     }
+
+    public void Bankrupt()
+    {
+        gsm.GetComponent<GameManager>().Bankrupt();
+    }
 }

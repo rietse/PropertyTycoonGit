@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
             noOfPlayers = 5;
         }
         InitialisePlayers();
+        board.InitialisePlayerPositions();
     }
 
     // Update is called once per frame
@@ -82,16 +83,31 @@ public class GameManager : MonoBehaviour
 
     public void NextPlayer()
     {
-        if (currentPlayer >= noOfPlayers)
+        CheckMoney();
+
+        int lastValidPlayer = currentPlayer;
+        bool validPlayer = false;
+        while (validPlayer == false) //checks player is still playing - E
         {
-            //if it's the last player, go back to the first one pls and thanks - E
-            SetCurrentPlayer(1);
+            if (currentPlayer >= noOfPlayers)
+            {
+                //if it's the last player, go back to the first one pls and thanks - E
+                SetCurrentPlayer(1);
+            }
+            else
+            {
+                SetCurrentPlayer((GetCurrentPlayer() + 1));
+            }
+            playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
+
+            validPlayer = CheckBankrupt();
+
+            if (currentPlayer == lastValidPlayer)
+            {
+                Debug.Log("Win");
+                validPlayer = true; //this is just here so I don't get another loop that breaks unity - E
+            }
         }
-        else
-        {
-            SetCurrentPlayer((GetCurrentPlayer() + 1));
-        }
-        playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
     }
 
     public void MovePlayer()
@@ -105,8 +121,27 @@ public class GameManager : MonoBehaviour
         int d1 = Random.Range(1, 6);
         int d2 = Random.Range(1, 6);
         int diceResult = d1 + d2;
-        print(diceResult);
+        print(diceResult + "pls merge this with the move button at some point future me, thanks - E");
         currentRoll = diceResult;
+    }
+
+    private void CheckMoney()
+    {
+        int money = playerList[currentPlayer - 1].GetMoney();
+        if (money <= 0)
+        {
+            Bankrupt();
+        }
+    }
+
+    public bool CheckBankrupt()
+    {
+        return !(playerList[currentPlayer - 1].GetBankrupt());
+    }
+
+    public void Bankrupt()
+    {
+        playerList[currentPlayer - 1].SetBankrupt();
     }
 
     public void PurchaseProperty()
