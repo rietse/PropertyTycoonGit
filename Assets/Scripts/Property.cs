@@ -15,7 +15,7 @@ public class Property : Space
     public int rent3;
     public int rent4;
     public int rent5;
-    private List<int> rentList = new List<int>(); //make this public if you decide to do the task below :) - E
+    public List<int> rentList = new List<int>(); //make this public if you decide to do the task below :) - E
 
     public int developmentLevel = 0;
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -120,6 +121,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject space = board.GetSpace(pos);
         string type = space.GetComponent<Space>().GetType();
+        int rent = 0;
 
         switch (type)
         {
@@ -141,19 +143,56 @@ public class GameManager : MonoBehaviour
                 break;
             case "PROP":
                 print("PROP");
-                //check if rent due - E
+                if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
+                {
+                    rent = space.GetComponent<Property>().GetRent();
+                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
+                    playerList[currentPlayer - 1].PayRent(rent);
+                    playerList[board.GetState(pos) - 1].RecieveRent(rent);
+                }
                 break;
             case "TAX":
                 print("TAX");
-                //do taxes - E
+                if(pos == 4) //income tax position - E
+                {
+                    print("Player " + currentPlayer + " has to pay £200 in taxes!");
+                    playerList[currentPlayer - 1].PayRent(200);
+                }
+                else if (pos == 38) //super tax position - E
+                {
+                    print("Player " + currentPlayer + " has to pay £100 in taxes!");
+                    playerList[currentPlayer - 1].PayRent(100);
+                }
                 break;
             case "STAT":
                 print("STAT");
-                //check if station rent due - E
+                if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
+                {
+                    double rentD = 12.5; //since rent is doubled for each station you own, we can be cheeky and start it at half rent as one of the stations must be owned to trigger this, thus moving it to the £25 figure without any trouble - E
+                    if (board.GetState(5) == board.GetState(pos)) { rentD = rentD * 2; }
+                    if (board.GetState(15) == board.GetState(pos)) { rentD = rentD * 2; }
+                    if (board.GetState(25) == board.GetState(pos)) { rentD = rentD * 2; }
+                    if (board.GetState(35) == board.GetState(pos)) { rentD = rentD * 2; }
+                    rent = Convert.ToInt32(rentD); //just need to borrow a double because ints don't decimal - E
+                        
+                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
+                    playerList[currentPlayer - 1].PayRent(rent);
+                    playerList[board.GetState(pos) - 1].RecieveRent(rent);
+                }
                 break;
             case "UTIL":
                 print("UTIL");
-                //check if utility rent due - E
+                if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
+                {
+                    if (board.GetState(12) == board.GetState(28)) //as we know one is owned by a different player, we can just check rather than making sure it's not unowned - E
+                    {
+                        rent = currentRoll * 10;
+                    } else { rent = currentRoll * 4; }
+
+                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
+                    playerList[currentPlayer - 1].PayRent(rent);
+                    playerList[board.GetState(pos) - 1].RecieveRent(rent);
+                }
                 break;
             default:
                 print("GO or JAIL");
@@ -164,8 +203,8 @@ public class GameManager : MonoBehaviour
     public void RollDice()
     {
         //moved the code from MovementController.cs to here in line with the documentation and also having this in a central GSM is easier for me - E
-        int d1 = Random.Range(1, 6);
-        int d2 = Random.Range(1, 6);
+        int d1 = UnityEngine.Random.Range(1, 6);
+        int d2 = UnityEngine.Random.Range(1, 6);
         int diceResult = d1 + d2;
         print(diceResult + "pls merge this with the move button at some point future me, thanks - E");
         currentRoll = diceResult;

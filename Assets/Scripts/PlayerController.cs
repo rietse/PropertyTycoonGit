@@ -36,6 +36,17 @@ public class PlayerController : MonoBehaviour
         return currentMoney;
     }
 
+    public void PayRent(int rent)
+    {
+        currentMoney = currentMoney - rent;
+        SetMoneyText(currPlayerNo);
+    }
+
+    public void RecieveRent(int rent)
+    {
+        currentMoney = currentMoney + rent;
+    }
+
     public void SetBankrupt()
     {
         isBankrupt = true;
