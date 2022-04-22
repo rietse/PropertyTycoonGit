@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private int currentPos;
     private int currentMoney;
     public TextMeshProUGUI moneyText;
+    public string name;
 
     void Start()
     {
