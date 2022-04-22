@@ -37,4 +37,9 @@ public class ButtonScripts : MonoBehaviour
     {
         gsm.GetComponent<GameManager>().Bankrupt();
     }
+
+    public void Mortgage()
+    {
+        gsm.GetComponent<GameManager>().MortgageProperty();
+    }
 }

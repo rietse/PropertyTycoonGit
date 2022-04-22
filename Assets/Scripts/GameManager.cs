@@ -153,4 +153,9 @@ public class GameManager : MonoBehaviour
     {
         playerList[currentPlayer - 1].SellProperty(currentPlayer);
     }
+
+    public void MortgageProperty()
+    {
+        playerList[currentPlayer - 1].MortgageProperty(currentPlayer);
+    }
 }

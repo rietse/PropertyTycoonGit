@@ -105,7 +105,6 @@ public class PlayerController : MonoBehaviour
         {
             print("Can't buy this space!");
         }
-
     }
 
     public void SellProperty(int player)
@@ -126,6 +125,33 @@ public class PlayerController : MonoBehaviour
         {
             print("Can't sell this space!");
         }
+    }
 
+    public void MortgageProperty(int player)
+    {
+        currPlayerNo = player.ToString(); //might as well keep this updated ig - E
+
+        GameObject property = board.GetSpace(currentPos); //grabs the space - E
+
+        if ((property.GetComponent<Space>().GetType() == "PROP") && (board.GetState(currentPos) == player)) //checks if it's property and owned by the player - E
+        {
+            if (property.GetComponent<Property>().GetMortgaged() == false) //checks if mortgaged or not - E
+            {
+                print("Player " + player + " has mortgaged " + property.GetComponent<Space>().GetName());
+                currentMoney = currentMoney + (property.GetComponent<Property>().GetPrice() / 2); //gives half money - E
+                property.GetComponent<Property>().SetMortgaged(true);
+            }
+            else
+            {
+                print("Player " + player + " has unmortgaged " + property.GetComponent<Space>().GetName());
+                currentMoney = currentMoney - (property.GetComponent<Property>().GetPrice() / 2); //takes half money - E
+                property.GetComponent<Property>().SetMortgaged(false);
+            }
+            SetMoneyText(currPlayerNo);
+        }
+        else
+        {
+            print("Can't mortgage/unmortgage this space!");
+        }
     }
 }
