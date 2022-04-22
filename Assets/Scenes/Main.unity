@@ -1027,8 +1027,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -95, y: 25}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -283.287, y: 30}
+  m_SizeDelta: {x: 576.5738, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789766278
 MonoBehaviour:
@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: player money here
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1740,6 +1740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 1902617333}
   mc: {fileID: 2056638574}
+  moneyText: {fileID: 789766278}
 --- !u!1 &1259314430 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6419094817699108899, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}

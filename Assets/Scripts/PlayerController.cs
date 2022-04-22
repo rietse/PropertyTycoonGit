@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     }
     void SetMoneyText()
     {
-        moneyText.text = "Current Money:" + currentMoney.ToString();
+        moneyText.text = "Current Money: £" + currentMoney.ToString();
     }
 
     public void Move()
@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
         {
             int i = (currentPos + mc.diceResult) - 40;
             currentPos = i;
+            PassGo();
         }
         else
         {
@@ -42,4 +43,9 @@ public class PlayerController : MonoBehaviour
         transform.position = board.spaces[currentPos].transform.position;
     }
 
+    public void PassGo()
+    {
+        currentMoney += 200;
+        SetMoneyText();
+    }
 }
