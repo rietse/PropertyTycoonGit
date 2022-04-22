@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public Board board;
     private Vector3 offset = new Vector3(0.0f,0.0f,0.0f);
-    private string currPlayerNo = "";
+    private string currPlayerNo = "1"; //need to change this when we have roll dice to determine order, for now this just stops it being blank - E
     private int currentPos;
     public int currentMoney;
     public TextMeshProUGUI moneyText;

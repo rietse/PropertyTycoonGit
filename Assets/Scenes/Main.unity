@@ -303,7 +303,7 @@ PrefabInstance:
     - target: {fileID: 5075300488204687570, guid: 851f5a69ccb9acd4e8ad89212e5f6d4d, type: 3}
       propertyPath: mc
       value: 
-      objectReference: {fileID: 2056638574}
+      objectReference: {fileID: 0}
     - target: {fileID: 5075300488204687570, guid: 851f5a69ccb9acd4e8ad89212e5f6d4d, type: 3}
       propertyPath: board
       value: 
@@ -417,7 +417,7 @@ PrefabInstance:
     - target: {fileID: 5075300488204687570, guid: 851f5a69ccb9acd4e8ad89212e5f6d4d, type: 3}
       propertyPath: mc
       value: 
-      objectReference: {fileID: 2056638574}
+      objectReference: {fileID: 0}
     - target: {fileID: 5075300488204687570, guid: 851f5a69ccb9acd4e8ad89212e5f6d4d, type: 3}
       propertyPath: board
       value: 
@@ -758,7 +758,7 @@ PrefabInstance:
     - target: {fileID: 5075300488204687570, guid: 851f5a69ccb9acd4e8ad89212e5f6d4d, type: 3}
       propertyPath: mc
       value: 
-      objectReference: {fileID: 2056638574}
+      objectReference: {fileID: 0}
     - target: {fileID: 5075300488204687570, guid: 851f5a69ccb9acd4e8ad89212e5f6d4d, type: 3}
       propertyPath: board
       value: 
@@ -1857,17 +1857,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5075300488204687575, guid: 851f5a69ccb9acd4e8ad89212e5f6d4d, type: 3}
   m_PrefabInstance: {fileID: 5075300487233936933}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1245480695 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5075300488204687570, guid: 851f5a69ccb9acd4e8ad89212e5f6d4d, type: 3}
-  m_PrefabInstance: {fileID: 5075300487233936933}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245480690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ba134a54adfaa47950ad491aa59786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1259314430 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6419094817699108899, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
@@ -1947,7 +1936,7 @@ PrefabInstance:
     - target: {fileID: 5075300488204687570, guid: 851f5a69ccb9acd4e8ad89212e5f6d4d, type: 3}
       propertyPath: mc
       value: 
-      objectReference: {fileID: 2056638574}
+      objectReference: {fileID: 0}
     - target: {fileID: 5075300488204687570, guid: 851f5a69ccb9acd4e8ad89212e5f6d4d, type: 3}
       propertyPath: board
       value: 
@@ -2096,8 +2085,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1435063507}
-        m_TargetAssemblyTypeName: MovementController, Assembly-CSharp
-        m_MethodName: MovePlayer
+        m_TargetAssemblyTypeName: ButtonScripts, Assembly-CSharp
+        m_MethodName: Move
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2154,11 +2143,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1435063502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8ee3bd1961cfb840bb583e2010b7757, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a4413e4f8d274b43bfeabf10424ee43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1245480695}
-  diceResult: 0
+  gsm: {fileID: 2046008406}
 --- !u!1 &1486159822
 GameObject:
   m_ObjectHideFlags: 0
@@ -2698,8 +2686,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2056638574}
-        m_TargetAssemblyTypeName: MovementController, Assembly-CSharp
-        m_MethodName: RollDice
+        m_TargetAssemblyTypeName: ButtonScripts, Assembly-CSharp
+        m_MethodName: Dice
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2756,11 +2744,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2056638569}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8ee3bd1961cfb840bb583e2010b7757, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a4413e4f8d274b43bfeabf10424ee43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  diceResult: 0
+  gsm: {fileID: 2046008406}
 --- !u!1 &2085517871 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8936166091052887379, guid: 4c33a4b17d7ddbe49b0d148c85d69489, type: 3}
@@ -2829,7 +2816,7 @@ PrefabInstance:
     - target: {fileID: 5075300488204687570, guid: 851f5a69ccb9acd4e8ad89212e5f6d4d, type: 3}
       propertyPath: mc
       value: 
-      objectReference: {fileID: 2056638574}
+      objectReference: {fileID: 0}
     - target: {fileID: 5075300488204687570, guid: 851f5a69ccb9acd4e8ad89212e5f6d4d, type: 3}
       propertyPath: board
       value: 

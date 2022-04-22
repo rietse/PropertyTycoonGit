@@ -5,17 +5,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject player1, player2, player3, player4, player5;
-    public GameObject activePlayer = null;
     public int currentPlayer = 1;
     public int noOfPlayers = 0;
     public List<GameObject> playerList = new List<GameObject>();
+
+    private int currentRoll;
 
     // Start is called before the first frame update
     void Start()
     {
         if (noOfPlayers == 0)
         {
-            //get number of players once we can choose how many are gonna play, for now I'm just setting it to two so I can test this works, we are also gonna chuck this somewhere else, it's just here to remind us to code this lol - E
+            //get number of players once we can choose how many are gonna play, for now I'm setting it to all 5 so I can test this works, we might also  chuck this somewhere else, it's just here as a reminder to code this lol - E
             noOfPlayers = 5;
         }
         InitialisePlayers();
@@ -24,14 +25,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("q"))
-        {
-            NextPlayer();
-        }
-        if (Input.GetKeyDown("w"))
-        {
-            MovePlayer(RollDice());
-        }
+
     }
 
     void InitialisePlayers()
@@ -85,10 +79,11 @@ public class GameManager : MonoBehaviour
         currentPlayer = n;
     }
 
-    void NextPlayer()
+    public void NextPlayer()
     {
         if (currentPlayer >= noOfPlayers)
         {
+            //if it's the last player, go back to the first one pls and thanks - E
             SetCurrentPlayer(1);
         }
         else
@@ -98,18 +93,18 @@ public class GameManager : MonoBehaviour
         playerList[currentPlayer - 1].GetComponent<PlayerController>().SetMoneyText(currentPlayer.ToString());
     }
 
-    void MovePlayer(int d)
+    public void MovePlayer()
     {
-        playerList[currentPlayer - 1].GetComponent<PlayerController>().Move(d);
+        playerList[currentPlayer - 1].GetComponent<PlayerController>().Move(currentRoll);
     }
 
-    public int RollDice()
+    public void RollDice()
     {
         //moved the code from MovementController.cs to here in line with the documentation and also having this in a central GSM is easier for me - E
         int d1 = Random.Range(1, 6);
         int d2 = Random.Range(1, 6);
         int diceResult = d1 + d2;
         print(diceResult);
-        return diceResult;
+        currentRoll = diceResult;
     }
 }
