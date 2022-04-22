@@ -5,4 +5,20 @@ using UnityEngine;
 public class Station : Space
 {
     public int statPrice;
+    public bool isMortgaged = false;
+
+    public int GetPrice()
+    {
+        return statPrice;
+    }
+
+    public void SetMortgaged(bool m)
+    {
+        isMortgaged = m;
+    }
+
+    public bool GetMortgaged()
+    {
+        return isMortgaged;
+    }
 }

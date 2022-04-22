@@ -113,6 +113,52 @@ public class GameManager : MonoBehaviour
     public void MovePlayer()
     {
         playerList[currentPlayer - 1].Move(currentRoll);
+        CheckSpace(playerList[currentPlayer - 1].GetPos());
+    }
+
+    public void CheckSpace(int pos)
+    {
+        GameObject space = board.GetSpace(pos);
+        string type = space.GetComponent<Space>().GetType();
+
+        switch (type)
+        {
+            case "PARK":
+                print("PARK");
+                //do free parking here - E
+                break;
+            case "GOJAIL":
+                print("GOJAIL");
+                //do crime go jail pls - E
+                break;
+            case "POT":
+                print("POT");
+                //do potluck card - E
+                break;
+            case "OPP":
+                print("OPP");
+                //do an opportunity - E
+                break;
+            case "PROP":
+                print("PROP");
+                //check if rent due - E
+                break;
+            case "TAX":
+                print("TAX");
+                //do taxes - E
+                break;
+            case "STAT":
+                print("STAT");
+                //check if station rent due - E
+                break;
+            case "UTIL":
+                print("UTIL");
+                //check if utility rent due - E
+                break;
+            default:
+                print("GO or JAIL");
+                break;
+        }
     }
 
     public void RollDice()
