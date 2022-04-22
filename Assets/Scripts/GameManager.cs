@@ -142,6 +142,8 @@ public class GameManager : MonoBehaviour
     public void Bankrupt()
     {
         playerList[currentPlayer - 1].SetBankrupt();
+        print("player " + currentPlayer + " has gone bankrupt");
+        NextPlayer();
     }
 
     public void PurchaseProperty()

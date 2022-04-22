@@ -72,6 +72,19 @@ public class PlayerController : MonoBehaviour
             currentPos += d;
         }
         transform.position = board.spaces[currentPos].transform.position + offset;
+        CheckSpace();
+    }
+
+    public void CheckSpace()
+    {
+        GameObject space = board.GetSpace(currentPos);
+        string type = space.GetComponent<Space>().GetType();
+
+        /*switch(type)
+        {
+            case "":
+                //GO, JAIL, PARK, GOJAIL, POT, OPP, PROP, TAX, STAT, UTIL
+        }*/
     }
 
     public void PassGo()
@@ -100,6 +113,20 @@ public class PlayerController : MonoBehaviour
 
                 SetMoneyText(currPlayerNo);
             }
+        } else if ((property.GetComponent<Space>().GetType() == "UTIL") && (board.GetState(currentPos) == 0)) //same but deals with utilities, I forgot these existed - E
+        {
+            if (property.GetComponent<Utility>().GetPrice() > currentMoney) //checks if player can afford - E
+            {
+                print("Not enough money!");
+            }
+            else
+            {
+                print("Player " + player + " has bought the utility " + property.GetComponent<Space>().GetName());
+                currentMoney = currentMoney - property.GetComponent<Utility>().GetPrice();
+                board.SetState(currentPos, player); //assigns board space to player and deducts money - E
+
+                SetMoneyText(currPlayerNo);
+            }
         }
         else
         {
@@ -117,6 +144,13 @@ public class PlayerController : MonoBehaviour
         { 
             print("Player " + player + " has sold " + property.GetComponent<Space>().GetName());
             currentMoney = currentMoney + property.GetComponent<Property>().GetPrice();
+            board.SetState(currentPos, 0); //assigns board space back to unowned and gives player money - E
+
+            SetMoneyText(currPlayerNo);
+        } else if ((property.GetComponent<Space>().GetType() == "UTIL") && (board.GetState(currentPos) == player)) //same but deals with utilities, I forgot these existed - E
+        {
+            print("Player " + player + " has sold the utility " + property.GetComponent<Space>().GetName());
+            currentMoney = currentMoney + property.GetComponent<Utility>().GetPrice();
             board.SetState(currentPos, 0); //assigns board space back to unowned and gives player money - E
 
             SetMoneyText(currPlayerNo);
@@ -146,6 +180,22 @@ public class PlayerController : MonoBehaviour
                 print("Player " + player + " has unmortgaged " + property.GetComponent<Space>().GetName());
                 currentMoney = currentMoney - (property.GetComponent<Property>().GetPrice() / 2); //takes half money - E
                 property.GetComponent<Property>().SetMortgaged(false);
+            }
+            SetMoneyText(currPlayerNo);
+        }
+        else if ((property.GetComponent<Space>().GetType() == "UTIL") && (board.GetState(currentPos) == player)) //same but deals with utilities, I forgot these existed - E
+        {
+            if (property.GetComponent<Utility>().GetMortgaged() == false) //checks if mortgaged or not - E
+            {
+                print("Player " + player + " has mortgaged the utility " + property.GetComponent<Space>().GetName());
+                currentMoney = currentMoney + (property.GetComponent<Utility>().GetPrice() / 2); //gives half money - E
+                property.GetComponent<Utility>().SetMortgaged(true);
+            }
+            else
+            {
+                print("Player " + player + " has unmortgaged the utility " + property.GetComponent<Space>().GetName());
+                currentMoney = currentMoney - (property.GetComponent<Utility>().GetPrice() / 2); //takes half money - E
+                property.GetComponent<Utility>().SetMortgaged(false);
             }
             SetMoneyText(currPlayerNo);
         }
