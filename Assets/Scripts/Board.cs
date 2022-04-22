@@ -15,6 +15,7 @@ public class Board : MonoBehaviour
         foreach(GameObject p in players)
         {
             p.transform.position = spaces[0].transform.position;
+            p.GetComponent<PlayerController>().OffsetPlayer();
         }
 
     }
