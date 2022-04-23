@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI moneyText;
     public string name;
     public bool isBankrupt = false;
+    public bool hasRolled = false;
+    public bool hasMoved = false;
 
     void Start()
     {
@@ -74,20 +76,33 @@ public class PlayerController : MonoBehaviour
         moneyText.text = "Player " + currPlayerNo + " Current Money: £" + currentMoney.ToString();
     }
 
+    public void SetHasMoved(bool moved)
+    {
+        hasMoved = moved;
+    }
+
+    public bool GetHasMoved()
+    {
+        return hasMoved;
+    }
+
     public void Move(int d)
     {
-
-        if ((currentPos + d) > 39)
+        if (!GetHasMoved())
         {
-            int i = (currentPos + d) - 40;
-            currentPos = i;
-            PassGo();
+            if ((currentPos + d) > 39)
+            {
+                int i = (currentPos + d) - 40;
+                currentPos = i;
+                PassGo();
+            }
+            else
+            {
+                currentPos += d;
+            }
+            transform.position = board.spaces[currentPos].transform.position + offset;
+            SetHasMoved(true);
         }
-        else
-        {
-            currentPos += d;
-        }
-        transform.position = board.spaces[currentPos].transform.position + offset;
     }
 
     public void PassGo()

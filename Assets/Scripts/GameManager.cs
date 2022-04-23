@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     public void NextPlayer()
     {
         CheckMoney();
+        playerList[currentPlayer - 1].SetHasMoved(false);
 
         int lastValidPlayer = currentPlayer;
         bool validPlayer = false;
