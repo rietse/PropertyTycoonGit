@@ -234,7 +234,10 @@ public class GameManager : MonoBehaviour
 
     public void PurchaseProperty()
     {
-        playerList[currentPlayer - 1].PurchaseProperty(currentPlayer);
+        if (playerList[currentPlayer - 1].GetHasPassedGo())
+        {
+            playerList[currentPlayer - 1].PurchaseProperty(currentPlayer);
+        }
     }
 
     public void SellProperty()
