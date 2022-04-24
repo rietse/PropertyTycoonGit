@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
 
             if (currentPlayer == lastValidPlayer)
             {
-                Debug.Log("Win");
+                print("Win"); //we need to do win code here eventally, a single line saying "Win" isn't that entertaining - E
                 validPlayer = true; //this is just here so I don't get another loop that breaks unity - E
             }
         }
@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour
         GameObject space = board.GetSpace(pos);
         string type = space.GetComponent<Space>().GetType();
         int rent = 0;
+        int[] cardEffect = null;
 
         switch (type)
         {
@@ -137,11 +138,11 @@ public class GameManager : MonoBehaviour
                 break;
             case "POT":
                 print("POT");
-                //do potluck card - E
+                cardEffect = board.DrawCard("POT");
                 break;
             case "OPP":
                 print("OPP");
-                //do an opportunity - E
+                cardEffect = board.DrawCard("OPP");
                 break;
             case "PROP":
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
