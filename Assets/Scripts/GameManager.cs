@@ -207,7 +207,23 @@ public class GameManager : MonoBehaviour
         int d1 = UnityEngine.Random.Range(1, 6);
         int d2 = UnityEngine.Random.Range(1, 6);
         int diceResult = d1 + d2;
-        print(diceResult + "pls merge this with the move button at some point future me, thanks - E");
+        if (d1 == d2)
+        {
+            playerList[currentPlayer - 1].AddDoublesCounter();
+            playerList[currentPlayer - 1].SetReroll(true);
+            if (playerList[currentPlayer - 1].GetDoublesCounter() == 3)
+            {
+                playerList[currentPlayer - 1].transform.position = board.spaces[10].transform.position;
+                playerList[currentPlayer - 1].SetReroll(false);
+                playerList[currentPlayer - 1].ResetDoublesCounter();
+            }
+        }
+        else
+        {
+            playerList[currentPlayer - 1].SetReroll(false);
+            playerList[currentPlayer - 1].ResetDoublesCounter();
+        }
+        print(d1.ToString() + d2.ToString() + "pls merge this with the move button at some point future me, thanks - E");
         currentRoll = diceResult;
     }
 

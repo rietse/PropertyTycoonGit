@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public bool hasRolled = false;
     public bool hasMoved = false;
     public bool hasPassedGo = false;
+    public bool canReroll = false;
+    public int doublesCounter = 0;
 
     void Start()
     {
@@ -87,6 +89,31 @@ public class PlayerController : MonoBehaviour
         return hasMoved;
     }
 
+    public void SetReroll(bool reroll)
+    {
+        canReroll = reroll;
+    }
+
+    public bool GetReroll()
+    {
+        return canReroll;
+    }
+
+    public void AddDoublesCounter()
+    {
+        doublesCounter += 1;
+    }
+
+    public int GetDoublesCounter()
+    {
+        return doublesCounter;
+    }
+
+    public void ResetDoublesCounter()
+    {
+        doublesCounter = 0;
+    }
+
     public void Move(int d)
     {
         if (!GetHasMoved())
@@ -102,7 +129,9 @@ public class PlayerController : MonoBehaviour
                 currentPos += d;
             }
             transform.position = board.spaces[currentPos].transform.position + offset;
-            SetHasMoved(true);
+            if (!GetReroll()) { 
+                SetHasMoved(true); 
+            }
         }
     }
 
