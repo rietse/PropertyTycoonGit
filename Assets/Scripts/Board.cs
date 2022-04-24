@@ -6,13 +6,18 @@ public class Board : MonoBehaviour
 {
     public GameObject[] spaces;
     public GameObject[] players;
+    public GameObject[] oppCards;
+    public GameObject[] potCards;
     public int[] spaceStates = new int[40]; //Key: 0 - unowned, 1 to 5 - owned by said player, 6 - special space cannot be buy - E
 
     void Start()
     {
         spaces = GameObject.FindGameObjectsWithTag("Space");
         players = GameObject.FindGameObjectsWithTag("Player");
+        oppCards = GameObject.FindGameObjectsWithTag("OppCard");
+        potCards = GameObject.FindGameObjectsWithTag("PotCard");
         InitialiseSpaceStates();
+        ShuffleCards();
     }
 
     public void InitialisePlayerPositions()
@@ -37,6 +42,11 @@ public class Board : MonoBehaviour
                 spaces[i].GetComponent<Property>().InitialiseRentList(); //see Property.cs if you want something monotonous to do - E
             }
         }
+    }
+
+    void ShuffleCards()
+    {
+        print("pretend this is a shuffler idk");
     }
 
     public int GetState(int i)

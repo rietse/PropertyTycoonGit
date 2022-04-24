@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public int noOfPlayers = 0;
     public List<PlayerController> playerList = new List<PlayerController>();
 
+    private int[] currentCard;
     private int currentRoll;
 
     // Start is called before the first frame update
