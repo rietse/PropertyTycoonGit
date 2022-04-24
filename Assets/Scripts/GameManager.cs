@@ -143,7 +143,6 @@ public class GameManager : MonoBehaviour
                 //do an opportunity - E
                 break;
             case "PROP":
-                print("PROP");
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
                     rent = space.GetComponent<Property>().GetRent();
@@ -153,7 +152,6 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case "TAX":
-                print("TAX");
                 if(pos == 4) //income tax position - E
                 {
                     print("Player " + currentPlayer + " has to pay £200 in taxes!");
@@ -166,7 +164,6 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case "STAT":
-                print("STAT");
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
                     double rentD = 12.5; //since rent is doubled for each station you own, we can be cheeky and start it at half rent as one of the stations must be owned to trigger this, thus moving it to the £25 figure without any trouble - E
@@ -182,7 +179,6 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case "UTIL":
-                print("UTIL");
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
                     if (board.GetState(12) == board.GetState(28)) //as we know one is owned by a different player, we can just check rather than making sure it's not unowned - E
@@ -196,7 +192,6 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             default:
-                print("GO or JAIL");
                 break;
         }
     }
@@ -223,7 +218,7 @@ public class GameManager : MonoBehaviour
             playerList[currentPlayer - 1].SetReroll(false);
             playerList[currentPlayer - 1].ResetDoublesCounter();
         }
-        print(d1.ToString() + d2.ToString() + "pls merge this with the move button at some point future me, thanks - E");
+        print(d1.ToString() + ", " + d2.ToString() + " pls merge this with the move button at some point future me, thanks - E");
         currentRoll = diceResult;
     }
 
