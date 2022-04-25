@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class MainMenuButtons : MonoBehaviour
 {
-    public GameObject mainMenuPanel;
+    public GameObject startMenuPanel;
+    public GameObject exitPopup;
     public bool testing = true;
 
     public void StartGame()
     {
-        mainMenuPanel.gameObject.SetActive(false);
+        startMenuPanel.gameObject.SetActive(false);
     }
 
     public void Options()
     {
         //put something here
+    }
+
+    public void ExitPopup()
+    {
+        exitPopup.gameObject.SetActive(!exitPopup.gameObject.activeSelf);
     }
 
     public void ExitGame()
@@ -25,4 +31,5 @@ public class MainMenuButtons : MonoBehaviour
             Application.Quit();
         }
     }
+
 }
