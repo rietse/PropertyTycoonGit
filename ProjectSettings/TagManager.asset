@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Space
+  - OppCard
+  - PotCard
   layers:
   - Default
   - TransparentFX

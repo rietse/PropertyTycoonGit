@@ -6,11 +6,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public Board board;
-    public PlayerController player1, player2, player3, player4, player5;
+    public PlayerController player1, player2, player3, player4, player5; //max 5 players, so might as well hook up all these guys - E
     public int currentPlayer = 1;
     public int noOfPlayers = 0;
+    public int freeParking = 0;
     public List<PlayerController> playerList = new List<PlayerController>();
 
+    private int[] currentCard;
     private int currentRoll;
 
     // Start is called before the first frame update
@@ -106,7 +108,7 @@ public class GameManager : MonoBehaviour
 
             if (currentPlayer == lastValidPlayer)
             {
-                Debug.Log("Win");
+                print("Win"); //we need to do win code here eventally, a single line saying "Win" isn't that entertaining - E
                 validPlayer = true; //this is just here so I don't get another loop that breaks unity - E
             }
         }
@@ -114,7 +116,7 @@ public class GameManager : MonoBehaviour
 
     public void MovePlayer()
     {
-        playerList[currentPlayer - 1].Move(currentRoll);
+        playerList[currentPlayer - 1].Move(currentRoll, false);
         CheckSpace(playerList[currentPlayer - 1].GetPos());
     }
 
@@ -123,27 +125,26 @@ public class GameManager : MonoBehaviour
         GameObject space = board.GetSpace(pos);
         string type = space.GetComponent<Space>().GetType();
         int rent = 0;
+        int[] cardEffect = null;
 
         switch (type)
         {
             case "PARK":
-                print("PARK");
-                //do free parking here - E
+                playerList[currentPlayer - 1].RecieveRent(freeParking);
+                print("Player " + currentPlayer + " recieved £" + freeParking + " from free parking!");
+                freeParking = 0;
                 break;
             case "GOJAIL":
                 print("GOJAIL");
                 //do crime go jail pls - E
                 break;
             case "POT":
-                print("POT");
-                //do potluck card - E
+                cardEffect = board.DrawCard("POT");
                 break;
             case "OPP":
-                print("OPP");
-                //do an opportunity - E
+                cardEffect = board.DrawCard("OPP");
                 break;
             case "PROP":
-                print("PROP");
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
                     rent = space.GetComponent<Property>().GetRent();
@@ -153,7 +154,6 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case "TAX":
-                print("TAX");
                 if(pos == 4) //income tax position - E
                 {
                     print("Player " + currentPlayer + " has to pay ï¿½200 in taxes!");
@@ -166,7 +166,6 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case "STAT":
-                print("STAT");
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
                     double rentD = 12.5; //since rent is doubled for each station you own, we can be cheeky and start it at half rent as one of the stations must be owned to trigger this, thus moving it to the ï¿½25 figure without any trouble - E
@@ -182,7 +181,6 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case "UTIL":
-                print("UTIL");
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
                     if (board.GetState(12) == board.GetState(28)) //as we know one is owned by a different player, we can just check rather than making sure it's not unowned - E
@@ -196,8 +194,113 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             default:
-                print("GO or JAIL");
                 break;
+        }
+
+        if (cardEffect != null)
+        {
+            TriggerCardEffect(cardEffect);
+        }
+    }
+
+    void TriggerCardEffect(int[] cardEffect)
+    {
+        int money, moveVal = 0;
+
+        if (cardEffect[0] == 1) //checks if the card lets you draw an OPP card instead of triggering said card - E
+        {
+            //we actually need to check though, another to add to the "do later" pile - E
+            //board.DrawCard("OPP"); //we can uncomment this line once we have a check in place - E
+            print("draw a new OPP card code should trigger?");
+        }
+        else if (cardEffect[0] == 2) //checks if the card lets you draw a POT card instead of triggering said card - E
+        {
+            //same as above, do this pls future me - E
+            //board.DrawCard("POT"); //once again same as above - E
+            print("draw a new POT card code should trigger?");
+        }
+        else //now we know the card effect is actually gonna happen we can go through them and activate them here... ugh so many IF statements this is so bad... - E
+        {
+            //all effects involving transferring money - E
+            if (cardEffect[4] == 1) { money = (playerList[currentPlayer - 1].GetTotalOwnedHouses(currentPlayer) * 40) + (playerList[currentPlayer - 1].GetTotalOwnedHotels(currentPlayer) * 115); } //checks what money value needs to be handled here, so we don't have to figure it out every single transaction - E
+            else if (cardEffect[4] == 2) { money = (playerList[currentPlayer - 1].GetTotalOwnedHouses(currentPlayer) * 25) + (playerList[currentPlayer - 1].GetTotalOwnedHotels(currentPlayer) * 100); }
+            else { money = cardEffect[5]; } //if it's not using the number of houses or hotels, we default to the regular money value in the card's data - E
+            
+            if (cardEffect[1] == 1)
+            {
+                playerList[currentPlayer - 1].RecieveRent(money);
+                print("Player " + currentPlayer + " recieved £" + money + " from a card!");
+                playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
+            }
+            if (cardEffect[2] == 1)
+            {
+                playerList[currentPlayer - 1].PayRent(money);
+                print("Player " + currentPlayer + " paid £" + money + " from a card!");
+                playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
+            }
+            if (cardEffect[3] == 1)
+            {
+                freeParking += money;
+                print("Player " + currentPlayer + "'s fine of £" + money + " went to the free parking fund (total: £" + freeParking + ")!");
+            }
+
+            //all movement effects go here - E
+            if (cardEffect[7] == 1)
+            {
+                if (cardEffect[6] == 1) //check if we moving to a specific space... - E
+                {
+                    moveVal = cardEffect[8] - playerList[currentPlayer - 1].GetPos(); //checks the distance needed to move to the desired location - E
+                    if (moveVal <= 0) { moveVal += 40; } //does a loop around if the space is 'behind' the player - E
+                    print("Current location: " + playerList[currentPlayer - 1].GetPos() + " Desired Location: " + cardEffect[8] + " Spaces needed to get there: " + moveVal);
+                    playerList[currentPlayer - 1].Move(moveVal, true); //override the movement checks to send the player where they need to be as if they moved normally - E
+                }
+                else if (cardEffect[6] == 2) //...or dynamically based on the current position - E
+                {
+                    playerList[currentPlayer - 1].Move((playerList[currentPlayer - 1].GetPos() + cardEffect[8]), true); //same as above, but grabs the current position and moves forward based on cardEffect[8], should only be for forwards movement btw - E
+                }
+            }
+            else
+            {
+                if (cardEffect[6] == 1) //check if we moving to a specific space... - E
+                {
+                    playerList[currentPlayer - 1].SetPos(cardEffect[8]); //override the movement checks to send the player to a specific space, use for sending players "back" or where they don't collect their GO money - E
+                }
+                else if (cardEffect[6] == 2) //...or dynamically based on the current position - E
+                {
+                    moveVal = playerList[currentPlayer - 1].GetPos() + cardEffect[8]; //might as well only calculate this once seeing as we use this value a few times and it looks messy pasting it everywhere - E
+                    if (moveVal < 0) //if moving backwards puts us into the negatives (the game doesn't like this at ALL), we can just move forwards instead to find our space) - E
+                    {
+                        moveVal = 40 + cardEffect[8];
+                    }
+                    playerList[currentPlayer - 1].SetPos(moveVal); //same as above, but for moving forwards or back x places, usually the latter - E
+                }
+            }
+
+            //all jail effects go here - E
+            if(cardEffect[9] == 1)
+            {
+                //be crime, do jail, when jail is a thing - E
+                print("the player would go to jail in this scenario");
+            }
+            if (cardEffect[10] == 1)
+            {
+                playerList[currentPlayer - 1].RecieveFreeJailCard();
+                print("Player " + currentPlayer + " recieved a get out of jail free card!");
+            }
+
+            if (cardEffect[11] == 1) //happy birthday card effect my despised. Imagine having to create something just to deal with a single card... - E
+            {
+                for (int i = 1; i <= noOfPlayers; i++)
+                {
+                    if (i != currentPlayer)
+                    {
+                        playerList[i - 1].PayRent(money); //takes birthday money from every other player first... - E
+                    }
+                }
+                playerList[currentPlayer - 1].RecieveRent(money * noOfPlayers); //...then gives the birthday money * the number of players after - E
+                playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
+                print("Player " + currentPlayer + " recieved £" + money + " from each player for their birthday!");
+            }
         }
     }
 
@@ -223,7 +326,7 @@ public class GameManager : MonoBehaviour
             playerList[currentPlayer - 1].SetReroll(false);
             playerList[currentPlayer - 1].ResetDoublesCounter();
         }
-        print(d1.ToString() + d2.ToString() + "pls merge this with the move button at some point future me, thanks - E");
+        print(d1.ToString() + ", " + d2.ToString() + " pls merge this with the move button at some point future me, thanks - E");
         currentRoll = diceResult;
         return currentRoll;
     }

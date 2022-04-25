@@ -42,4 +42,16 @@ public class ButtonScripts : MonoBehaviour
     {
         gsm.GetComponent<GameManager>().MortgageProperty();
     }
+
+    public void DrawOpp()
+    {
+        //this is only for testing purposes pls remove once we make game do game - E
+        gsm.GetComponent<GameManager>().CheckSpace(7);
+    }
+
+    public void DrawPot()
+    {
+        //this is only for testing purposes pls remove once we make game do game - E
+        gsm.GetComponent<GameManager>().CheckSpace(2);
+    }
 }
