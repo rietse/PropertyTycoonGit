@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public bool hasPassedGo = false;
     public bool canReroll = false;
     public int doublesCounter = 0;
+    public bool inJail = false;
+    public int jailCounter = 0;
 
     void Start()
     {
@@ -84,6 +86,16 @@ public class PlayerController : MonoBehaviour
     {
         currPlayerNo = playerNo;
         moneyText.text = "Player " + currPlayerNo + " Current Money: �" + currentMoney.ToString();
+    }
+
+    public void SetHasRolled(bool rolled)
+    {
+        hasRolled = rolled;
+    }
+
+    public bool GetHasRolled()
+    {
+        return hasRolled;
     }
 
     public void SetHasMoved(bool moved)
@@ -340,5 +352,48 @@ public class PlayerController : MonoBehaviour
     public void RecieveFreeJailCard()
     {
         jailFreeCards += 1;
+    }
+
+    public void SetInJail(bool jailed)
+    {
+        inJail = jailed;
+    }
+
+    public bool IsInJail()
+    {
+        return inJail;
+    }
+
+    public void AddJailCounter()
+    {
+        jailCounter += 1;
+    }
+
+    public void ResetJailCounter()
+    {
+        jailCounter = 0;
+    }
+
+    public int GetJailCounter()
+    {
+        return jailCounter;
+    }
+
+    public void GoToJail()
+    {
+        transform.position = board.spaces[10].transform.position;
+        currentPos = 10;
+        hasMoved = true;
+        inJail = true;
+    }
+
+    //TO-DO: add the jail free card method - R
+    public void JailFine()
+    {
+        currentMoney -= 50;
+        inJail = false;
+        hasMoved = false;
+        jailCounter = 0;
+        SetMoneyText(currPlayerNo);
     }
 }
