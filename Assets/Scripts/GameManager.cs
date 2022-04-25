@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
                     rent = space.GetComponent<Property>().GetRent();
-                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
+                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
                     playerList[currentPlayer - 1].PayRent(rent);
                     playerList[board.GetState(pos) - 1].RecieveRent(rent);
                 }
@@ -156,12 +156,12 @@ public class GameManager : MonoBehaviour
                 print("TAX");
                 if(pos == 4) //income tax position - E
                 {
-                    print("Player " + currentPlayer + " has to pay £200 in taxes!");
+                    print("Player " + currentPlayer + " has to pay ï¿½200 in taxes!");
                     playerList[currentPlayer - 1].PayRent(200);
                 }
                 else if (pos == 38) //super tax position - E
                 {
-                    print("Player " + currentPlayer + " has to pay £100 in taxes!");
+                    print("Player " + currentPlayer + " has to pay ï¿½100 in taxes!");
                     playerList[currentPlayer - 1].PayRent(100);
                 }
                 break;
@@ -169,14 +169,14 @@ public class GameManager : MonoBehaviour
                 print("STAT");
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
-                    double rentD = 12.5; //since rent is doubled for each station you own, we can be cheeky and start it at half rent as one of the stations must be owned to trigger this, thus moving it to the £25 figure without any trouble - E
+                    double rentD = 12.5; //since rent is doubled for each station you own, we can be cheeky and start it at half rent as one of the stations must be owned to trigger this, thus moving it to the ï¿½25 figure without any trouble - E
                     if (board.GetState(5) == board.GetState(pos)) { rentD = rentD * 2; }
                     if (board.GetState(15) == board.GetState(pos)) { rentD = rentD * 2; }
                     if (board.GetState(25) == board.GetState(pos)) { rentD = rentD * 2; }
                     if (board.GetState(35) == board.GetState(pos)) { rentD = rentD * 2; }
                     rent = Convert.ToInt32(rentD); //just need to borrow a double because ints don't decimal - E
                         
-                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
+                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
                     playerList[currentPlayer - 1].PayRent(rent);
                     playerList[board.GetState(pos) - 1].RecieveRent(rent);
                 }
@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
                         rent = currentRoll * 10;
                     } else { rent = currentRoll * 4; }
 
-                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
+                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
                     playerList[currentPlayer - 1].PayRent(rent);
                     playerList[board.GetState(pos) - 1].RecieveRent(rent);
                 }
@@ -201,7 +201,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void RollDice()
+    public int RollDice()
     {
         //moved the code from MovementController.cs to here in line with the documentation and also having this in a central GSM is easier for me - E
         int d1 = UnityEngine.Random.Range(1, 6);
@@ -225,6 +225,7 @@ public class GameManager : MonoBehaviour
         }
         print(d1.ToString() + d2.ToString() + "pls merge this with the move button at some point future me, thanks - E");
         currentRoll = diceResult;
+        return currentRoll;
     }
 
     private void CheckMoney()
