@@ -49,6 +49,11 @@ public class Property : Space
         return rentList[developmentLevel];
     }
 
+    public int GetDevelopmentLevel()
+    {
+        return developmentLevel;
+    }
+
     public void UpgradeProperty()
     {
         developmentLevel += 1;

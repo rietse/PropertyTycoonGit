@@ -3545,7 +3545,7 @@ MonoBehaviour:
   idNum: 7
   type: 1
   cardDescription: "Mega late night taxi bill pay \xA350"
-  cardEffects: 000000000000000002000000000000000000000032000000000000000000000000000000000000000000000000000000
+  cardEffects: 000000000000000001000000000000000000000032000000000000000000000000000000000000000000000000000000
 --- !u!1 &1173085502
 GameObject:
   m_ObjectHideFlags: 0
@@ -6338,6 +6338,7 @@ MonoBehaviour:
   player5: {fileID: 414879512}
   currentPlayer: 1
   noOfPlayers: 0
+  freeParking: 0
   playerList: []
 --- !u!4 &2046008408
 Transform:

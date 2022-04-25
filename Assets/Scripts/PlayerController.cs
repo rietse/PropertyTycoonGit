@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private string currPlayerNo = "1"; //need to change this when we have roll dice to determine order, for now this just stops it being blank - E
     public int currentPos;
     public int currentMoney;
+    public int jailFreeCards = 0;
     public TextMeshProUGUI moneyText;
     public string name;
     public bool isBankrupt = false;
@@ -34,6 +35,12 @@ public class PlayerController : MonoBehaviour
     public int GetPos()
     {
         return currentPos;
+    }
+
+    public void SetPos(int x)
+    {
+        currentPos = x;
+        transform.position = board.spaces[x].transform.position + offset;
     }
 
     public int GetMoney()
@@ -114,9 +121,9 @@ public class PlayerController : MonoBehaviour
         doublesCounter = 0;
     }
 
-    public void Move(int d)
+    public void Move(int d, bool overrideMove)
     {
-        if (!GetHasMoved())
+        if ((!GetHasMoved()) || (overrideMove == true))
         {
             if ((currentPos + d) > 39)
             {
@@ -148,6 +155,7 @@ public class PlayerController : MonoBehaviour
     public void PassGo()
     {
         currentMoney += 200;
+        print("Player " + currPlayerNo + " has passed GO!");
         SetMoneyText(currPlayerNo);
         SetHasPassedGo(true);
     }
@@ -297,5 +305,40 @@ public class PlayerController : MonoBehaviour
         {
             print("Can't mortgame/unmortgage this space!");
         }
+    }
+
+    public int GetTotalOwnedHouses(int player)
+    {
+        int houses = 0;
+
+        for (int i = 0; i < 40; i++)
+        {
+            if ((board.GetSpace(i).GetComponent<Space>().GetType() == "PROP") && (board.GetState(i) == player))
+            {
+                houses += board.GetHouses(i);
+            }
+        }
+        houses = 7; //temp so we actually can have some values as no development is there yet so the above will just be 0 which is a bit boring - E
+        return houses; 
+    }
+
+    public int GetTotalOwnedHotels(int player)
+    {
+        int hotels = 0;
+
+        for (int i = 0; i < 40; i++)
+        {
+            if ((board.GetSpace(i).GetComponent<Space>().GetType() == "PROP") && (board.GetState(i) == player))
+            {
+                hotels += board.GetHotels(i);
+            }
+        }
+        hotels = 2; //same as GetTotalOwnedHouses(), but for hotels - E
+        return hotels;
+    }
+
+    public void RecieveFreeJailCard()
+    {
+        jailFreeCards += 1;
     }
 }

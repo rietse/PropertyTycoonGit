@@ -46,7 +46,7 @@ public class Board : MonoBehaviour
     }
 
     List<GameObject> ShuffleCards(List<GameObject> deck)
-    {
+    { //Fisher-Yates shuffle algorithm, grabs a random object, puts it at the 'end' of the list then repeats until it reaches the start - E
         List<GameObject> tempDeck = new List<GameObject>(deck);
         deck.Clear();
 
@@ -99,5 +99,31 @@ public class Board : MonoBehaviour
     public GameObject GetSpace(int i)
     {
         return spaces[i];
+    }
+
+    public int GetHouses(int i)
+    {
+        int devLevel = spaces[i].GetComponent<Property>().GetDevelopmentLevel();
+
+        if((devLevel > 0) && (devLevel < 5)) //devLevels 1-4 = the number of houses on the spot which is pretty convenient, 0 or 5 indicates nothing or a hotel so no need to return a value - E
+        {
+            return devLevel;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public int GetHotels(int i)
+    {
+        if (spaces[i].GetComponent<Property>().GetDevelopmentLevel() == 5) //development level 5 is a hotel so we just need to check that - E
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
     }
 }
