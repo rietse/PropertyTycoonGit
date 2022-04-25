@@ -106,6 +106,16 @@ public class GameManager : MonoBehaviour
 
             validPlayer = CheckBankrupt();
 
+            if ((playerList[currentPlayer - 1]).IsInJail())
+            {
+                playerList[currentPlayer - 1].AddJailCounter();
+                if (playerList[currentPlayer - 1].GetJailCounter() == 3)
+                {
+                    playerList[currentPlayer - 1].SetInJail(false);
+                    playerList[currentPlayer - 1].ResetJailCounter();
+                }
+            }
+
             if (currentPlayer == lastValidPlayer)
             {
                 print("Win"); //we need to do win code here eventally, a single line saying "Win" isn't that entertaining - E
@@ -304,31 +314,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //TO-DO: right now you can keep rolling infinitely BEFORE moving...i should fix that - R
     public int RollDice()
     {
         //moved the code from MovementController.cs to here in line with the documentation and also having this in a central GSM is easier for me - E
-        int d1 = UnityEngine.Random.Range(1, 6);
-        int d2 = UnityEngine.Random.Range(1, 6);
-        int diceResult = d1 + d2;
-        if (d1 == d2)
-        {
-            playerList[currentPlayer - 1].AddDoublesCounter();
-            playerList[currentPlayer - 1].SetReroll(true);
-            if (playerList[currentPlayer - 1].GetDoublesCounter() == 3)
+        if (!playerList[currentPlayer - 1].IsInJail()) {
+            int d1 = UnityEngine.Random.Range(1, 7);
+            int d2 = UnityEngine.Random.Range(1, 7);
+            int diceResult = d1 + d2;
+            if (d1 == d2)
             {
-                playerList[currentPlayer - 1].transform.position = board.spaces[10].transform.position;
+                playerList[currentPlayer - 1].AddDoublesCounter();
+                playerList[currentPlayer - 1].SetReroll(true);
+                if (playerList[currentPlayer - 1].GetDoublesCounter() == 3)
+                {
+                    playerList[currentPlayer - 1].GoToJail();
+                    playerList[currentPlayer - 1].SetReroll(false);
+                    playerList[currentPlayer - 1].ResetDoublesCounter();
+                }
+            }
+            else
+            {
                 playerList[currentPlayer - 1].SetReroll(false);
                 playerList[currentPlayer - 1].ResetDoublesCounter();
             }
-        }
-        else
-        {
-            playerList[currentPlayer - 1].SetReroll(false);
-            playerList[currentPlayer - 1].ResetDoublesCounter();
-        }
-        print(d1.ToString() + ", " + d2.ToString() + " pls merge this with the move button at some point future me, thanks - E");
-        currentRoll = diceResult;
+            print(d1.ToString() + ", " + d2.ToString() + " pls merge this with the move button at some point future me, thanks - E");
+            currentRoll = diceResult;
         return currentRoll;
+        }
+        return 0;
     }
 
     private void CheckMoney()
@@ -368,5 +382,15 @@ public class GameManager : MonoBehaviour
     public void MortgageProperty()
     {
         playerList[currentPlayer - 1].MortgageProperty(currentPlayer);
+    }
+
+    public void JailFine()
+    {
+        // the player can't just pay the fine immediately after being sent, the next time it's their turn they can pay - R
+        if (playerList[currentPlayer - 1].GetJailCounter() >= 1)
+        {
+            playerList[currentPlayer - 1].JailFine();
+            freeParking += 50;
+        }
     }
 }

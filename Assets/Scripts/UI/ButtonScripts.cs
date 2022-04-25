@@ -54,4 +54,9 @@ public class ButtonScripts : MonoBehaviour
         //this is only for testing purposes pls remove once we make game do game - E
         gsm.GetComponent<GameManager>().CheckSpace(2);
     }
+
+    public void PayFine()
+    {
+        gsm.GetComponent<GameManager>().JailFine();
+    }
 }
