@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
     public void SetMoneyText(string playerNo)
     {
         currPlayerNo = playerNo;
-        moneyText.text = "Player " + currPlayerNo + " Current Money: �" + currentMoney.ToString();
+        moneyText.text = "Player " + currPlayerNo + " Current Money: £" + currentMoney.ToString();
     }
 
     public void SetHasMoved(bool moved)

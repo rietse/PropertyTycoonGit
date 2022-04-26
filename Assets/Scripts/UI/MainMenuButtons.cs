@@ -6,6 +6,7 @@ public class MainMenuButtons : MonoBehaviour
 {
     public GameObject startMenuPanel;
     public GameObject exitPopup;
+    public GameObject propPopup;
     public bool testing = true;
 
     public void StartGame()
@@ -32,4 +33,8 @@ public class MainMenuButtons : MonoBehaviour
         }
     }
 
+    public void ShowPlayerProps()
+    {
+        propPopup.gameObject.SetActive(!propPopup.gameObject.activeSelf);
+    }
 }
