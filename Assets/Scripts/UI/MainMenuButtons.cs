@@ -1,13 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MainMenuButtons : MonoBehaviour
 {
     public GameObject startMenuPanel;
     public GameObject exitPopup;
     public GameObject propPopup;
+    public GameObject debugMenu;
     public bool testing = true;
+
+    public GameManager gm;
+    public Board board;
+    public TextMeshProUGUI spaceText;
+
+    void Update()
+    {
+        SetSpaceText();
+    }
 
     public void StartGame()
     {
@@ -36,5 +47,17 @@ public class MainMenuButtons : MonoBehaviour
     public void ShowPlayerProps()
     {
         propPopup.gameObject.SetActive(!propPopup.gameObject.activeSelf);
+    }
+
+    public void ShowDebugMenu()
+    {
+        debugMenu.gameObject.SetActive(!debugMenu.gameObject.activeSelf);
+    }
+
+    public void SetSpaceText()
+    {
+        int curPos = gm.playerList[gm.currentPlayer-1].currentPos;
+        Space curspace = board.spaces[curPos].GetComponent<Space>();
+        spaceText.text = "Current Position: " + curspace.GetName();
     }
 }

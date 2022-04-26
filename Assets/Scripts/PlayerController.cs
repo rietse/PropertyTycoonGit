@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public int GetPos()
