@@ -32,6 +32,7 @@ public class Board : MonoBehaviour
 
     void InitialiseSpaceStates()
     {
+        int price = 0;
         for (int i = 0; i < 40; i++)
         {
             spaces[i].GetComponent<Space>().InitialiseText();
@@ -39,11 +40,24 @@ public class Board : MonoBehaviour
             {
                 spaceStates[i] = 6;
             }
-            else if (spaces[i].GetComponent<Space>().GetType() == "PROP")
+            else
             {
-                spaces[i].GetComponent<Property>().InitialiseRentList(); //see Property.cs if you want something monotonous to do - E
-                spaces[i].GetComponent<Property>().InitialiseUpgradeCost();
-                spaces[i].GetComponent<Property>().InitialiseHousePositions();
+                switch (spaces[i].GetComponent<Space>().GetType())
+                {
+                    case "PROP":
+                        spaces[i].GetComponent<Property>().InitialiseRentList(); //see Property.cs if you want something monotonous to do - E
+                        spaces[i].GetComponent<Property>().InitialiseUpgradeCost();
+                        spaces[i].GetComponent<Property>().InitialiseHousePositions();
+                        price = spaces[i].GetComponent<Property>().GetPrice();
+                        break;
+                    case "STAT":
+                        price = spaces[i].GetComponent<Station>().GetPrice();
+                        break;
+                    case "UTIL":
+                        price = spaces[i].GetComponent<Utility>().GetPrice();
+                        break;
+                }
+                spaces[i].GetComponent<Space>().InitialisePriceText(price);
             }
         }
     }

@@ -24,6 +24,11 @@ public class Space : MonoBehaviour
         }
     }
 
+    public void InitialisePriceText(int p)
+    {
+        boardSpacePrice.SetText("£" + p);
+    }
+
     public string GetType()
     {
         return type.ToString();
