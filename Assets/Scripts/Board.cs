@@ -34,6 +34,7 @@ public class Board : MonoBehaviour
     {
         for (int i = 0; i < 40; i++)
         {
+            spaces[i].GetComponent<Space>().InitialiseText();
             if ((spaces[i].GetComponent<Space>().GetType() != "PROP") && (spaces[i].GetComponent<Space>().GetType() != "UTIL") && (spaces[i].GetComponent<Space>().GetType() != "STAT"))
             {
                 spaceStates[i] = 6;
@@ -41,6 +42,8 @@ public class Board : MonoBehaviour
             else if (spaces[i].GetComponent<Space>().GetType() == "PROP")
             {
                 spaces[i].GetComponent<Property>().InitialiseRentList(); //see Property.cs if you want something monotonous to do - E
+                spaces[i].GetComponent<Property>().InitialiseUpgradeCost();
+                spaces[i].GetComponent<Property>().InitialiseHousePositions();
             }
         }
     }

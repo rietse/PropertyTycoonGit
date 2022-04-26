@@ -106,6 +106,17 @@ public class GameManager : MonoBehaviour
 
             validPlayer = CheckBankrupt();
 
+            if ((playerList[currentPlayer - 1]).IsInJail())
+            {
+                playerList[currentPlayer - 1].AddJailCounter();
+                if (playerList[currentPlayer - 1].GetJailCounter() == 3)
+                {
+                    playerList[currentPlayer - 1].SetInJail(false);
+                    playerList[currentPlayer - 1].SetPos(10);
+                    playerList[currentPlayer - 1].ResetJailCounter();
+                }
+            }
+
             if (currentPlayer == lastValidPlayer)
             {
                 print("Win"); //we need to do win code here eventally, a single line saying "Win" isn't that entertaining - E
@@ -136,7 +147,7 @@ public class GameManager : MonoBehaviour
                 break;
             case "GOJAIL":
                 print("GOJAIL");
-                //do crime go jail pls - E
+                GoToJail();
                 break;
             case "POT":
                 cardEffect = board.DrawCard("POT");
@@ -148,7 +159,7 @@ public class GameManager : MonoBehaviour
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
                     rent = space.GetComponent<Property>().GetRent();
-                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
+                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
                     playerList[currentPlayer - 1].PayRent(rent);
                     playerList[board.GetState(pos) - 1].RecieveRent(rent);
                 }
@@ -156,12 +167,12 @@ public class GameManager : MonoBehaviour
             case "TAX":
                 if(pos == 4) //income tax position - E
                 {
-                    print("Player " + currentPlayer + " has to pay ï¿½200 in taxes!");
+                    print("Player " + currentPlayer + " has to pay £200 in taxes!");
                     playerList[currentPlayer - 1].PayRent(200);
                 }
                 else if (pos == 38) //super tax position - E
                 {
-                    print("Player " + currentPlayer + " has to pay ï¿½100 in taxes!");
+                    print("Player " + currentPlayer + " has to pay £100 in taxes!");
                     playerList[currentPlayer - 1].PayRent(100);
                 }
                 break;
@@ -175,7 +186,7 @@ public class GameManager : MonoBehaviour
                     if (board.GetState(35) == board.GetState(pos)) { rentD = rentD * 2; }
                     rent = Convert.ToInt32(rentD); //just need to borrow a double because ints don't decimal - E
                         
-                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
+                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
                     playerList[currentPlayer - 1].PayRent(rent);
                     playerList[board.GetState(pos) - 1].RecieveRent(rent);
                 }
@@ -188,7 +199,7 @@ public class GameManager : MonoBehaviour
                         rent = currentRoll * 10;
                     } else { rent = currentRoll * 4; }
 
-                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
+                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
                     playerList[currentPlayer - 1].PayRent(rent);
                     playerList[board.GetState(pos) - 1].RecieveRent(rent);
                 }
@@ -209,7 +220,7 @@ public class GameManager : MonoBehaviour
 
         if (cardEffect[0] == 1) //checks if the card lets you draw an OPP card instead of triggering said card - E
         {
-            //we actually need to check though, another to add to the "do later" pile - E
+            //we actually need to check if the player wants to though, another to add to the "do later" pile - E
             //board.DrawCard("OPP"); //we can uncomment this line once we have a check in place - E
             print("draw a new OPP card code should trigger?");
         }
@@ -279,8 +290,7 @@ public class GameManager : MonoBehaviour
             //all jail effects go here - E
             if(cardEffect[9] == 1)
             {
-                //be crime, do jail, when jail is a thing - E
-                print("the player would go to jail in this scenario");
+                GoToJail();
             }
             if (cardEffect[10] == 1)
             {
@@ -304,31 +314,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //TO-DO: right now you can keep rolling infinitely BEFORE moving...i should fix that - R
+    //literally why I've been reminding myself in the logs to merge the roll with the move buttons so this can't happen, so instead we have a button the does the roll, then the move, but don't do this until the game is ready to game because it good for testies - E
+    //also the player can escape jail the turn after by pressing move as it doesn't do a jail check, I'mma add this in, if it still happens here is a comment to hopefully remind me maybe - E
     public int RollDice()
     {
         //moved the code from MovementController.cs to here in line with the documentation and also having this in a central GSM is easier for me - E
-        int d1 = UnityEngine.Random.Range(1, 6);
-        int d2 = UnityEngine.Random.Range(1, 6);
-        int diceResult = d1 + d2;
-        if (d1 == d2)
-        {
-            playerList[currentPlayer - 1].AddDoublesCounter();
-            playerList[currentPlayer - 1].SetReroll(true);
-            if (playerList[currentPlayer - 1].GetDoublesCounter() == 3)
+        if (!playerList[currentPlayer - 1].IsInJail()) {
+            int d1 = UnityEngine.Random.Range(1, 7);
+            int d2 = UnityEngine.Random.Range(1, 7);
+            int diceResult = d1 + d2;
+            if (d1 == d2)
             {
-                playerList[currentPlayer - 1].transform.position = board.spaces[10].transform.position;
+                playerList[currentPlayer - 1].AddDoublesCounter();
+                playerList[currentPlayer - 1].SetReroll(true);
+                if (playerList[currentPlayer - 1].GetDoublesCounter() == 3)
+                {
+                    playerList[currentPlayer - 1].GoToJail();
+                    playerList[currentPlayer - 1].SetReroll(false);
+                    playerList[currentPlayer - 1].ResetDoublesCounter();
+                }
+            }
+            else
+            {
                 playerList[currentPlayer - 1].SetReroll(false);
                 playerList[currentPlayer - 1].ResetDoublesCounter();
             }
-        }
-        else
-        {
-            playerList[currentPlayer - 1].SetReroll(false);
-            playerList[currentPlayer - 1].ResetDoublesCounter();
-        }
-        print(d1.ToString() + ", " + d2.ToString() + " pls merge this with the move button at some point future me, thanks - E");
-        currentRoll = diceResult;
+            print(d1.ToString() + ", " + d2.ToString() + " pls merge this with the move button at some point future me, thanks - E");
+            currentRoll = diceResult;
         return currentRoll;
+        }
+        return 0;
     }
 
     private void CheckMoney()
@@ -368,5 +384,36 @@ public class GameManager : MonoBehaviour
     public void MortgageProperty()
     {
         playerList[currentPlayer - 1].MortgageProperty(currentPlayer);
+    }
+
+    public void UpgradeProperty()
+    {
+        if (playerList[currentPlayer - 1].GetHasPassedGo())
+        {
+            playerList[currentPlayer - 1].UpgradeProperty(currentPlayer);
+        }
+    }
+
+    public void DegradeProperty()
+    {
+        if (playerList[currentPlayer - 1].GetHasPassedGo())
+        {
+            playerList[currentPlayer - 1].DegradeProperty(currentPlayer);
+        }
+    }
+
+    public void JailFine()
+    {
+        // the player can't just pay the fine immediately after being sent, the next time it's their turn they can pay - R
+        if (playerList[currentPlayer - 1].GetJailCounter() >= 1)
+        {
+            playerList[currentPlayer - 1].JailFine();
+            freeParking += 50;
+        }
+    }
+
+    public void GoToJail()
+    {
+        playerList[currentPlayer - 1].GoToJail();
     }
 }
