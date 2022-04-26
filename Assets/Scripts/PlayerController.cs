@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public Board board;
     private Vector3 offset = new Vector3(0.0f,0.0f,0.0f);
+    private Vector3 jailOffset = new Vector3(6.0f, 0.0f, -6.0f);
     private string currPlayerNo = "1"; //need to change this when we have roll dice to determine order, for now this just stops it being blank - E
     public int currentPos;
     public int currentMoney;
@@ -135,7 +136,7 @@ public class PlayerController : MonoBehaviour
 
     public void Move(int d, bool overrideMove)
     {
-        if ((!GetHasMoved()) || (overrideMove == true))
+        if ((!IsInJail()) && (!GetHasMoved()) || (overrideMove == true))
         {
             if ((currentPos + d) > 39)
             {
@@ -381,7 +382,8 @@ public class PlayerController : MonoBehaviour
 
     public void GoToJail()
     {
-        transform.position = board.spaces[10].transform.position;
+        SetPos(10);
+        transform.position = board.spaces[10].transform.position + offset + jailOffset;
         currentPos = 10;
         hasMoved = true;
         inJail = true;
@@ -393,6 +395,7 @@ public class PlayerController : MonoBehaviour
         currentMoney -= 50;
         inJail = false;
         hasMoved = false;
+        transform.position = board.spaces[10].transform.position + offset;
         jailCounter = 0;
         SetMoneyText(currPlayerNo);
     }

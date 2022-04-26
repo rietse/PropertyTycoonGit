@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour
                 if (playerList[currentPlayer - 1].GetJailCounter() == 3)
                 {
                     playerList[currentPlayer - 1].SetInJail(false);
+                    playerList[currentPlayer - 1].SetPos(10);
                     playerList[currentPlayer - 1].ResetJailCounter();
                 }
             }
@@ -146,7 +147,7 @@ public class GameManager : MonoBehaviour
                 break;
             case "GOJAIL":
                 print("GOJAIL");
-                //do crime go jail pls - E
+                GoToJail();
                 break;
             case "POT":
                 cardEffect = board.DrawCard("POT");
@@ -289,8 +290,7 @@ public class GameManager : MonoBehaviour
             //all jail effects go here - E
             if(cardEffect[9] == 1)
             {
-                //be crime, do jail, when jail is a thing - E
-                print("the player would go to jail in this scenario");
+                GoToJail();
             }
             if (cardEffect[10] == 1)
             {
@@ -315,6 +315,8 @@ public class GameManager : MonoBehaviour
     }
 
     //TO-DO: right now you can keep rolling infinitely BEFORE moving...i should fix that - R
+    //literally why I've been reminding myself in the logs to merge the roll with the move buttons so this can't happen, so instead we have a button the does the roll, then the move, but don't do this until the game is ready to game because it good for testies - E
+    //also the player can escape jail the turn after by pressing move as it doesn't do a jail check, I'mma add this in, if it still happens here is a comment to hopefully remind me maybe - E
     public int RollDice()
     {
         //moved the code from MovementController.cs to here in line with the documentation and also having this in a central GSM is easier for me - E
@@ -392,5 +394,10 @@ public class GameManager : MonoBehaviour
             playerList[currentPlayer - 1].JailFine();
             freeParking += 50;
         }
+    }
+
+    public void GoToJail()
+    {
+        playerList[currentPlayer - 1].GoToJail();
     }
 }

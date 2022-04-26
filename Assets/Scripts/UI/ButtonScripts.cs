@@ -59,4 +59,9 @@ public class ButtonScripts : MonoBehaviour
     {
         gsm.GetComponent<GameManager>().JailFine();
     }
+
+    public void GoJail()
+    {
+        gsm.GetComponent<GameManager>().GoToJail();
+    }
 }
