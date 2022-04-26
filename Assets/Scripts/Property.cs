@@ -8,6 +8,7 @@ public class Property : Space
     public Colour colour;
 
     public bool isMortgaged = false;
+    public int upgradeCost;
     public int price;
     public int rent0;
     public int rent1;
@@ -27,6 +28,39 @@ public class Property : Space
         rentList.Add(rent3);
         rentList.Add(rent4);
         rentList.Add(rent5);
+    }
+
+    public void InitialiseUpgradeCost()
+    {
+        switch(colour)
+        {
+            case Colour.BROWN:
+            case Colour.BLUE:
+                upgradeCost = 50;
+                break;
+            case Colour.PURPLE:
+            case Colour.ORANGE:
+                upgradeCost = 100;
+                break;
+            case Colour.RED:
+            case Colour.YELLOW:
+                upgradeCost = 150;
+                break;
+            case Colour.GREEN:
+            case Colour.DBLUE:
+                upgradeCost = 200;
+                break;
+        }
+    }
+
+    public string GetColour()
+    {
+        return colour.ToString();
+    }
+
+    public int GetUpgradeCost()
+    {
+        return upgradeCost;
     }
 
     public void SetMortgaged(bool m)

@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
                     rent = space.GetComponent<Property>().GetRent();
-                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
+                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
                     playerList[currentPlayer - 1].PayRent(rent);
                     playerList[board.GetState(pos) - 1].RecieveRent(rent);
                 }
@@ -167,12 +167,12 @@ public class GameManager : MonoBehaviour
             case "TAX":
                 if(pos == 4) //income tax position - E
                 {
-                    print("Player " + currentPlayer + " has to pay ï¿½200 in taxes!");
+                    print("Player " + currentPlayer + " has to pay £200 in taxes!");
                     playerList[currentPlayer - 1].PayRent(200);
                 }
                 else if (pos == 38) //super tax position - E
                 {
-                    print("Player " + currentPlayer + " has to pay ï¿½100 in taxes!");
+                    print("Player " + currentPlayer + " has to pay £100 in taxes!");
                     playerList[currentPlayer - 1].PayRent(100);
                 }
                 break;
@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
                     if (board.GetState(35) == board.GetState(pos)) { rentD = rentD * 2; }
                     rent = Convert.ToInt32(rentD); //just need to borrow a double because ints don't decimal - E
                         
-                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
+                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
                     playerList[currentPlayer - 1].PayRent(rent);
                     playerList[board.GetState(pos) - 1].RecieveRent(rent);
                 }
@@ -199,7 +199,7 @@ public class GameManager : MonoBehaviour
                         rent = currentRoll * 10;
                     } else { rent = currentRoll * 4; }
 
-                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
+                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
                     playerList[currentPlayer - 1].PayRent(rent);
                     playerList[board.GetState(pos) - 1].RecieveRent(rent);
                 }
@@ -220,7 +220,7 @@ public class GameManager : MonoBehaviour
 
         if (cardEffect[0] == 1) //checks if the card lets you draw an OPP card instead of triggering said card - E
         {
-            //we actually need to check though, another to add to the "do later" pile - E
+            //we actually need to check if the player wants to though, another to add to the "do later" pile - E
             //board.DrawCard("OPP"); //we can uncomment this line once we have a check in place - E
             print("draw a new OPP card code should trigger?");
         }
@@ -384,6 +384,22 @@ public class GameManager : MonoBehaviour
     public void MortgageProperty()
     {
         playerList[currentPlayer - 1].MortgageProperty(currentPlayer);
+    }
+
+    public void UpgradeProperty()
+    {
+        if (playerList[currentPlayer - 1].GetHasPassedGo())
+        {
+            playerList[currentPlayer - 1].UpgradeProperty(currentPlayer);
+        }
+    }
+
+    public void DegradeProperty()
+    {
+        if (playerList[currentPlayer - 1].GetHasPassedGo())
+        {
+            playerList[currentPlayer - 1].DegradeProperty(currentPlayer);
+        }
     }
 
     public void JailFine()

@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
     public void SetMoneyText(string playerNo)
     {
         currPlayerNo = playerNo;
-        moneyText.text = "Player " + currPlayerNo + " Current Money: �" + currentMoney.ToString();
+        moneyText.text = "Player " + currPlayerNo + " Current Money: £" + currentMoney.ToString();
     }
 
     public void SetHasRolled(bool rolled)
@@ -318,6 +318,75 @@ public class PlayerController : MonoBehaviour
         {
             print("Can't mortgame/unmortgage this space!");
         }
+    }
+
+    public void UpgradeProperty(int player)
+    {
+        currPlayerNo = player.ToString(); //might as well keep this updated ig - E
+
+        GameObject property = board.GetSpace(currentPos); //grabs the space - E
+        int price = 0;
+
+        if (CheckMonopoly(property.GetComponent<Property>().GetColour()) == true)
+        {
+            if (property.GetComponent<Space>().GetType() == "PROP" && board.GetState(currentPos) == player && property.GetComponent<Property>().GetDevelopmentLevel() < 5) //checks which space it is, if it can be upgraded, and if it's owned by the player - E
+            {
+                price = property.GetComponent<Property>().GetUpgradeCost();
+                if (price > currentMoney)
+                {
+                    print("Not enough money!");
+                }
+                else
+                {
+                    currentMoney = currentMoney - price;
+                    property.GetComponent<Property>().UpgradeProperty();
+                    SetMoneyText(currPlayerNo);
+                    print("Player " + player + " has upgraded " + property.GetComponent<Space>().GetName() + " to development level " + property.GetComponent<Property>().GetDevelopmentLevel());
+                }
+            }
+            else
+            {
+                print("Can't upgrade this space!");
+            }
+        }
+    }
+
+    public void DegradeProperty(int player)
+    {
+        currPlayerNo = player.ToString(); //might as well keep this updated ig - E
+
+        GameObject property = board.GetSpace(currentPos); //grabs the space - E
+        int price = 0;
+
+        if (property.GetComponent<Space>().GetType() == "PROP" && board.GetState(currentPos) == player && property.GetComponent<Property>().GetDevelopmentLevel() > 0) //checks which space it is, if it's got a house/hotel on it, and if it's owned by the player - E
+        {
+            price = property.GetComponent<Property>().GetUpgradeCost();
+            currentMoney = currentMoney + price;
+            property.GetComponent<Property>().DegradeProperty();
+            SetMoneyText(currPlayerNo);
+            print("Player " + player + " has degraded " + property.GetComponent<Space>().GetName() + " to development level " + property.GetComponent<Property>().GetDevelopmentLevel());            
+        }
+        else
+        {
+            print("Can't degrade this space!");
+        }
+    }
+
+    public bool CheckMonopoly(string colour)
+    {
+        for (int i = 0; i < 40; i++)
+        {
+            if (board.GetSpace(i).GetComponent<Space>().GetType() == "PROP") //checks if property so unity doesn't get funny about calling property methods in non property spaces - E
+            {
+                if ((board.GetSpace(i).GetComponent<Property>().GetColour() == colour) && (board.GetState(i) != board.GetState(currentPos))) //checks if each space is the same colour AND not owned by the current player, if any spaces fit this criteria, we don't have a monopoly on the colour - E
+                {
+                    print("Player " + currPlayerNo + "'s Monopoly check on " + colour + " failed!");
+                    return false;
+                }
+            }
+        }
+        print("Player " + currPlayerNo + "'s Monopoly check on " + colour + " suceeded!");
+        return true;
     }
 
     public int GetTotalOwnedHouses(int player)

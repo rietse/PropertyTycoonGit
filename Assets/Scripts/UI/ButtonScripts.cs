@@ -64,4 +64,14 @@ public class ButtonScripts : MonoBehaviour
     {
         gsm.GetComponent<GameManager>().GoToJail();
     }
+
+    public void UpgradeProperty()
+    {
+        gsm.GetComponent<GameManager>().UpgradeProperty();
+    }
+
+    public void DegradeProperty()
+    {
+        gsm.GetComponent<GameManager>().DegradeProperty();
+    }
 }
