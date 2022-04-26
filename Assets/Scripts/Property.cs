@@ -7,6 +7,8 @@ public class Property : Space
     public enum Colour { BROWN, BLUE, PURPLE, ORANGE, RED, YELLOW, GREEN, DBLUE}
     public Colour colour;
 
+    public PropertyHouseManager propertyHouseManager;
+
     public bool isMortgaged = false;
     public int upgradeCost;
     public int price;
@@ -53,6 +55,11 @@ public class Property : Space
         }
     }
 
+    public void InitialiseHousePositions()
+    {
+        propertyHouseManager.SetPosition(transform.position);
+    }
+
     public string GetColour()
     {
         return colour.ToString();
@@ -91,10 +98,12 @@ public class Property : Space
     public void UpgradeProperty()
     {
         developmentLevel += 1;
+        propertyHouseManager.UpdateHouses(developmentLevel);
     }
 
     public void DegradeProperty()
     {
         developmentLevel += -1;
+        propertyHouseManager.UpdateHouses(developmentLevel);
     }
 }

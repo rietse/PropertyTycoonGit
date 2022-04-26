@@ -43,6 +43,7 @@ public class Board : MonoBehaviour
             {
                 spaces[i].GetComponent<Property>().InitialiseRentList(); //see Property.cs if you want something monotonous to do - E
                 spaces[i].GetComponent<Property>().InitialiseUpgradeCost();
+                spaces[i].GetComponent<Property>().InitialiseHousePositions();
             }
         }
     }
