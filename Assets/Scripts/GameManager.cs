@@ -159,10 +159,14 @@ public class GameManager : MonoBehaviour
             case "PROP":
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
-                    rent = space.GetComponent<Property>().GetRent();
-                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
-                    playerList[currentPlayer - 1].PayRent(rent);
-                    playerList[board.GetState(pos) - 1].RecieveRent(rent);
+                    if (space.GetComponent<Property>().GetMortgaged() == false)
+                    {
+                        rent = space.GetComponent<Property>().GetRent();
+                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
+                        playerList[currentPlayer - 1].PayRent(rent);
+                        playerList[board.GetState(pos) - 1].RecieveRent(rent);
+                    }
+                    else print("This space is mortgaged, no rent for you!");
                 }
                 break;
             case "TAX":
