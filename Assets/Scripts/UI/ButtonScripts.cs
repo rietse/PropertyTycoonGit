@@ -74,4 +74,9 @@ public class ButtonScripts : MonoBehaviour
     {
         gsm.GetComponent<GameManager>().DegradeProperty();
     }
+
+    public void UseJailFreeCard()
+    {
+        gsm.GetComponent<GameManager>().UseJailCard();
+    }
 }

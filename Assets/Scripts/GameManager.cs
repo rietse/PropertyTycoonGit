@@ -412,9 +412,23 @@ public class GameManager : MonoBehaviour
         // the player can't just pay the fine immediately after being sent, the next time it's their turn they can pay - R
         if (playerList[currentPlayer - 1].GetJailCounter() >= 1)
         {
-            playerList[currentPlayer - 1].JailFine();
-            freeParking += 50;
+            if (playerList[currentPlayer - 1].GetMoney() >= 50)
+            {
+                playerList[currentPlayer - 1].JailFine();
+                freeParking += 50;
+            }
+            else print("Player " + currentPlayer + " cannot afford to leave jail!");
         }
+        else print("Player " + currentPlayer + " must wait a turn to leave jail!");
+    }
+
+    public void UseJailCard()
+    {
+        if (playerList[currentPlayer - 1].GetFreeJailCards() > 0)
+        {
+            playerList[currentPlayer - 1].UseFreeJailCard();
+            print("Player " + currentPlayer + " used a get out of jail free card!");
+        } else print("Player " + currentPlayer + " doesn't have a get out of jail free card!");
     }
 
     public void GoToJail()

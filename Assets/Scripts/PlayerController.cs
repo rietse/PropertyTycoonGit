@@ -424,6 +424,17 @@ public class PlayerController : MonoBehaviour
         jailFreeCards += 1;
     }
 
+    public void UseFreeJailCard()
+    {
+        LeaveJail();
+        jailFreeCards -= 1;
+    }
+
+    public int GetFreeJailCards()
+    {
+        return jailFreeCards;
+    }
+
     public void SetInJail(bool jailed)
     {
         inJail = jailed;
@@ -462,10 +473,15 @@ public class PlayerController : MonoBehaviour
     public void JailFine()
     {
         currentMoney -= 50;
+        SetMoneyText(currPlayerNo);
+        LeaveJail();
+    }
+
+    void LeaveJail()
+    {
         inJail = false;
         hasMoved = false;
         transform.position = board.spaces[10].transform.position + offset;
         jailCounter = 0;
-        SetMoneyText(currPlayerNo);
     }
 }
