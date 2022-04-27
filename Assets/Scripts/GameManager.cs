@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public Board board;
     public PlayerController player1, player2, player3, player4, player5; //max 5 players, so might as well hook up all these guys - E
+    public CameraController cameraController;
     public int currentPlayer = 1;
     public int noOfPlayers = 0;
     public int freeParking = 0;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
             noOfPlayers = 5;
         }
         InitialisePlayers();
+        InitialiseCameras();
         board.InitialisePlayerPositions();
 
         //sets turn state to its natural state at the beginning of a turn
@@ -38,6 +40,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    void InitialiseCameras()
+    {
+        cameraController.SetCurrentPlayer(currentPlayer);
+        cameraController.InitialiseCameras();
     }
 
     void InitialisePlayers()
@@ -115,6 +123,8 @@ public class GameManager : MonoBehaviour
             {
                 SetCurrentPlayer((GetCurrentPlayer() + 1));
             }
+            cameraController.SetCurrentPlayer(currentPlayer);
+            cameraController.SwitchCameraPlayer();
             playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
 
             validPlayer = CheckBankrupt();
