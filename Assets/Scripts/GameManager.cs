@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     private int[] currentCard;
     private int currentRoll;
 
+    //SEANS STUFF SORRY IF SCUFFED
+    public enum TurnState {MOVING, BUY, SELL}
+    public TurnState turnState;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,9 @@ public class GameManager : MonoBehaviour
         }
         InitialisePlayers();
         board.InitialisePlayerPositions();
+
+        //sets turn state to its natural state at the beginning of a turn
+        turnState = TurnState.MOVING;
     }
 
     // Update is called once per frame
@@ -124,6 +130,8 @@ public class GameManager : MonoBehaviour
                 validPlayer = true; //this is just here so I don't get another loop that breaks unity - E
             }
         }
+
+        turnState = TurnState.MOVING;
     }
 
     public void MovePlayer()
@@ -145,16 +153,20 @@ public class GameManager : MonoBehaviour
                 playerList[currentPlayer - 1].RecieveRent(freeParking);
                 print("Player " + currentPlayer + " recieved £" + freeParking + " from free parking!");
                 freeParking = 0;
+                turnState = TurnState.SELL;
                 break;
             case "GOJAIL":
                 print("GOJAIL");
                 GoToJail();
+                turnState = TurnState.SELL;
                 break;
             case "POT":
                 cardEffect = board.DrawCard("POT");
+                turnState = TurnState.SELL;
                 break;
             case "OPP":
                 cardEffect = board.DrawCard("OPP");
+                turnState = TurnState.SELL;
                 break;
             case "PROP":
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
@@ -167,7 +179,10 @@ public class GameManager : MonoBehaviour
                         playerList[board.GetState(pos) - 1].RecieveRent(rent);
                     }
                     else print("This space is mortgaged, no rent for you!");
+
+                    turnState = TurnState.SELL;
                 }
+                turnState = TurnState.BUY;
                 break;
             case "TAX":
                 if(pos == 4) //income tax position - E
@@ -180,6 +195,7 @@ public class GameManager : MonoBehaviour
                     print("Player " + currentPlayer + " has to pay £100 in taxes!");
                     playerList[currentPlayer - 1].PayRent(100);
                 }
+                turnState = TurnState.SELL;
                 break;
             case "STAT":
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
@@ -194,7 +210,10 @@ public class GameManager : MonoBehaviour
                     print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
                     playerList[currentPlayer - 1].PayRent(rent);
                     playerList[board.GetState(pos) - 1].RecieveRent(rent);
+
+                    turnState = TurnState.SELL;
                 }
+                turnState = TurnState.BUY;
                 break;
             case "UTIL":
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
@@ -207,7 +226,10 @@ public class GameManager : MonoBehaviour
                     print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
                     playerList[currentPlayer - 1].PayRent(rent);
                     playerList[board.GetState(pos) - 1].RecieveRent(rent);
+
+                    turnState = TurnState.SELL;
                 }
+                turnState = TurnState.BUY;
                 break;
             default:
                 break;
