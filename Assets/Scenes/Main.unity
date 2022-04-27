@@ -13496,7 +13496,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1694776163}
         m_TargetAssemblyTypeName: ButtonScripts, Scripts
-        m_MethodName: GoJail
+        m_MethodName: UseJailFreeCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
