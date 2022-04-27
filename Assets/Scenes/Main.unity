@@ -974,13 +974,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 350
-  rent0: 35
-  rent1: 175
-  rent2: 500
-  rent3: 1100
-  rent4: 1300
-  rent5: 1500
-  rentList: 
+  rentList: 23000000af000000f40100004c04000014050000dc050000
   developmentLevel: 0
 --- !u!1001 &118772612
 PrefabInstance:
@@ -2138,13 +2132,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 260
-  rent0: 22
-  rent1: 110
-  rent2: 330
-  rent3: 800
-  rent4: 975
-  rent5: 1150
-  rentList: 
+  rentList: 160000006e0000004a01000020030000cf0300007e040000
   developmentLevel: 0
 --- !u!1 &310843317
 GameObject:
@@ -3472,13 +3460,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 240
-  rent0: 20
-  rent1: 100
-  rent2: 300
-  rent3: 800
-  rent4: 975
-  rent5: 1100
-  rentList: 
+  rentList: 14000000640000002c01000020030000cf0300004c040000
   developmentLevel: 0
 --- !u!1 &428904260
 GameObject:
@@ -4627,13 +4609,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 180
-  rent0: 14
-  rent1: 70
-  rent2: 200
-  rent3: 550
-  rent4: 750
-  rent5: 950
-  rentList: 
+  rentList: 0e00000046000000c800000026020000ee020000b6030000
   developmentLevel: 0
 --- !u!1 &536645195
 GameObject:
@@ -6377,13 +6353,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 200
-  rent0: 16
-  rent1: 80
-  rent2: 220
-  rent3: 600
-  rent4: 800
-  rent5: 1000
-  rentList: 
+  rentList: 1000000050000000dc0000005802000020030000e8030000
   developmentLevel: 0
 --- !u!1 &693946373
 GameObject:
@@ -6778,13 +6748,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 220
-  rent0: 18
-  rent1: 90
-  rent2: 250
-  rent3: 700
-  rent4: 875
-  rent5: 1050
-  rentList: 
+  rentList: 120000005a000000fa000000bc0200006b0300001a040000
   developmentLevel: 0
 --- !u!114 &721327434 stripped
 MonoBehaviour:
@@ -6964,13 +6928,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 300
-  rent0: 26
-  rent1: 130
-  rent2: 390
-  rent3: 900
-  rent4: 1100
-  rent5: 1275
-  rentList: 
+  rentList: 1a0000008200000086010000840300004c040000fb040000
   developmentLevel: 0
 --- !u!114 &731091420 stripped
 MonoBehaviour:
@@ -7216,12 +7174,6 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 140
-  rent0: 10
-  rent1: 50
-  rent2: 150
-  rent3: 450
-  rent4: 625
-  rent5: 750
   rentList: 
   developmentLevel: 0
 --- !u!114 &744166000 stripped
@@ -9979,13 +9931,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 280
-  rent0: 22
-  rent1: 120
-  rent2: 360
-  rent3: 850
-  rent4: 1025
-  rent5: 1200
-  rentList: 
+  rentList: 1600000078000000680100005203000001040000b0040000
   developmentLevel: 0
 --- !u!114 &1052709704 stripped
 MonoBehaviour:
@@ -11306,13 +11252,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 60
-  rent0: 2
-  rent1: 10
-  rent2: 30
-  rent3: 90
-  rent4: 160
-  rent5: 250
-  rentList: 
+  rentList: 020000000a0000001e0000005a000000a0000000fa000000
   developmentLevel: 0
 --- !u!114 &1190795145
 MonoBehaviour:
@@ -11336,13 +11276,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 100
-  rent0: 6
-  rent1: 30
-  rent2: 60
-  rent3: 270
-  rent4: 400
-  rent5: 550
-  rentList: 
+  rentList: 060000001e0000003c0000000e0100009001000026020000
   developmentLevel: 0
 --- !u!1 &1213868669
 GameObject:
@@ -11693,13 +11627,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 220
-  rent0: 18
-  rent1: 90
-  rent2: 250
-  rent3: 700
-  rent4: 875
-  rent5: 1050
-  rentList: 
+  rentList: 120000005a000000fa000000bc0200006b0300001a040000
   developmentLevel: 0
 --- !u!114 &1245480695 stripped
 MonoBehaviour:
@@ -13107,13 +13035,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 180
-  rent0: 14
-  rent1: 70
-  rent2: 200
-  rent3: 550
-  rent4: 750
-  rent5: 950
-  rentList: 
+  rentList: 0e00000046000000c800000026020000ee020000b6030000
   developmentLevel: 0
 --- !u!224 &1418116962 stripped
 RectTransform:
@@ -16031,13 +15953,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 320
-  rent0: 28
-  rent1: 150
-  rent2: 450
-  rent3: 1000
-  rent4: 1200
-  rent5: 1400
-  rentList: 
+  rentList: 1c00000096000000c2010000e8030000b004000078050000
   developmentLevel: 0
 --- !u!114 &1768893011
 MonoBehaviour:
@@ -16061,13 +15977,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 140
-  rent0: 10
-  rent1: 50
-  rent2: 150
-  rent3: 450
-  rent4: 625
-  rent5: 750
-  rentList: 
+  rentList: 0a0000003200000096000000c201000071020000ee020000
   developmentLevel: 0
 --- !u!114 &1788325651 stripped
 MonoBehaviour:
@@ -16989,13 +16899,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 60
-  rent0: 4
-  rent1: 20
-  rent2: 60
-  rent3: 180
-  rent4: 320
-  rent5: 450
-  rentList: 
+  rentList: 04000000140000003c000000b400000040010000c2010000
   developmentLevel: 0
 --- !u!114 &1940578873 stripped
 MonoBehaviour:
@@ -17177,13 +17081,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 100
-  rent0: 6
-  rent1: 30
-  rent2: 90
-  rent3: 270
-  rent4: 400
-  rent5: 550
-  rentList: 
+  rentList: 060000001e0000005a0000000e0100009001000026020000
   developmentLevel: 0
 --- !u!1001 &1956839207
 PrefabInstance:
@@ -17520,13 +17418,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 260
-  rent0: 22
-  rent1: 110
-  rent2: 330
-  rent3: 800
-  rent4: 975
-  rent5: 1150
-  rentList: 
+  rentList: 160000006e0000004a01000020030000cf0300007e040000
   developmentLevel: 0
 --- !u!1001 &1983746389
 PrefabInstance:
@@ -17775,13 +17667,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 300
-  rent0: 26
-  rent1: 130
-  rent2: 390
-  rent3: 900
-  rent4: 1100
-  rent5: 1275
-  rentList: 
+  rentList: 1a0000008200000086010000840300004c040000fb040000
   developmentLevel: 0
 --- !u!114 &2004161283
 MonoBehaviour:
@@ -17805,13 +17691,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 160
-  rent0: 12
-  rent1: 60
-  rent2: 180
-  rent3: 500
-  rent4: 700
-  rent5: 900
-  rentList: 
+  rentList: 0c0000003c000000b4000000f4010000bc02000084030000
   developmentLevel: 0
 --- !u!1 &2008854750
 GameObject:
@@ -18643,13 +18523,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 400
-  rent0: 50
-  rent1: 200
-  rent2: 600
-  rent3: 1400
-  rent4: 1700
-  rent5: 2000
-  rentList: 
+  rentList: 32000000c80000005802000078050000a4060000d0070000
   developmentLevel: 0
 --- !u!114 &2101820653 stripped
 MonoBehaviour:
@@ -18684,13 +18558,7 @@ MonoBehaviour:
   isMortgaged: 0
   upgradeCost: 0
   price: 120
-  rent0: 8
-  rent1: 40
-  rent2: 100
-  rent3: 300
-  rent4: 450
-  rent5: 600
-  rentList: 
+  rentList: 0800000028000000640000002c010000c201000058020000
   developmentLevel: 0
 --- !u!1 &2120198716
 GameObject:
