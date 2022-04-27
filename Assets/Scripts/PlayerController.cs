@@ -197,6 +197,10 @@ public class PlayerController : MonoBehaviour
             {
                 print("Not enough money!");
             }
+            else if (hasMoved == false)
+            {
+                print("Player " + player + " cannot buy a property before they move!");
+            }
             else
             {
                 print("Player " + player + " has bought " + property.GetComponent<Space>().GetName());
@@ -342,6 +346,10 @@ public class PlayerController : MonoBehaviour
                 {
                     print("Not enough money!");
                 }
+                else if (hasMoved == false)
+                {
+                    print("Player " + player + " cannot upgrade a property before they move!"); //also need to set up code to check which phase of the turn a player is in, as the spec says upgrades/downgrades cannot happen until movement and buying/selling property does - E
+                }
                 else
                 {
                     currentMoney = currentMoney - price;
@@ -367,10 +375,13 @@ public class PlayerController : MonoBehaviour
         if (property.GetComponent<Space>().GetType() == "PROP" && board.GetState(currentPos) == player && property.GetComponent<Property>().GetDevelopmentLevel() > 0) //checks which space it is, if it's got a house/hotel on it, and if it's owned by the player - E
         {
             price = property.GetComponent<Property>().GetUpgradeCost();
-            currentMoney = currentMoney + price;
-            property.GetComponent<Property>().DegradeProperty();
-            SetMoneyText(currPlayerNo);
-            print("Player " + player + " has degraded " + property.GetComponent<Space>().GetName() + " to development level " + property.GetComponent<Property>().GetDevelopmentLevel());            
+            if (hasMoved == true)
+            {
+                currentMoney = currentMoney + price;
+                property.GetComponent<Property>().DegradeProperty();
+                SetMoneyText(currPlayerNo);
+                print("Player " + player + " has degraded " + property.GetComponent<Space>().GetName() + " to development level " + property.GetComponent<Property>().GetDevelopmentLevel());
+            } else print("Player " + player + " cannot upgrade a property before they move!");
         }
         else
         {
