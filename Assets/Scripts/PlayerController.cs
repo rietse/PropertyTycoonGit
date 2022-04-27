@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     public Board board;
     private Vector3 offset = new Vector3(0.0f,0.0f,0.0f);
     private Vector3 jailOffset = new Vector3(6.0f, 0.0f, -6.0f);
+
+    public List<GameObject> model = new List<GameObject>();
+    public int currentModel;
+
     private string currPlayerNo = "1"; //need to change this when we have roll dice to determine order, for now this just stops it being blank - E
     public int currentPos;
     public int currentMoney;
@@ -29,10 +33,16 @@ public class PlayerController : MonoBehaviour
         SetMoneyText(currPlayerNo);
     }
 
-
-    void Update()
+    void InitialiseModels()
     {
 
+    }
+
+    public void SetActiveModel(int x)
+    {
+        model[currentModel].SetActive(false);
+        currentModel = x;
+        model[x].SetActive(true);
     }
 
     public int GetPos()

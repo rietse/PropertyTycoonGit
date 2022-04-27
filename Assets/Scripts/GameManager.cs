@@ -59,16 +59,22 @@ public class GameManager : MonoBehaviour
             playerList.Add(player5);
         }
         SetOffsets();
+
+        player1.SetActiveModel(1); //remove these lines once the UI start menu lets players choose their pieces - E
+        player2.SetActiveModel(2); //it's just here so I can check my code codes - E
+        player3.SetActiveModel(3);
+        player4.SetActiveModel(4);
+        player5.SetActiveModel(5);
     }
 
     void SetOffsets()
     {
         //so I can actually tell whats happening and the spheres aren't inside each other - E
         player1.SetOffset(0.0f, 0.0f);
-        player2.SetOffset(2.0f, 0.0f);
-        player3.SetOffset(-2.0f, 0.0f);
-        player4.SetOffset(0.0f, 2.0f);
-        player5.SetOffset(0.0f, -2.0f);
+        player2.SetOffset(4.0f, 0.0f);
+        player3.SetOffset(-4.0f, 0.0f);
+        player4.SetOffset(0.0f, 4.0f);
+        player5.SetOffset(0.0f, -4.0f);
     }
 
     int GetNoOfPlayers()
