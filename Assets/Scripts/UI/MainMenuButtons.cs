@@ -6,6 +6,7 @@ using TMPro;
 public class MainMenuButtons : MonoBehaviour
 {
     public GameObject startMenuPanel;
+    public GameObject setupMenuPanel;
     public GameObject exitPopup;
     public GameObject propPopup;
     public GameObject debugMenu;
@@ -23,6 +24,11 @@ public class MainMenuButtons : MonoBehaviour
     public void StartGame()
     {
         startMenuPanel.gameObject.SetActive(false);
+    }
+
+    public void GameSetup()
+    {
+        setupMenuPanel.gameObject.SetActive(true);
     }
 
     public void Options()
