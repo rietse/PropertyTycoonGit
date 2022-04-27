@@ -231,17 +231,14 @@ public class PlayerController : MonoBehaviour
             price = property.GetComponent<Station>().GetPrice();
         }
 
-        if (board.GetState(currentPos) == player)
+        if (board.GetState(currentPos) == player && CheckUndeveloped(property) == true)
         {
-                print("Player " + player + " has sold " + property.GetComponent<Space>().GetName());
-                currentMoney = currentMoney + price;
-                board.SetState(currentPos, 0); //assigns board space back to unowned and gives money - E
-                SetMoneyText(currPlayerNo);
+            print("Player " + player + " has sold " + property.GetComponent<Space>().GetName());
+            currentMoney = currentMoney + price;
+            board.SetState(currentPos, 0); //assigns board space back to unowned and gives money - E
+            SetMoneyText(currPlayerNo);
         }
-        else
-        {
-            print("Can't sell this space!");
-        }
+        else print("Can't sell this space!");
     }
 
     public void MortgageProperty(int player)
@@ -268,7 +265,7 @@ public class PlayerController : MonoBehaviour
             mortgaged = property.GetComponent<Station>().GetMortgaged();
         }
 
-        if (board.GetState(currentPos) == player)
+        if (board.GetState(currentPos) == player && CheckUndeveloped(property))
         {
             if (mortgaged == true) //check if we need to mortgage or unmortgage this space - E
             {
@@ -318,6 +315,15 @@ public class PlayerController : MonoBehaviour
         {
             print("Can't mortgame/unmortgage this space!");
         }
+    }
+
+    bool CheckUndeveloped(GameObject s)
+    {
+        if (s.GetComponent<Property>().GetType() == "PROP")
+        {
+            if (s.GetComponent<Property>().GetDevelopmentLevel() == 0) return true; //checks if the property has any houses/hotels on it - E
+        }
+        return false;
     }
 
     public void UpgradeProperty(int player)

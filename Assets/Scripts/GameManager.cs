@@ -226,13 +226,13 @@ public class GameManager : MonoBehaviour
         if (cardEffect[0] == 1) //checks if the card lets you draw an OPP card instead of triggering said card - E
         {
             //we actually need to check if the player wants to though, another to add to the "do later" pile - E
-            //board.DrawCard("OPP"); //we can uncomment this line once we have a check in place - E
+            board.DrawCard("OPP");
             print("draw a new OPP card code should trigger?");
         }
         else if (cardEffect[0] == 2) //checks if the card lets you draw a POT card instead of triggering said card - E
         {
             //same as above, do this pls future me - E
-            //board.DrawCard("POT"); //once again same as above - E
+            board.DrawCard("POT");
             print("draw a new POT card code should trigger?");
         }
         else //now we know the card effect is actually gonna happen we can go through them and activate them here... ugh so many IF statements this is so bad... - E
