@@ -370,6 +370,10 @@ public class GameManager : MonoBehaviour
     {
         //moved the code from MovementController.cs to here in line with the documentation and also having this in a central GSM is easier for me - E
         if (!playerList[currentPlayer - 1].IsInJail()) {
+            if (playerList[currentPlayer - 1].GetReroll())
+            {
+                playerList[currentPlayer - 1].SetHasMoved(false);
+            }
             int d1 = UnityEngine.Random.Range(1, 7);
             int d2 = UnityEngine.Random.Range(1, 7);
             int diceResult = d1 + d2;
@@ -391,6 +395,7 @@ public class GameManager : MonoBehaviour
             }
             print(d1.ToString() + ", " + d2.ToString() + " pls merge this with the move button at some point future me, thanks - E");
             currentRoll = diceResult;
+            playerList[currentPlayer - 1].SetHasRolled(true);
         return currentRoll;
         }
         return 0;
