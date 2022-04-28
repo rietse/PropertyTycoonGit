@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManagerTest : MonoBehaviour
 {
-    public Board board;
+    public BoardTESTONLY board;
     public PlayerControllerTESTONLY player1, player2, player3, player4, player5; //max 5 players, so might as well hook up all these guys - E
     public CameraController cameraController;
     public PropertyDisplay propertyDisplay;
@@ -58,7 +58,6 @@ public class GameManagerTest : MonoBehaviour
         {
             playerList.Add(player5);
         }
-        SetOffsets();
     }
 
     void SetOffsets()
@@ -170,7 +169,7 @@ public class GameManagerTest : MonoBehaviour
             case "PROP":
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
-                    if (space.GetComponent<Property>().GetMortgaged() == false)
+                    if ((space.GetComponent<Property>().GetMortgaged() == false) && (playerList[board.GetState(pos) - 1].IsInJail() == false))
                     {
                         rent = space.GetComponent<Property>().GetRent();
                         print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ?" + rent + " rent!");
@@ -196,31 +195,34 @@ public class GameManagerTest : MonoBehaviour
             case "STAT":
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
-                    double rentD = 12.5; //since rent is doubled for each station you own, we can be cheeky and start it at half rent as one of the stations must be owned to trigger this, thus moving it to the ?25 figure without any trouble - E
-                    if (board.GetState(5) == board.GetState(pos)) { rentD = rentD * 2; }
-                    if (board.GetState(15) == board.GetState(pos)) { rentD = rentD * 2; }
-                    if (board.GetState(25) == board.GetState(pos)) { rentD = rentD * 2; }
-                    if (board.GetState(35) == board.GetState(pos)) { rentD = rentD * 2; }
-                    rent = Convert.ToInt32(rentD); //just need to borrow a double because ints don't decimal - E
+                    if (playerList[board.GetState(pos) - 1].IsInJail() == false) {
+                        double rentD = 12.5; //since rent is doubled for each station you own, we can be cheeky and start it at half rent as one of the stations must be owned to trigger this, thus moving it to the ?25 figure without any trouble - E
+                        if (board.GetState(5) == board.GetState(pos)) { rentD = rentD * 2; }
+                        if (board.GetState(15) == board.GetState(pos)) { rentD = rentD * 2; }
+                        if (board.GetState(25) == board.GetState(pos)) { rentD = rentD * 2; }
+                        if (board.GetState(35) == board.GetState(pos)) { rentD = rentD * 2; }
+                        rent = Convert.ToInt32(rentD); //just need to borrow a double because ints don't decimal - E
 
-                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ?" + rent + " rent!");
-                    playerList[currentPlayer - 1].PayRent(rent);
-                    playerList[board.GetState(pos) - 1].RecieveRent(rent);
+                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ?" + rent + " rent!");
+                        playerList[currentPlayer - 1].PayRent(rent);
+                        playerList[board.GetState(pos) - 1].RecieveRent(rent);
+                    }
                 }
                 break;
             case "UTIL":
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
-                    if (board.GetState(12) == board.GetState(28)) //as we know one is owned by a different player, we can just check rather than making sure it's not unowned - E
-                    {
-                        rent = currentRoll * 10;
+                    if (playerList[board.GetState(pos) - 1].IsInJail() == false) {
+                        if (board.GetState(12) == board.GetState(28)) //as we know one is owned by a different player, we can just check rather than making sure it's not unowned - E
+                        {
+                            rent = currentRoll * 10;
+                        }
+                        else { rent = currentRoll * 4; }
+
+                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ?" + rent + " rent!");
+                        playerList[currentPlayer - 1].PayRent(rent);
+                        playerList[board.GetState(pos) - 1].RecieveRent(rent);
                     }
-                    else { rent = currentRoll * 4; }
-
-                    print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ?" + rent + " rent!");
-                    playerList[currentPlayer - 1].PayRent(rent);
-                    playerList[board.GetState(pos) - 1].RecieveRent(rent);
-
                 }
                 break;
             default:

@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlayerControllerTESTONLY : MonoBehaviour
 {
-    public Board board;
+    public BoardTESTONLY board;
     private Vector3 offset = new Vector3(0.0f, 0.0f, 0.0f);
     private Vector3 jailOffset = new Vector3(6.0f, 0.0f, -6.0f);
 

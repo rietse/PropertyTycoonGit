@@ -8,19 +8,19 @@ public class DiceMovementTest : MonoBehaviour
     public TextMeshProUGUI diceResult;
     public TextMeshProUGUI doublesCounter;
     public TextMeshProUGUI hasMoved;
-    public GameManager gsm;
-    public PlayerController player1;
+    public GameManagerTest gsm;
+    public PlayerControllerTESTONLY player1;
 
     public void Dice()
     {
-        gsm.GetComponent<GameManager>().RollDice();
+        gsm.GetComponent<GameManagerTest>().RollDice();
         DiceResultText();
         DoublesCounterText();
         HasMovedText();
     }
     public void Move()
     {
-        gsm.GetComponent<GameManager>().MovePlayer();
+        gsm.GetComponent<GameManagerTest>().MovePlayer();
         HasMovedText();
     }
 

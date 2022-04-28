@@ -69,5 +69,4 @@ public class PlayerControllerTest : MonoBehaviour
     {
         gsm.GetComponent<GameManagerTest>().MortgageProperty();
     }
-
 }
