@@ -417,6 +417,7 @@ MonoBehaviour:
   spaceName: Hove Station
   boardSpaceName: {fileID: 758828370}
   boardSpacePrice: {fileID: 1751990008}
+  defaultName: 
   statPrice: 200
   isMortgaged: 0
 --- !u!114 &32220643
@@ -436,6 +437,7 @@ MonoBehaviour:
   spaceName: Super Tax
   boardSpaceName: {fileID: 986688946}
   boardSpacePrice: {fileID: 394830383}
+  defaultName: 
 --- !u!1001 &56452861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -972,6 +974,7 @@ MonoBehaviour:
   spaceName: James Webb Way
   boardSpaceName: {fileID: 596415182}
   boardSpacePrice: {fileID: 730494512}
+  defaultName: 
   colour: 7
   propertyHouseManager: {fileID: 1322182148}
   isMortgaged: 0
@@ -1153,6 +1156,7 @@ MonoBehaviour:
   spaceName: Income Tax
   boardSpaceName: {fileID: 625002937}
   boardSpacePrice: {fileID: 882373832}
+  defaultName: 
 --- !u!114 &146264350 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7178688430101504886, guid: 9b150e7c914118142a4c331a62698813, type: 3}
@@ -1700,6 +1704,7 @@ MonoBehaviour:
   spaceName: Oppurtunity Knocks
   boardSpaceName: {fileID: 417432551}
   boardSpacePrice: {fileID: 552577030}
+  defaultName: 
 --- !u!1 &224715437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,6 +2327,7 @@ MonoBehaviour:
   spaceName: Opportunity Knocks
   boardSpaceName: {fileID: 529453715}
   boardSpacePrice: {fileID: 2130048203}
+  defaultName: 
 --- !u!1 &295228544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,6 +2420,7 @@ MonoBehaviour:
   spaceName: Picard Avenue
   boardSpaceName: {fileID: 332984296}
   boardSpacePrice: {fileID: 903612970}
+  defaultName: 
   colour: 5
   propertyHouseManager: {fileID: 20601637}
   isMortgaged: 0
@@ -2610,6 +2617,7 @@ MonoBehaviour:
   spaceName: Tesla Power Co.
   boardSpaceName: {fileID: 1184697660}
   boardSpacePrice: {fileID: 1018586296}
+  defaultName: 
   utilPrice: 150
   isMortgaged: 0
 --- !u!1001 &330023832
@@ -3007,6 +3015,7 @@ MonoBehaviour:
   spaceName: Falmer Station
   boardSpaceName: {fileID: 1710285110}
   boardSpacePrice: {fileID: 1052709704}
+  defaultName: 
   statPrice: 200
   isMortgaged: 0
 --- !u!1001 &379431200
@@ -3555,6 +3564,7 @@ MonoBehaviour:
   spaceName: Han Xin Gardens
   boardSpaceName: {fileID: 1271792092}
   boardSpacePrice: {fileID: 353911442}
+  defaultName: 
   colour: 4
   propertyHouseManager: {fileID: 1931384162}
   isMortgaged: 0
@@ -4621,6 +4631,7 @@ MonoBehaviour:
   spaceName: Dunham Street
   boardSpaceName: {fileID: 721327434}
   boardSpacePrice: {fileID: 1859630189}
+  defaultName: 
   colour: 3
   propertyHouseManager: {fileID: 1025503154}
   isMortgaged: 0
@@ -5420,6 +5431,7 @@ MonoBehaviour:
   spaceName: Pot Luck
   boardSpaceName: {fileID: 2036288113}
   boardSpacePrice: {fileID: 780100382}
+  defaultName: 
 --- !u!1 &611276795
 GameObject:
   m_ObjectHideFlags: 0
@@ -5484,6 +5496,7 @@ MonoBehaviour:
   spaceName: Portslade Station
   boardSpaceName: {fileID: 160789267}
   boardSpacePrice: {fileID: 1330391584}
+  defaultName: 
   statPrice: 200
   isMortgaged: 0
 --- !u!1 &619853795
@@ -6391,6 +6404,7 @@ MonoBehaviour:
   spaceName: Broyles Lane
   boardSpaceName: {fileID: 1581026352}
   boardSpacePrice: {fileID: 550110090}
+  defaultName: 
   colour: 3
   propertyHouseManager: {fileID: 738088169}
   isMortgaged: 0
@@ -6787,6 +6801,7 @@ MonoBehaviour:
   spaceName: Mulan Rouge
   boardSpaceName: {fileID: 2101820653}
   boardSpacePrice: {fileID: 1959030167}
+  defaultName: 
   colour: 4
   propertyHouseManager: {fileID: 330023834}
   isMortgaged: 0
@@ -6967,6 +6982,7 @@ MonoBehaviour:
   spaceName: Ghengis Crescent
   boardSpaceName: {fileID: 1095599024}
   boardSpacePrice: {fileID: 63765833}
+  defaultName: 
   colour: 6
   propertyHouseManager: {fileID: 592585342}
   isMortgaged: 0
@@ -7213,12 +7229,13 @@ MonoBehaviour:
   spaceName: Skywalker Drive
   boardSpaceName: {fileID: 194771898}
   boardSpacePrice: {fileID: 1715691449}
+  defaultName: 
   colour: 2
   propertyHouseManager: {fileID: 1395587182}
   isMortgaged: 0
   upgradeCost: 0
   price: 140
-  rentList: 
+  rentList: 0a0000003200000096000000c201000071020000ee020000
   developmentLevel: 0
 --- !u!114 &744166000 stripped
 MonoBehaviour:
@@ -7253,6 +7270,7 @@ MonoBehaviour:
   spaceName: Edison Water
   boardSpaceName: {fileID: 2084633035}
   boardSpacePrice: {fileID: 100366669}
+  defaultName: 
   utilPrice: 150
   isMortgaged: 0
 --- !u!114 &757300548 stripped
@@ -10004,6 +10022,7 @@ MonoBehaviour:
   spaceName: Crusher Creek
   boardSpaceName: {fileID: 514080863}
   boardSpacePrice: {fileID: 183069180}
+  defaultName: 
   colour: 5
   propertyHouseManager: {fileID: 1273834235}
   isMortgaged: 0
@@ -10376,6 +10395,7 @@ MonoBehaviour:
   spaceName: Jail/Just Visiting
   boardSpaceName: {fileID: 173344205}
   boardSpacePrice: {fileID: 731091420}
+  defaultName: 
 --- !u!114 &1095599024 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7178688430947400009, guid: 9b150e7c914118142a4c331a62698813, type: 3}
@@ -11525,6 +11545,7 @@ MonoBehaviour:
   spaceName: The Old Creek
   boardSpaceName: {fileID: 1408635833}
   boardSpacePrice: {fileID: 1632455046}
+  defaultName: 
   colour: 0
   propertyHouseManager: {fileID: 56452863}
   isMortgaged: 0
@@ -11549,6 +11570,7 @@ MonoBehaviour:
   spaceName: The Angels Delight
   boardSpaceName: {fileID: 1028153834}
   boardSpacePrice: {fileID: 1906786927}
+  defaultName: 
   colour: 1
   propertyHouseManager: {fileID: 1420043705}
   isMortgaged: 0
@@ -12084,6 +12106,7 @@ MonoBehaviour:
   spaceName: Yue Fei Square
   boardSpaceName: {fileID: 1001830544}
   boardSpacePrice: {fileID: 879172053}
+  defaultName: 
   colour: 4
   propertyHouseManager: {fileID: 1173247569}
   isMortgaged: 0
@@ -12275,6 +12298,7 @@ MonoBehaviour:
   spaceName: Go To Jail
   boardSpaceName: {fileID: 1644341103}
   boardSpacePrice: {fileID: 1054705916}
+  defaultName: 
 --- !u!114 &1271792092 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7178688430947400009, guid: 9b150e7c914118142a4c331a62698813, type: 3}
@@ -13102,6 +13126,7 @@ MonoBehaviour:
   spaceName: Go!
   boardSpaceName: {fileID: 132342646}
   boardSpacePrice: {fileID: 744166000}
+  defaultName: 
 --- !u!1001 &1370721303
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13492,6 +13517,7 @@ MonoBehaviour:
   spaceName: Bishop Drive
   boardSpaceName: {fileID: 407702734}
   boardSpacePrice: {fileID: 1683544279}
+  defaultName: 
   colour: 3
   propertyHouseManager: {fileID: 633323313}
   isMortgaged: 0
@@ -15407,6 +15433,7 @@ MonoBehaviour:
   spaceName: Brighton Station
   boardSpaceName: {fileID: 1570631834}
   boardSpacePrice: {fileID: 1788325651}
+  defaultName: 
   statPrice: 200
   isMortgaged: 0
 --- !u!1 &1663296351
@@ -16845,6 +16872,7 @@ MonoBehaviour:
   spaceName: Ibis Close
   boardSpaceName: {fileID: 1571935988}
   boardSpacePrice: {fileID: 1700390790}
+  defaultName: 
   colour: 6
   propertyHouseManager: {fileID: 892812905}
   isMortgaged: 0
@@ -17440,6 +17468,7 @@ MonoBehaviour:
   spaceName: Wookie Hole
   boardSpaceName: {fileID: 1940578873}
   boardSpacePrice: {fileID: 1336514233}
+  defaultName: 
   colour: 2
   propertyHouseManager: {fileID: 287951258}
   isMortgaged: 0
@@ -17475,6 +17504,7 @@ MonoBehaviour:
   spaceName: Pot Luck
   boardSpaceName: {fileID: 1724726270}
   boardSpacePrice: {fileID: 155182360}
+  defaultName: 
 --- !u!114 &1789873887 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7178688430101504886, guid: 9b150e7c914118142a4c331a62698813, type: 3}
@@ -17798,6 +17828,7 @@ MonoBehaviour:
   spaceName: Free Parking
   boardSpaceName: {fileID: 757300548}
   boardSpacePrice: {fileID: 146264350}
+  defaultName: 
 --- !u!114 &1848380614 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7178688430101504886, guid: 9b150e7c914118142a4c331a62698813, type: 3}
@@ -18209,6 +18240,7 @@ MonoBehaviour:
   oppCardList: []
   potCardList: []
   spaceStates: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  boardSpaceCustomisation: {fileID: 2046008410}
 --- !u!114 &1906786927 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7178688430101504886, guid: 9b150e7c914118142a4c331a62698813, type: 3}
@@ -18457,6 +18489,7 @@ MonoBehaviour:
   spaceName: Gangsters Paradise
   boardSpaceName: {fileID: 119286336}
   boardSpacePrice: {fileID: 1536653747}
+  defaultName: 
   colour: 0
   propertyHouseManager: {fileID: 1003613494}
   isMortgaged: 0
@@ -18773,6 +18806,7 @@ MonoBehaviour:
   spaceName: Potter Avenue
   boardSpaceName: {fileID: 1902308775}
   boardSpacePrice: {fileID: 1364650855}
+  defaultName: 
   colour: 1
   propertyHouseManager: {fileID: 1490476958}
   isMortgaged: 0
@@ -19093,6 +19127,7 @@ MonoBehaviour:
   spaceName: Opportunity Knocks
   boardSpaceName: {fileID: 432521065}
   boardSpacePrice: {fileID: 901245369}
+  defaultName: 
 --- !u!114 &1980296855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19110,6 +19145,7 @@ MonoBehaviour:
   spaceName: Shatner Close
   boardSpaceName: {fileID: 2043407584}
   boardSpacePrice: {fileID: 1789873887}
+  defaultName: 
   colour: 5
   propertyHouseManager: {fileID: 788740576}
   isMortgaged: 0
@@ -19349,6 +19385,7 @@ MonoBehaviour:
   spaceName: Pot Luck
   boardSpaceName: {fileID: 67940395}
   boardSpacePrice: {fileID: 837716704}
+  defaultName: 
 --- !u!114 &1998121468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19366,6 +19403,7 @@ MonoBehaviour:
   spaceName: Sirat Mews
   boardSpaceName: {fileID: 1755474447}
   boardSpacePrice: {fileID: 466655489}
+  defaultName: 
   colour: 6
   propertyHouseManager: {fileID: 1257643291}
   isMortgaged: 0
@@ -19390,6 +19428,7 @@ MonoBehaviour:
   spaceName: Rey Lane
   boardSpaceName: {fileID: 1512012796}
   boardSpacePrice: {fileID: 66614519}
+  defaultName: 
   colour: 2
   propertyHouseManager: {fileID: 1235342174}
   isMortgaged: 0
@@ -19810,6 +19849,7 @@ GameObject:
   - component: {fileID: 2046008408}
   - component: {fileID: 2046008407}
   - component: {fileID: 2046008409}
+  - component: {fileID: 2046008410}
   m_Layer: 0
   m_Name: GameStateManager
   m_TagString: Untagged
@@ -19842,6 +19882,7 @@ MonoBehaviour:
   noOfPlayers: 0
   freeParking: 0
   playerList: []
+  selectedPos: 0
   turnState: 0
 --- !u!4 &2046008408
 Transform:
@@ -19876,6 +19917,31 @@ MonoBehaviour:
   player4Camera: {fileID: 2030946028}
   player5Camera: {fileID: 2117267076}
   currentPlayer: 0
+--- !u!114 &2046008410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046008406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d36de91bb385514a857ac9dd25ccb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  board: {fileID: 1902617333}
+  propertySpaces: []
+  propertyPositions: 
+  spaceText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  displayedPos: 0
 --- !u!1 &2056638569
 GameObject:
   m_ObjectHideFlags: 0
@@ -20251,6 +20317,7 @@ MonoBehaviour:
   spaceName: Turing Heights
   boardSpaceName: {fileID: 803387200}
   boardSpacePrice: {fileID: 1848380614}
+  defaultName: 
   colour: 7
   propertyHouseManager: {fileID: 906475019}
   isMortgaged: 0
@@ -20366,6 +20433,7 @@ MonoBehaviour:
   spaceName: Granger Drive
   boardSpaceName: {fileID: 1928495596}
   boardSpacePrice: {fileID: 398980054}
+  defaultName: 
   colour: 1
   propertyHouseManager: {fileID: 2145011365}
   isMortgaged: 0

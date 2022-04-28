@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Property : Space
 {
-    public enum Colour { BROWN, BLUE, PURPLE, ORANGE, RED, YELLOW, GREEN, DBLUE}
+    public enum Colour { BROWN, BLUE, PURPLE, ORANGE, RED, YELLOW, GREEN, DBLUE }
     public Colour colour;
 
     public PropertyHouseManager propertyHouseManager;
@@ -16,10 +16,22 @@ public class Property : Space
     public int developmentLevel = 0;
 
     private List<int> defaultRentList;
+    private int defaultPrice;
 
     void Start()
     {
         defaultRentList = rentList;
+        defaultPrice = price;
+    }
+
+    public void SetPrice(int p)
+    {
+        price = p;
+    }
+
+    public void ResetPrice()
+    {
+        price = defaultPrice;
     }
 
     public void ResetRentList()
@@ -88,6 +100,11 @@ public class Property : Space
     public List<int> GetRentList()
     {
         return rentList;
+    }
+
+    public void SetRentList(List<int> r)
+    {
+        rentList = r;
     }
 
     public int GetDevelopmentLevel()

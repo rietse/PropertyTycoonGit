@@ -9,6 +9,7 @@ public class Board : MonoBehaviour
     public List<GameObject> oppCardList;
     public List<GameObject> potCardList;
     public int[] spaceStates = new int[40]; //Key: 0 - unowned, 1 to 5 - owned by said player, 6 - special space cannot be buy - E
+    public BoardSpaceCustomisation boardSpaceCustomisation;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class Board : MonoBehaviour
         InitialiseSpaceStates();
         oppCardList = ShuffleCards(oppCardList);
         potCardList = ShuffleCards(potCardList);
+        boardSpaceCustomisation.InitialisePropertyList();
     }
 
     public void InitialisePlayerPositions()
@@ -35,6 +37,7 @@ public class Board : MonoBehaviour
         int price = 0;
         for (int i = 0; i < 40; i++)
         {
+            spaces[i].GetComponent<Space>().SetDefaultName();
             spaces[i].GetComponent<Space>().InitialiseText();
             if ((spaces[i].GetComponent<Space>().GetType() != "PROP") && (spaces[i].GetComponent<Space>().GetType() != "UTIL") && (spaces[i].GetComponent<Space>().GetType() != "STAT"))
             {

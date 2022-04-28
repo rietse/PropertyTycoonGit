@@ -11,6 +11,7 @@ public class Space : MonoBehaviour
     public string spaceName;
     public TextMeshPro boardSpaceName;
     public TextMeshPro boardSpacePrice;
+    public string defaultName;
 
     public void InitialiseText()
     {
@@ -24,9 +25,25 @@ public class Space : MonoBehaviour
         }
     }
 
+    public void SetDefaultName()
+    {
+        defaultName = spaceName;
+    }
+
+    public void ResetName()
+    {
+        spaceName = defaultName;
+    }
+
     public void InitialisePriceText(int p)
     {
         boardSpacePrice.SetText("£" + p);
+    }
+
+    public void RefreshText(int i)
+    {
+        InitialiseText();
+        InitialisePriceText(i);
     }
 
     public string GetType()
