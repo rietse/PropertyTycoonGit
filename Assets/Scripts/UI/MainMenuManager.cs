@@ -24,6 +24,7 @@ public class MainMenuManager: MonoBehaviour
     public TextMeshProUGUI spaceText;
 
     public TextMeshProUGUI propText;
+    public TextMeshProUGUI buyMenuText;
 
 
     void Update()
@@ -60,7 +61,11 @@ public class MainMenuManager: MonoBehaviour
 
     public void ExitPopup()
     {
-        exitPopup.gameObject.SetActive(!exitPopup.gameObject.activeSelf);
+        GameObject[] popups = GameObject.FindGameObjectsWithTag("Popup");
+        foreach (GameObject o in popups)
+        {
+            o.gameObject.SetActive(false);
+        }
     }
 
     public void ExitGame()
@@ -75,8 +80,7 @@ public class MainMenuManager: MonoBehaviour
     public void ShowSpaceData()
     {
         spacePopup.gameObject.SetActive(!spacePopup.gameObject.activeSelf);
-        boardMenu.gameObject.SetActive(!boardMenu.gameObject.activeSelf);
-        propertyDisplay.RefreshDisplay();
+        boardMenu.gameObject.SetActive(spacePopup.gameObject.activeSelf);
     }
 
     public void ShowPropData()
@@ -110,36 +114,43 @@ public class MainMenuManager: MonoBehaviour
     public void BuyMenu()
     {
         buyMenu.gameObject.SetActive(true);
+        UpdateBuyMenu();
     }
 
     public void Buy()
     {
         gm.PurchaseProperty();
+        buyMenu.SetActive(false);
     }
 
     public void MortgageMenu()
     {
         mortgageMenu.gameObject.SetActive(true);
+        boardMenu.gameObject.SetActive(true);
     }
 
-    //change this
     public void Mortgage()
     {
         gm.MortgageProperty();
+        mortgageMenu.SetActive(false);
+        boardMenu.gameObject.SetActive(false);
     }
 
     public void SellMenu()
     {
         sellMenu.gameObject.SetActive(true);
+        boardMenu.gameObject.SetActive(true);
     }
 
     //change this
     public void Sell()
     {
         gm.SellProperty();
+        sellMenu.SetActive(false);
+        boardMenu.gameObject.SetActive(false);
     }
 
-    public void UpdatePropDisplay()
+    private void UpdatePropDisplay()
     {
         string propString = "";
         for (int i = 0; i < 40; i++)
@@ -148,14 +159,40 @@ public class MainMenuManager: MonoBehaviour
             {
                 if(board.spaces[i].GetComponent<Space>().type == Space.Type.PROP)
                 {
-                    propString += (board.spaces[i].GetComponent<Space>().GetName() + ": Development Level " + board.spaces[i].GetComponent<Property>().GetDevelopmentLevel().ToString() + "/n");
+                    propString += board.spaces[i].GetComponent<Space>().GetName() + ": Development Level " + board.spaces[i].GetComponent<Property>().GetDevelopmentLevel().ToString() + "\n";
                 }
                 else
                 {
-                    propString += (board.spaces[i].GetComponent<Space>().GetName() + "n/");
+                    propString += board.spaces[i].GetComponent<Space>().GetName() + "\n";
                 }
             }
         }
         propText.text = propString;
     }
+
+    private void UpdateBuyMenu()
+    {
+        string buyString = "";
+
+        if (board.spaces[gm.playerList[gm.currentPlayer - 1].currentPos].GetComponent<Space>().type == Space.Type.PROP)
+        {
+            buyString = "Are you sure you want to buy " + board.spaces[gm.playerList[gm.currentPlayer - 1].currentPos].GetComponent<Space>().GetName() + "for £" + board.spaces[gm.playerList[gm.currentPlayer - 1].currentPos].GetComponent<Property>().GetPrice().ToString() + "?";
+        }
+        else if (board.spaces[gm.playerList[gm.currentPlayer - 1].currentPos].GetComponent<Space>().type == Space.Type.STAT)
+        {
+            buyString = "Are you sure you want to buy " + board.spaces[gm.playerList[gm.currentPlayer - 1].currentPos].GetComponent<Space>().GetName() + "for £" + board.spaces[gm.playerList[gm.currentPlayer - 1].currentPos].GetComponent<Station>().GetPrice().ToString() + "?";
+        }
+        else if(board.spaces[gm.playerList[gm.currentPlayer - 1].currentPos].GetComponent<Space>().type == Space.Type.UTIL)
+        {
+            buyString = "Are you sure you want to buy " + board.spaces[gm.playerList[gm.currentPlayer - 1].currentPos].GetComponent<Space>().GetName() + "for £" + board.spaces[gm.playerList[gm.currentPlayer - 1].currentPos].GetComponent<Utility>().GetPrice().ToString() + "?";
+        }
+        else
+        {
+            buyString = "I'm not quite sure how we got here but something's very wrong";
+        }
+
+        buyMenuText.text = buyString;
+    }
+
+
 }
