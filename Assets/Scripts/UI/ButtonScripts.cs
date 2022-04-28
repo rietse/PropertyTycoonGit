@@ -79,4 +79,9 @@ public class ButtonScripts : MonoBehaviour
     {
         gsm.GetComponent<GameManager>().UseJailCard();
     }
+
+    public void SwitchCamera()
+    {
+        gsm.GetComponent<CameraController>().SwitchCameraView();
+    }
 }

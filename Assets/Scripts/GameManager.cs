@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public Board board;
     public PlayerController player1, player2, player3, player4, player5; //max 5 players, so might as well hook up all these guys - E
+    public CameraController cameraController;
+    public PropertyDisplay propertyDisplay;
     public int currentPlayer = 1;
     public int noOfPlayers = 0;
     public int freeParking = 0;
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
             noOfPlayers = 5;
         }
         InitialisePlayers();
+        InitialiseCameras();
         board.InitialisePlayerPositions();
 
         //sets turn state to its natural state at the beginning of a turn
@@ -38,6 +41,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    void InitialiseCameras()
+    {
+        cameraController.SetCurrentPlayer(currentPlayer);
+        cameraController.InitialiseCameras();
     }
 
     void InitialisePlayers()
@@ -59,16 +68,27 @@ public class GameManager : MonoBehaviour
             playerList.Add(player5);
         }
         SetOffsets();
+
+        player1.SetActiveModel(1); //remove these lines once the UI start menu lets players choose their pieces - E
+        player2.SetActiveModel(2); //it's just here so I can check my code codes - E
+        player3.SetActiveModel(3);
+        player4.SetActiveModel(4);
+        player5.SetActiveModel(5);
     }
 
     void SetOffsets()
     {
         //so I can actually tell whats happening and the spheres aren't inside each other - E
         player1.SetOffset(0.0f, 0.0f);
-        player2.SetOffset(2.0f, 0.0f);
-        player3.SetOffset(-2.0f, 0.0f);
-        player4.SetOffset(0.0f, 2.0f);
-        player5.SetOffset(0.0f, -2.0f);
+        player2.SetOffset(4.0f, 0.0f);
+        player3.SetOffset(-4.0f, 0.0f);
+        player4.SetOffset(0.0f, 4.0f);
+        player5.SetOffset(0.0f, -4.0f);
+    }
+
+    public int GetFreeParking()
+    {
+        return freeParking;
     }
 
     int GetNoOfPlayers()
@@ -109,6 +129,8 @@ public class GameManager : MonoBehaviour
             {
                 SetCurrentPlayer((GetCurrentPlayer() + 1));
             }
+            cameraController.SetCurrentPlayer(currentPlayer);
+            cameraController.SwitchCameraPlayer();
             playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
 
             validPlayer = CheckBankrupt();
@@ -401,16 +423,19 @@ public class GameManager : MonoBehaviour
         {
             playerList[currentPlayer - 1].PurchaseProperty(currentPlayer);
         }
+        propertyDisplay.RefreshDisplay();
     }
 
     public void SellProperty()
     {
         playerList[currentPlayer - 1].SellProperty(currentPlayer);
+        propertyDisplay.RefreshDisplay();
     }
 
     public void MortgageProperty()
     {
         playerList[currentPlayer - 1].MortgageProperty(currentPlayer);
+        propertyDisplay.RefreshDisplay();
     }
 
     public void UpgradeProperty()
@@ -419,6 +444,7 @@ public class GameManager : MonoBehaviour
         {
             playerList[currentPlayer - 1].UpgradeProperty(currentPlayer);
         }
+        propertyDisplay.RefreshDisplay();
     }
 
     public void DegradeProperty()
@@ -427,6 +453,7 @@ public class GameManager : MonoBehaviour
         {
             playerList[currentPlayer - 1].DegradeProperty(currentPlayer);
         }
+        propertyDisplay.RefreshDisplay();
     }
 
     public void JailFine()

@@ -85,6 +85,11 @@ public class Property : Space
         return rentList[developmentLevel];
     }
 
+    public List<int> GetRentList()
+    {
+        return rentList;
+    }
+
     public int GetDevelopmentLevel()
     {
         return developmentLevel;

@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     public Board board;
     private Vector3 offset = new Vector3(0.0f,0.0f,0.0f);
     private Vector3 jailOffset = new Vector3(6.0f, 0.0f, -6.0f);
+
+    public List<GameObject> model = new List<GameObject>();
+    public int currentModel;
+
     private string currPlayerNo = "1"; //need to change this when we have roll dice to determine order, for now this just stops it being blank - E
     public int currentPos;
     public int currentMoney;
@@ -29,10 +33,16 @@ public class PlayerController : MonoBehaviour
         SetMoneyText(currPlayerNo);
     }
 
-
-    void Update()
+    void DisableModel()
     {
+        model[currentModel].SetActive(false);
+    }
 
+    public void SetActiveModel(int x)
+    {
+        model[currentModel].SetActive(false);
+        currentModel = x;
+        model[x].SetActive(true);
     }
 
     public int GetPos()
@@ -65,6 +75,7 @@ public class PlayerController : MonoBehaviour
     public void SetBankrupt()
     {
         isBankrupt = true;
+        DisableModel();
     }
 
     public bool GetBankrupt()
@@ -152,7 +163,25 @@ public class PlayerController : MonoBehaviour
             if (!GetReroll()) { 
                 SetHasMoved(true); 
             }
+            RotatePlayer();
         }
+    }
+
+    void RotatePlayer()
+    {
+        float r = 0.0f;
+        if (currentPos == 0) { r = 315.0f; } //player actually rotates around the board based on location - E
+        else if (currentPos > 0 && currentPos <= 9) { r = 0.0f; }
+        else if (currentPos == 10) { r = 45.0f; }
+        else if (currentPos > 10 && currentPos <= 19) { r = 90.0f; }
+        else if (currentPos == 20) { r = 135.0f; }
+        else if (currentPos > 20 && currentPos <= 29) { r = 180.0f; }
+        else if (currentPos == 30) { r = 225.0f; }
+        else if (currentPos > 30 && currentPos <= 39) { r = 270.0f; }
+
+        Quaternion rotation = Quaternion.Euler(0.0f, r, 0.0f);
+        print("rotate val: " + r);
+        transform.rotation = rotation;
     }
 
     public void SetHasPassedGo(bool passed)
