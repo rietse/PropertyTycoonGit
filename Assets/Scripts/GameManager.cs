@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public PlayerController player1, player2, player3, player4, player5; //max 5 players, so might as well hook up all these guys - E
     public CameraController cameraController;
     public PropertyDisplay propertyDisplay;
+    public MainMenuManager menuManager;
     public int currentPlayer = 1;
     public int noOfPlayers = 0;
     public int freeParking = 0;
@@ -436,7 +437,13 @@ public class GameManager : MonoBehaviour
         {
             playerList[currentPlayer - 1].PurchaseProperty(currentPlayer);
         }
-        propertyDisplay.RefreshDisplay();
+
+        if (propertyDisplay.isActiveAndEnabled)
+        {
+            propertyDisplay.RefreshDisplay();
+        }
+
+        menuManager.AddPropName(board.spaces[playerList[currentPlayer - 1].currentPos].GetComponent<Property>());
     }
 
     public void SellProperty()
