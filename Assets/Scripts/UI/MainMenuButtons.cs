@@ -9,6 +9,7 @@ public class MainMenuButtons : MonoBehaviour
     public GameObject setupMenuPanel;
     public GameObject exitPopup;
     public GameObject propPopup;
+    public GameObject spacePopup;
     public GameObject debugMenu;
     public GameObject mortgageMenu;
     public GameObject sellMenu;
@@ -64,10 +65,15 @@ public class MainMenuButtons : MonoBehaviour
         }
     }
 
-    public void ShowPlayerProps()
+    public void ShowSpaceData()
+    {
+        spacePopup.gameObject.SetActive(!spacePopup.gameObject.activeSelf);
+        boardMenu.gameObject.SetActive(!boardMenu.gameObject.activeSelf);
+    }
+
+    public void ShowPropData()
     {
         propPopup.gameObject.SetActive(!propPopup.gameObject.activeSelf);
-        boardMenu.gameObject.SetActive(!boardMenu.gameObject.activeSelf);
     }
 
     public void ShowDebugMenu()
