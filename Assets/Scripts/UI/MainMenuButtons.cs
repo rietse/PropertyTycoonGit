@@ -10,20 +10,34 @@ public class MainMenuButtons : MonoBehaviour
     public GameObject exitPopup;
     public GameObject propPopup;
     public GameObject debugMenu;
+    public GameObject mortgageMenu;
+    public GameObject sellMenu;
+    public GameObject buyMenu;
+    public GameObject boardMenu;
     public bool testing = true;
+    private bool gameActive;
 
     public GameManager gm;
     public Board board;
     public TextMeshProUGUI spaceText;
 
+
     void Update()
     {
-        SetSpaceText();
+        if (gameActive)
+        {
+            SetSpaceText();
+        }
     }
 
     public void StartGame()
     {
-        startMenuPanel.gameObject.SetActive(false);
+        if (gm.noOfPlayers > 0)
+        {
+            startMenuPanel.gameObject.SetActive(false);
+            gm.InitialiseGame();
+            gameActive = true;
+        }  
     }
 
     public void GameSetup()
@@ -53,6 +67,7 @@ public class MainMenuButtons : MonoBehaviour
     public void ShowPlayerProps()
     {
         propPopup.gameObject.SetActive(!propPopup.gameObject.activeSelf);
+        boardMenu.gameObject.SetActive(!boardMenu.gameObject.activeSelf);
     }
 
     public void ShowDebugMenu()
@@ -65,5 +80,48 @@ public class MainMenuButtons : MonoBehaviour
         int curPos = gm.playerList[gm.currentPlayer-1].currentPos;
         Space curspace = board.spaces[curPos].GetComponent<Space>();
         spaceText.text = "Current Position: " + curspace.GetName();
+    }
+
+    public void Move()
+    {
+        gm.RollDice();
+        gm.MovePlayer();
+    }
+
+    public void EndTurn()
+    {
+        gm.NextPlayer();
+    }
+
+    public void BuyMenu()
+    {
+        buyMenu.gameObject.SetActive(true);
+    }
+
+    public void Buy()
+    {
+        gm.PurchaseProperty();
+    }
+
+    public void MortgageMenu()
+    {
+        mortgageMenu.gameObject.SetActive(true);
+    }
+
+    //change this
+    public void Mortgage()
+    {
+        gm.MortgageProperty();
+    }
+
+    public void SellMenu()
+    {
+        sellMenu.gameObject.SetActive(true);
+    }
+
+    //change this
+    public void Sell()
+    {
+        gm.SellProperty();
     }
 }

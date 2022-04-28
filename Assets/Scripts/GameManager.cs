@@ -24,6 +24,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void InitialiseGame()
+    {
         if (noOfPlayers == 0)
         {
             //get number of players once we can choose how many are gonna play, for now I'm setting it to all 5 so I can test this works, we might also  chuck this somewhere else, it's just here as a reminder to code this lol - E
@@ -35,12 +46,6 @@ public class GameManager : MonoBehaviour
 
         //sets turn state to its natural state at the beginning of a turn
         turnState = TurnState.MOVING;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void InitialiseCameras()

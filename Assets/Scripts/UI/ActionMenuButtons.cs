@@ -71,10 +71,4 @@ public class ActionMenuButtons : MonoBehaviour
 
         }
     }
-
-    public void Move()
-    {
-        gm.RollDice();
-        gm.MovePlayer();
-    }
 }
