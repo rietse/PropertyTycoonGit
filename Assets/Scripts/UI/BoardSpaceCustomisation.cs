@@ -7,30 +7,11 @@ using TMPro;
 public class BoardSpaceCustomisation : MonoBehaviour
 {
     public Board board;
+    public List<TextMeshProUGUI> currentUI, playerInputUI;
     public List<GameObject> propertySpaces = new List<GameObject>();
     public List<int> propertyPositions = new List<int>();
     public string[] spaceText = new string[8];
     public int displayedPos;
-
-    void Update()
-    {
-        if (Input.GetKeyDown("q"))
-        {
-            SaveText();
-        }
-        if (Input.GetKeyDown("w"))
-        {
-            ResetText();
-        }
-        if (Input.GetKeyDown("e"))
-        {
-            ShiftLeft();
-        }
-        if (Input.GetKeyDown("r"))
-        {
-            ShiftRight();
-        }
-    }
 
     public void InitialisePropertyList()
     {
@@ -45,14 +26,15 @@ public class BoardSpaceCustomisation : MonoBehaviour
         DisplayText(0);
     }
 
-    void SetText(int x, string text)
+    void SetText(int i, string text)
     {
-        spaceText[x] = text;
+        spaceText[i] = text;
+        currentUI[i].text = text;
     }
 
-    string GetText(int x)
+    string GetEnteredText(int x)
     {
-        return spaceText[x];
+        return playerInputUI[x].text;
     }
 
     public void DisplayText(int space)
@@ -69,24 +51,46 @@ public class BoardSpaceCustomisation : MonoBehaviour
         SetText(5, rentList[3].ToString());
         SetText(6, rentList[4].ToString());
         SetText(7, rentList[5].ToString());
-
-        //do refresh for UI - E
     }
 
     public void SaveText()
     {
-        propertySpaces[displayedPos].GetComponent<Space>().SetName(spaceText[0]);
-        propertySpaces[displayedPos].GetComponent<Property>().SetPrice(Convert.ToInt32(spaceText[1]));
-
-        List<int> rentList = new List<int>()
+        List<int> rentList = propertySpaces[displayedPos].GetComponent<Property>().GetRentList();
+        for (int i = 0; i < 8; i++)
         {
-            Convert.ToInt32(spaceText[2]),
-            Convert.ToInt32(spaceText[3]),
-            Convert.ToInt32(spaceText[4]),
-            Convert.ToInt32(spaceText[5]),
-            Convert.ToInt32(spaceText[6]),
-            Convert.ToInt32(spaceText[7])
-        };
+            string entered = GetEnteredText(i);
+            if (entered != null)
+            {
+                spaceText[i] = entered;
+                switch (i)
+                {
+                    case 0:
+                        propertySpaces[displayedPos].GetComponent<Space>().SetName(spaceText[0]);
+                        break;
+                    case 1:
+                        propertySpaces[displayedPos].GetComponent<Property>().SetPrice(Convert.ToInt32(spaceText[1]));
+                        break;
+                    case 2:
+                        rentList[1] = Convert.ToInt32(spaceText[2]);
+                        break;
+                    case 3:
+                        rentList[2] = Convert.ToInt32(spaceText[3]);
+                        break;
+                    case 4:
+                        rentList[3] = Convert.ToInt32(spaceText[4]);
+                        break;
+                    case 5:
+                        rentList[4] = Convert.ToInt32(spaceText[5]);
+                        break;
+                    case 6:
+                        rentList[5] = Convert.ToInt32(spaceText[6]);
+                        break;
+                    case 7:
+                        rentList[6] = Convert.ToInt32(spaceText[7]);
+                        break;
+                }
+            }
+        }
         propertySpaces[displayedPos].GetComponent<Property>().SetRentList(rentList);
         propertySpaces[displayedPos].GetComponent<Space>().RefreshText(Convert.ToInt32(spaceText[1]));
         print("Space " + propertyPositions[displayedPos] + " data saved!");

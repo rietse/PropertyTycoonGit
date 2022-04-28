@@ -7,7 +7,6 @@ public class MainMenuManager: MonoBehaviour
 {
     public GameObject startMenuPanel;
     public GameObject setupMenuPanel;
-    public GameObject customiseBoardPanel;
     public GameObject exitPopup;
     public GameObject propPopup;
     public GameObject spacePopup;
@@ -57,11 +56,6 @@ public class MainMenuManager: MonoBehaviour
         setupMenuPanel.gameObject.SetActive(true);
     }
 
-    public void Customise()
-    {
-        customiseBoardPanel.gameObject.SetActive(true);
-    }
-
     public void ShiftLeft()
     {
         BoardSpaceCustomisation.ShiftLeft();
@@ -69,7 +63,7 @@ public class MainMenuManager: MonoBehaviour
 
     public void ShiftRight()
     {
-        BoardSpaceCustomisation.ShiftLeft();
+        BoardSpaceCustomisation.ShiftRight();
     }
 
     public void SaveCustomSpace()
@@ -82,9 +76,9 @@ public class MainMenuManager: MonoBehaviour
         BoardSpaceCustomisation.ResetText();
     }
 
-    public void CloseCustomisationPanel()
+    public void CloseCustomMenu()
     {
-        customiseBoardPanel.gameObject.SetActive(false);
+        customMenu.gameObject.SetActive(false);
     }
 
     public void Options()
