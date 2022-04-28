@@ -12966,7 +12966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1359588609
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17554,8 +17554,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4289139937
-  m_fontColor: {r: 0.882353, g: 0.078431375, b: 0.654902, a: 1}
+    rgba: 4289205472
+  m_fontColor: {r: 0.87843144, g: 0.078431375, b: 0.65882355, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -19335,10 +19335,13 @@ MonoBehaviour:
   sellMenu: {fileID: 0}
   buyMenu: {fileID: 0}
   boardMenu: {fileID: 1236882586}
+  propertyDisplay: {fileID: 466509231}
   testing: 1
   gm: {fileID: 2046008407}
   board: {fileID: 1902617333}
   spaceText: {fileID: 1664986655}
+  scrollPanel: {fileID: 1825510714}
+  font: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
 --- !u!114 &1995986104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19844,6 +19847,7 @@ MonoBehaviour:
   player5: {fileID: 414879512}
   cameraController: {fileID: 2046008409}
   propertyDisplay: {fileID: 466509231}
+  menuManager: {fileID: 1991183672}
   currentPlayer: 1
   noOfPlayers: 0
   freeParking: 0

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MainMenuButtons : MonoBehaviour
+public class MainMenuManager: MonoBehaviour
 {
     public GameObject startMenuPanel;
     public GameObject setupMenuPanel;
@@ -15,12 +15,16 @@ public class MainMenuButtons : MonoBehaviour
     public GameObject sellMenu;
     public GameObject buyMenu;
     public GameObject boardMenu;
+    public PropertyDisplay propertyDisplay;
     public bool testing = true;
     private bool gameActive;
 
     public GameManager gm;
     public Board board;
     public TextMeshProUGUI spaceText;
+
+    public GameObject scrollPanel;
+    public Material font;
 
 
     void Update()
@@ -69,6 +73,7 @@ public class MainMenuButtons : MonoBehaviour
     {
         spacePopup.gameObject.SetActive(!spacePopup.gameObject.activeSelf);
         boardMenu.gameObject.SetActive(!boardMenu.gameObject.activeSelf);
+        propertyDisplay.RefreshDisplay();
     }
 
     public void ShowPropData()
@@ -129,5 +134,49 @@ public class MainMenuButtons : MonoBehaviour
     public void Sell()
     {
         gm.SellProperty();
+    }
+
+    public void AddPropName(Property prop)
+    {
+        TextMeshProUGUI pText = scrollPanel.AddComponent<TextMeshProUGUI>();
+        pText.text = "test";
+        /*pText.text = prop.GetName() + ": Development Level" + prop.GetDevelopmentLevel().ToString();
+
+        pText.fontMaterial = font;
+        pText.fontSize = 36;
+
+        if (prop.colour == Property.Colour.BLUE)
+        {
+            pText.color = Color.blue;
+        }
+        else if (prop.colour == Property.Colour.BROWN)
+        {
+            pText.color = new Color(114, 53, 32);
+        }
+        else if (prop.colour == Property.Colour.DBLUE)
+        {
+            pText.color = new Color(15, 15, 255);
+        }
+        else if (prop.colour == Property.Colour.GREEN)
+        {
+            pText.color = Color.green;
+        }
+        else if (prop.colour == Property.Colour.ORANGE)
+        {
+            pText.color = new Color(224, 99, 21);
+        }
+        else if (prop.colour == Property.Colour.PURPLE)
+        {
+            pText.color = Color.magenta;
+        }
+        else if (prop.colour == Property.Colour.RED)
+        {
+            pText.color = Color.red;
+        }
+        else if (prop.colour == Property.Colour.YELLOW)
+        {
+            pText.color = Color.yellow;
+        }*/
+
     }
 }
