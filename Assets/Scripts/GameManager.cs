@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     private int[] currentCard;
     private int currentRoll;
+    public int selectedPos = 0;
 
     //SEANS STUFF SORRY IF SCUFFED
     public enum TurnState {MOVING, BUY, SELL}
@@ -166,6 +167,8 @@ public class GameManager : MonoBehaviour
     {
         playerList[currentPlayer - 1].Move(currentRoll, false);
         CheckSpace(playerList[currentPlayer - 1].GetPos());
+        selectedPos = playerList[currentPlayer - 1].GetPos();
+        propertyDisplay.SetDisplay(board.GetSpace(selectedPos), selectedPos);
     }
 
     public void CheckSpace(int pos)
@@ -202,6 +205,7 @@ public class GameManager : MonoBehaviour
                     if (space.GetComponent<Property>().GetMortgaged() == false)
                     {
                         rent = space.GetComponent<Property>().GetRent();
+                        if (CheckUndevelopedMonopoly(board.GetState(pos)) == true) { rent = rent * 2; }
                         print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
                         playerList[currentPlayer - 1].PayRent(rent);
                         playerList[board.GetState(pos) - 1].RecieveRent(rent);
@@ -267,6 +271,27 @@ public class GameManager : MonoBehaviour
         {
             TriggerCardEffect(cardEffect);
         }
+    }
+
+    bool CheckUndevelopedMonopoly(int player)
+    {
+        int pos = playerList[currentPlayer - 1].GetPos();
+        if (playerList[currentPlayer - 1].CheckMonopoly(board.GetSpace(pos).GetComponent<Property>().GetColour(), pos) == true) //checks if we have a monopoly first, no point doing the rest otherwise - E
+        {
+            for(int i = 0; i < 40; i++)
+            {
+                GameObject space = board.GetSpace(i);
+                if(space.GetComponent<Space>().GetName() == "PROP") //checks if the space is a property before doing property unique checks on it - E
+                {
+                    if (space.GetComponent<Property>().GetDevelopmentLevel() != 0 && space.GetComponent<Property>().GetType() == board.GetSpace(pos).GetComponent<Property>().GetType()) //checks if the dev level isn't 0 and it's a part of the checked monopoly - E
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        else { return false; }
+        return true; //if all checks suceed, we have determined it's an undeveloped monopoly, so double rent! - E
     }
 
     void TriggerCardEffect(int[] cardEffect)
@@ -443,13 +468,13 @@ public class GameManager : MonoBehaviour
 
     public void SellProperty()
     {
-        playerList[currentPlayer - 1].SellProperty(currentPlayer);
+        playerList[currentPlayer - 1].SellProperty(currentPlayer, selectedPos);
         propertyDisplay.RefreshDisplay();
     }
 
     public void MortgageProperty()
     {
-        playerList[currentPlayer - 1].MortgageProperty(currentPlayer);
+        playerList[currentPlayer - 1].MortgageProperty(currentPlayer, selectedPos);
         propertyDisplay.RefreshDisplay();
     }
 
@@ -457,7 +482,7 @@ public class GameManager : MonoBehaviour
     {
         if (playerList[currentPlayer - 1].GetHasPassedGo())
         {
-            playerList[currentPlayer - 1].UpgradeProperty(currentPlayer);
+            playerList[currentPlayer - 1].UpgradeProperty(currentPlayer, selectedPos);
         }
         propertyDisplay.RefreshDisplay();
     }
@@ -466,7 +491,7 @@ public class GameManager : MonoBehaviour
     {
         if (playerList[currentPlayer - 1].GetHasPassedGo())
         {
-            playerList[currentPlayer - 1].DegradeProperty(currentPlayer);
+            playerList[currentPlayer - 1].DegradeProperty(currentPlayer, selectedPos);
         }
         propertyDisplay.RefreshDisplay();
     }
@@ -498,5 +523,15 @@ public class GameManager : MonoBehaviour
     public void GoToJail()
     {
         playerList[currentPlayer - 1].GoToJail();
+    }
+
+    public void SetSelectedPos(int i)
+    {
+        selectedPos = i;
+    }
+
+    public int GetSelectedPos()
+    {
+        return selectedPos;
     }
 }
