@@ -76,7 +76,6 @@ public class MainMenuManager: MonoBehaviour
     {
         spacePopup.gameObject.SetActive(!spacePopup.gameObject.activeSelf);
         boardMenu.gameObject.SetActive(!boardMenu.gameObject.activeSelf);
-        propertyDisplay.RefreshDisplay();
     }
 
     public void ShowPropData()
