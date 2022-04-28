@@ -18785,6 +18785,7 @@ MonoBehaviour:
   player4: {fileID: 1426922027}
   player5: {fileID: 414879512}
   cameraController: {fileID: 2046008409}
+  propertyDisplay: {fileID: 466509231}
   currentPlayer: 1
   noOfPlayers: 0
   freeParking: 0

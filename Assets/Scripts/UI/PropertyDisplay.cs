@@ -10,11 +10,21 @@ public class PropertyDisplay : MonoBehaviour
     public TextMeshProUGUI displayText;
     public TextMeshProUGUI displayTitle;
 
+    private GameObject currentSpace;
+    private int currentPos;
+
     public void SetDisplay(GameObject space, int pos)
     {
-        string type = space.GetComponent<Space>().GetType();
-        string body = "Position: " + (pos + 1) + "\n";
-        displayTitle.text = space.GetComponent<Space>().GetName(); //sets title, duh - E
+        currentSpace = space;
+        currentPos = pos;
+        RefreshDisplay();
+    }
+
+    public void RefreshDisplay()
+    {
+        string type = currentSpace.GetComponent<Space>().GetType();
+        string body = "Position: " + (currentPos + 1) + "\n";
+        displayTitle.text = currentSpace.GetComponent<Space>().GetName(); //sets title, duh - E
 
         switch (type) //*slaps switch case* this bad boy can hold so much parsing - E
         {
@@ -38,20 +48,24 @@ public class PropertyDisplay : MonoBehaviour
                 body += "\nLand here to draw an 'Opportunity Knocks Card'! Gamble away your future with the draw of a card!";
                 break;
             case "PROP":
-                List<int> rent = space.GetComponent<Property>().GetRentList();
-                body += "Owned By: " + GetSpaceOwner(pos) + "\n";
-                body += "Development Level: " + space.GetComponent<Property>().GetDevelopmentLevel() + "\n\n";
-                body += "Cost: £" + space.GetComponent<Property>().GetPrice() + "\n";
+                List<int> rent = currentSpace.GetComponent<Property>().GetRentList();
+                string mortgaged = "";
+                body += "Owned By: " + GetSpaceOwner(currentPos) + "\n";
+                body += "Development Level: " + currentSpace.GetComponent<Property>().GetDevelopmentLevel() + "\n";
+                if (currentSpace.GetComponent<Property>().GetMortgaged() == true) { mortgaged = "Mortgaged"; }
+                else { mortgaged = "Not Mortgaged"; }
+                body += "Mortgage Status: " + mortgaged + "\n\n";
+                body += "Cost: £" + currentSpace.GetComponent<Property>().GetPrice() + "\n";
                 body += "Rent: £" + rent[0] + " (Base)\n";
                 body += "              £" + rent[1] + " (1 House)\n";
                 body += "              £" + rent[2] + " (2 Houses)\n";
                 body += "              £" + rent[3] + " (3 Houses)\n";
                 body += "              £" + rent[4] + " (4 Houses)\n";
                 body += "              £" + rent[5] + " (Hotel)\n";
-                body += "\nBuy, sell, mortgage, or upgrade 'Property' spaces on the board and force your loved ones into bankruptcy with extortionate rent prices! It's the capitalist dream! Players must pass 'GO' once before they can own property.";
+                body += "\nBuy, sell, mortgage, or upgrade 'Property' spaces on the board and force your loved ones into bankruptcy with extortionate rent prices! It's the capitalist dream! Must pass 'GO' once before you can own property.";
                 break;
             case "TAX":
-                if(pos == 4)
+                if(currentPos == 4)
                 {
                     body += "Tax: £200\n";
                 }
@@ -62,8 +76,8 @@ public class PropertyDisplay : MonoBehaviour
                 body += "\nTaxes! There's no tax evasion here, so pay up buddy! Otherwise the taxman will repossess your soul!";
                 break;
             case "STAT":
-                body += "Owned By: " + GetSpaceOwner(pos) + "\n\n";
-                body += "Cost: £" + space.GetComponent<Station>().GetPrice() + "\n";
+                body += "Owned By: " + GetSpaceOwner(currentPos) + "\n\n";
+                body += "Cost: £" + currentSpace.GetComponent<Station>().GetPrice() + "\n";
                 body += "Rent: £25 (1 'Station' owned)\n";
                 body += "              £50 (2 'Stations' owned)\n";
                 body += "              £100 (3 'Stations' owned)\n";
@@ -71,8 +85,8 @@ public class PropertyDisplay : MonoBehaviour
                 body += "\nPublic transport! Same rules as regular property but without upgrades! Don't look at me, blame the budget cuts!";
                 break;
             case "UTIL":
-                body += "Owned By: " + GetSpaceOwner(pos) + "\n\n";
-                body += "Cost: £" + space.GetComponent<Utility>().GetPrice() + "\n";
+                body += "Owned By: " + GetSpaceOwner(currentPos) + "\n\n";
+                body += "Cost: £" + currentSpace.GetComponent<Utility>().GetPrice() + "\n";
                 body += "Rent: 4 x dice total (1 'Utility' owned)\n";
                 body += "Rent: 10 x dice total (2 'Utilities' owned)\n";
                 body += "\nThere's no bills included option here buddy! Actually... it's all bills here!";
