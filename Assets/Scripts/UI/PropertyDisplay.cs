@@ -18,6 +18,7 @@ public class PropertyDisplay : MonoBehaviour
         currentSpace = space;
         currentPos = pos;
         RefreshDisplay();
+        gameManager.SetSelectedPos(pos);
     }
 
     public void RefreshDisplay()
@@ -62,7 +63,7 @@ public class PropertyDisplay : MonoBehaviour
                 body += "              £" + rent[3] + " (3 Houses)\n";
                 body += "              £" + rent[4] + " (4 Houses)\n";
                 body += "              £" + rent[5] + " (Hotel)\n";
-                body += "\nBuy, sell, mortgage, or upgrade 'Property' spaces on the board and force your loved ones into bankruptcy with extortionate rent prices! It's the capitalist dream! Must pass 'GO' once before you can own property.";
+                body += "\nBuy, sell, mortgage, or upgrade 'Properties' and force your loved ones into financial ruin! It's the capitalist dream! Must pass 'GO' once before you can own property.";
                 break;
             case "TAX":
                 if(currentPos == 4)

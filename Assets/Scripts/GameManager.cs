@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     private int[] currentCard;
     private int currentRoll;
+    public int selectedPos = 0;
 
     //SEANS STUFF SORRY IF SCUFFED
     public enum TurnState {MOVING, BUY, SELL}
@@ -165,6 +166,8 @@ public class GameManager : MonoBehaviour
     {
         playerList[currentPlayer - 1].Move(currentRoll, false);
         CheckSpace(playerList[currentPlayer - 1].GetPos());
+        selectedPos = playerList[currentPlayer - 1].GetPos();
+        propertyDisplay.SetDisplay(board.GetSpace(selectedPos), selectedPos);
     }
 
     public void CheckSpace(int pos)
@@ -438,13 +441,13 @@ public class GameManager : MonoBehaviour
 
     public void SellProperty()
     {
-        playerList[currentPlayer - 1].SellProperty(currentPlayer);
+        playerList[currentPlayer - 1].SellProperty(currentPlayer, selectedPos);
         propertyDisplay.RefreshDisplay();
     }
 
     public void MortgageProperty()
     {
-        playerList[currentPlayer - 1].MortgageProperty(currentPlayer);
+        playerList[currentPlayer - 1].MortgageProperty(currentPlayer, selectedPos);
         propertyDisplay.RefreshDisplay();
     }
 
@@ -452,7 +455,7 @@ public class GameManager : MonoBehaviour
     {
         if (playerList[currentPlayer - 1].GetHasPassedGo())
         {
-            playerList[currentPlayer - 1].UpgradeProperty(currentPlayer);
+            playerList[currentPlayer - 1].UpgradeProperty(currentPlayer, selectedPos);
         }
         propertyDisplay.RefreshDisplay();
     }
@@ -461,7 +464,7 @@ public class GameManager : MonoBehaviour
     {
         if (playerList[currentPlayer - 1].GetHasPassedGo())
         {
-            playerList[currentPlayer - 1].DegradeProperty(currentPlayer);
+            playerList[currentPlayer - 1].DegradeProperty(currentPlayer, selectedPos);
         }
         propertyDisplay.RefreshDisplay();
     }
@@ -493,5 +496,15 @@ public class GameManager : MonoBehaviour
     public void GoToJail()
     {
         playerList[currentPlayer - 1].GoToJail();
+    }
+
+    public void SetSelectedPos(int i)
+    {
+        selectedPos = i;
+    }
+
+    public int GetSelectedPos()
+    {
+        return selectedPos;
     }
 }

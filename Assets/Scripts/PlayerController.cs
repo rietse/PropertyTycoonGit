@@ -245,11 +245,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void SellProperty(int player)
+    public void SellProperty(int player, int pos)
     {
         currPlayerNo = player.ToString(); //might as well keep this updated ig - E
 
-        GameObject property = board.GetSpace(currentPos); //grabs the space - E
+        GameObject property = board.GetSpace(pos); //grabs the space - E
         int price = 0;
 
         if (property.GetComponent<Space>().GetType() == "PROP") //checks which space it is - E
@@ -264,22 +264,21 @@ public class PlayerController : MonoBehaviour
         {
             price = property.GetComponent<Station>().GetPrice();
         }
-
-        if (board.GetState(currentPos) == player && CheckUndeveloped(property) == true)
+        if (board.GetState(pos) == player && CheckUndeveloped(property) == true)
         {
             print("Player " + player + " has sold " + property.GetComponent<Space>().GetName());
             currentMoney = currentMoney + price;
-            board.SetState(currentPos, 0); //assigns board space back to unowned and gives money - E
+            board.SetState(pos, 0); //assigns board space back to unowned and gives money - E
             SetMoneyText(currPlayerNo);
         }
-        else print("Can't sell this space!");
+        else print("Can't sell the space " + pos + "!");
     }
 
-    public void MortgageProperty(int player)
+    public void MortgageProperty(int player, int pos)
     {
         currPlayerNo = player.ToString(); //might as well keep this updated ig - E
 
-        GameObject property = board.GetSpace(currentPos); //grabs the space - E
+        GameObject property = board.GetSpace(pos); //grabs the space - E
         int price = 0;
         bool mortgaged = false;
 
@@ -299,7 +298,7 @@ public class PlayerController : MonoBehaviour
             mortgaged = property.GetComponent<Station>().GetMortgaged();
         }
 
-        if (board.GetState(currentPos) == player && CheckUndeveloped(property))
+        if (board.GetState(pos) == player && CheckUndeveloped(property) == true)
         {
             if (mortgaged == true) //check if we need to mortgage or unmortgage this space - E
             {
@@ -347,29 +346,29 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            print("Can't mortgame/unmortgage this space!");
+            print("Can't mortgame/unmortgage space " + pos + "!");
         }
     }
 
     bool CheckUndeveloped(GameObject s)
     {
-        if (s.GetComponent<Property>().GetType() == "PROP")
+        if (s.GetComponent<Space>().GetType() == "PROP")
         {
-            if (s.GetComponent<Property>().GetDevelopmentLevel() == 0) return true; //checks if the property has any houses/hotels on it - E
+            if (s.GetComponent<Property>().GetDevelopmentLevel() > 0) return false; //checks if the property has any houses/hotels on it - E
         }
-        return false;
+        return true;
     }
 
-    public void UpgradeProperty(int player)
+    public void UpgradeProperty(int player, int pos)
     {
         currPlayerNo = player.ToString(); //might as well keep this updated ig - E
 
-        GameObject property = board.GetSpace(currentPos); //grabs the space - E
+        GameObject property = board.GetSpace(pos); //grabs the space - E
         int price = 0;
 
-        if (CheckMonopoly(property.GetComponent<Property>().GetColour()) == true)
+        if (CheckMonopoly(property.GetComponent<Property>().GetColour(), pos) == true)
         {
-            if (property.GetComponent<Space>().GetType() == "PROP" && board.GetState(currentPos) == player && property.GetComponent<Property>().GetDevelopmentLevel() < 5) //checks which space it is, if it can be upgraded, and if it's owned by the player - E
+            if (property.GetComponent<Space>().GetType() == "PROP" && board.GetState(pos) == player && property.GetComponent<Property>().GetDevelopmentLevel() < 5) //checks which space it is, if it can be upgraded, and if it's owned by the player - E
             {
                 price = property.GetComponent<Property>().GetUpgradeCost();
                 if (price > currentMoney)
@@ -395,14 +394,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void DegradeProperty(int player)
+    public void DegradeProperty(int player, int pos)
     {
         currPlayerNo = player.ToString(); //might as well keep this updated ig - E
 
-        GameObject property = board.GetSpace(currentPos); //grabs the space - E
+        GameObject property = board.GetSpace(pos); //grabs the space - E
         int price = 0;
 
-        if (property.GetComponent<Space>().GetType() == "PROP" && board.GetState(currentPos) == player && property.GetComponent<Property>().GetDevelopmentLevel() > 0) //checks which space it is, if it's got a house/hotel on it, and if it's owned by the player - E
+        if (property.GetComponent<Space>().GetType() == "PROP" && board.GetState(pos) == player && property.GetComponent<Property>().GetDevelopmentLevel() > 0) //checks which space it is, if it's got a house/hotel on it, and if it's owned by the player - E
         {
             price = property.GetComponent<Property>().GetUpgradeCost();
             if (hasMoved == true)
@@ -419,13 +418,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public bool CheckMonopoly(string colour)
+    public bool CheckMonopoly(string colour, int pos)
     {
         for (int i = 0; i < 40; i++)
         {
             if (board.GetSpace(i).GetComponent<Space>().GetType() == "PROP") //checks if property so unity doesn't get funny about calling property methods in non property spaces - E
             {
-                if ((board.GetSpace(i).GetComponent<Property>().GetColour() == colour) && (board.GetState(i) != board.GetState(currentPos))) //checks if each space is the same colour AND not owned by the current player, if any spaces fit this criteria, we don't have a monopoly on the colour - E
+                if ((board.GetSpace(i).GetComponent<Property>().GetColour() == colour) && (board.GetState(i) != board.GetState(pos))) //checks if each space is the same colour AND not owned by the current player, if any spaces fit this criteria, we don't have a monopoly on the colour - E
                 {
                     print("Player " + currPlayerNo + "'s Monopoly check on " + colour + " failed!");
                     return false;
