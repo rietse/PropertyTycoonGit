@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
         noOfPlayers = n;
     }
 
-    int GetCurrentPlayer()
+    public int GetCurrentPlayer()
     {
         return currentPlayer;
     }
