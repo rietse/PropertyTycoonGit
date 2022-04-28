@@ -3830,6 +3830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 1902617333}
+  gameManager: {fileID: 2046008407}
   displayText: {fileID: 1951227924}
   displayTitle: {fileID: 1469943257}
 --- !u!114 &466655489 stripped

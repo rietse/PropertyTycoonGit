@@ -85,6 +85,11 @@ public class GameManager : MonoBehaviour
         player5.SetOffset(0.0f, -4.0f);
     }
 
+    public int GetFreeParking()
+    {
+        return freeParking;
+    }
+
     int GetNoOfPlayers()
     {
         return noOfPlayers;

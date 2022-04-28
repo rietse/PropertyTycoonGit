@@ -11,6 +11,6 @@ public class BoardMapButtons : MonoBehaviour
     public void MapButtonPressed()
     {
         print("Button at position " + pos + " clicked!");
-        propertyDisplay.SetDisplay(board.GetSpace(pos)); //updates whatever space display thingamajig UI we have to show the space data, cool - E
+        propertyDisplay.SetDisplay(board.GetSpace(pos), pos); //updates whatever space display thingamajig UI we have to show the space data, cool - E
     }
 }
