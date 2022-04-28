@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
 
     public void Move(int d, bool overrideMove)
     {
-        if ((!IsInJail()) && (!GetHasMoved()) || (overrideMove == true))
+        if ((!IsInJail()) && (((!GetHasMoved()) && GetHasRolled()) || (overrideMove == true)))
         {
             if ((currentPos + d) > 39)
             {
@@ -149,8 +149,9 @@ public class PlayerController : MonoBehaviour
                 currentPos += d;
             }
             transform.position = board.spaces[currentPos].transform.position + offset;
-            if (!GetReroll()) { 
-                SetHasMoved(true); 
+            SetHasMoved(true);
+            if (GetReroll()) { 
+               SetHasRolled(false); 
             }
         }
     }
