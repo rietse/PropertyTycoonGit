@@ -23,8 +23,7 @@ public class MainMenuManager: MonoBehaviour
     public Board board;
     public TextMeshProUGUI spaceText;
 
-    public GameObject scrollPanel;
-    public Material font;
+    public TextMeshProUGUI propText;
 
 
     void Update()
@@ -32,6 +31,10 @@ public class MainMenuManager: MonoBehaviour
         if (gameActive)
         {
             SetSpaceText();
+        }
+        if (propText.isActiveAndEnabled)
+        {
+            UpdatePropDisplay();
         }
     }
 
@@ -136,47 +139,23 @@ public class MainMenuManager: MonoBehaviour
         gm.SellProperty();
     }
 
-    public void AddPropName(Property prop)
+    public void UpdatePropDisplay()
     {
-        TextMeshProUGUI pText = scrollPanel.AddComponent<TextMeshProUGUI>();
-        pText.text = "test";
-        /*pText.text = prop.GetName() + ": Development Level" + prop.GetDevelopmentLevel().ToString();
-
-        pText.fontMaterial = font;
-        pText.fontSize = 36;
-
-        if (prop.colour == Property.Colour.BLUE)
+        string propString = "";
+        for (int i = 0; i < 40; i++)
         {
-            pText.color = Color.blue;
+            if(board.spaceStates[i] == gm.currentPlayer)
+            {
+                if(board.spaces[i].GetComponent<Space>().type == Space.Type.PROP)
+                {
+                    propString += (board.spaces[i].GetComponent<Space>().GetName() + ": Development Level " + board.spaces[i].GetComponent<Property>().GetDevelopmentLevel().ToString() + "/n");
+                }
+                else
+                {
+                    propString += (board.spaces[i].GetComponent<Space>().GetName() + "n/");
+                }
+            }
         }
-        else if (prop.colour == Property.Colour.BROWN)
-        {
-            pText.color = new Color(114, 53, 32);
-        }
-        else if (prop.colour == Property.Colour.DBLUE)
-        {
-            pText.color = new Color(15, 15, 255);
-        }
-        else if (prop.colour == Property.Colour.GREEN)
-        {
-            pText.color = Color.green;
-        }
-        else if (prop.colour == Property.Colour.ORANGE)
-        {
-            pText.color = new Color(224, 99, 21);
-        }
-        else if (prop.colour == Property.Colour.PURPLE)
-        {
-            pText.color = Color.magenta;
-        }
-        else if (prop.colour == Property.Colour.RED)
-        {
-            pText.color = Color.red;
-        }
-        else if (prop.colour == Property.Colour.YELLOW)
-        {
-            pText.color = Color.yellow;
-        }*/
-
+        propText.text = propString;
     }
 }

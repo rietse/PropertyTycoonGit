@@ -439,8 +439,6 @@ public class GameManager : MonoBehaviour
         {
             propertyDisplay.RefreshDisplay();
         }
-
-        menuManager.AddPropName(board.spaces[playerList[currentPlayer - 1].currentPos].GetComponent<Property>());
     }
 
     public void SellProperty()
