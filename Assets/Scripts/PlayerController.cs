@@ -255,26 +255,14 @@ public class PlayerController : MonoBehaviour
         if (property.GetComponent<Space>().GetType() == "PROP") //checks which space it is - E
         {
             price = property.GetComponent<Property>().GetPrice();
-            if (property.GetComponent<Property>().GetMortgaged())
-            {
-                price = price / 2;
-            }
         }
         else if (property.GetComponent<Space>().GetType() == "UTIL")
         {
             price = property.GetComponent<Utility>().GetPrice();
-            if (property.GetComponent<Property>().GetMortgaged())
-            {
-                price = price / 2;
-            }
         }
         else if (property.GetComponent<Space>().GetType() == "STAT")
         {
             price = property.GetComponent<Station>().GetPrice();
-            if (property.GetComponent<Property>().GetMortgaged())
-            {
-                price = price / 2;
-            }
         }
         if (board.GetState(pos) == player && CheckUndeveloped(property) == true)
         {

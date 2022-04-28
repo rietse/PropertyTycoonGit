@@ -7,17 +7,17 @@ public class PlayerControllerTest : MonoBehaviour
 {
     public TextMeshProUGUI currentPlayerNo;
     public TextMeshProUGUI playerMoney;
-    public GameManagerTest gsm;
+    public GameManager gsm;
     public PlayerController player;
 
     public void Dice()
     {
-        gsm.GetComponent<GameManagerTest>().RollDice();
+        gsm.GetComponent<GameManager>().RollDice();
         currentPlayerText();
     }
     public void Move()
     {
-        gsm.GetComponent<GameManagerTest>().MovePlayer();
+        gsm.GetComponent<GameManager>().MovePlayer();
     }
 
     void currentPlayerText()
@@ -26,13 +26,13 @@ public class PlayerControllerTest : MonoBehaviour
     }
     public void EndTurn()
     {
-        gsm.GetComponent<GameManagerTest>().NextPlayer();
+        gsm.GetComponent<GameManager>().NextPlayer();
         currentPlayerText();
     }
 
     public void Bankrupt()
     {
-        gsm.GetComponent<GameManagerTest>().Bankrupt();
+        gsm.GetComponent<GameManager>().Bankrupt();
     }
 
     void PlayerMoneyText()
@@ -44,30 +44,4 @@ public class PlayerControllerTest : MonoBehaviour
     {
         PlayerMoneyText();
     }
-
-    public void Buy()
-    {
-        gsm.GetComponent<GameManagerTest>().PurchaseProperty();
-    }
-
-    public void Sell()
-    {
-        gsm.GetComponent<GameManagerTest>().SellProperty();
-    }
-
-    public void UpgradeProperty()
-    {
-        gsm.GetComponent<GameManagerTest>().UpgradeProperty();
-    }
-
-    public void DegradeProperty()
-    {
-        gsm.GetComponent<GameManagerTest>().DegradeProperty();
-    }
-
-    public void Mortgage()
-    {
-        gsm.GetComponent<GameManagerTest>().MortgageProperty();
-    }
-
 }

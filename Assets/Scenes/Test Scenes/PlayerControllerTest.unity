@@ -3079,7 +3079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i: 5
   isAbridged: 0
-  gm: {fileID: 0}
+  gm: {fileID: 2046008407}
 --- !u!1 &394754822 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4817867485657866883, guid: 1c0376006c3bb714da9baf5695132126, type: 3}
@@ -3099,7 +3099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i: 0
   isAbridged: 1
-  gm: {fileID: 0}
+  gm: {fileID: 2046008407}
 --- !u!114 &394830383 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7178688430101504886, guid: 9b150e7c914118142a4c331a62698813, type: 3}
@@ -4521,7 +4521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i: 4
   isAbridged: 0
-  gm: {fileID: 0}
+  gm: {fileID: 2046008407}
 --- !u!114 &529453715 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7178688430947400009, guid: 9b150e7c914118142a4c331a62698813, type: 3}
@@ -7767,7 +7767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i: 3
   isAbridged: 0
-  gm: {fileID: 0}
+  gm: {fileID: 2046008407}
 --- !u!1001 &846050731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8896,13 +8896,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 945424717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7864d9824efb43845a90bc2c902c3cd0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a4413e4f8d274b43bfeabf10424ee43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlayerNo: {fileID: 0}
-  playerMoney: {fileID: 0}
-  gsm: {fileID: 2046008407}
-  player: {fileID: 0}
+  gsm: {fileID: 2046008406}
 --- !u!114 &945424720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8948,7 +8945,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 945424719}
-        m_TargetAssemblyTypeName: PlayerControllerTest, Scripts
+        m_TargetAssemblyTypeName: ButtonScripts, Assembly-CSharp
         m_MethodName: Sell
         m_Mode: 1
         m_Arguments:
@@ -14856,13 +14853,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1593816726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7864d9824efb43845a90bc2c902c3cd0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a4413e4f8d274b43bfeabf10424ee43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlayerNo: {fileID: 0}
-  playerMoney: {fileID: 0}
-  gsm: {fileID: 2046008407}
-  player: {fileID: 0}
+  gsm: {fileID: 2046008406}
 --- !u!114 &1593816729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14908,7 +14902,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1593816728}
-        m_TargetAssemblyTypeName: PlayerControllerTest, Scripts
+        m_TargetAssemblyTypeName: ButtonScripts, Assembly-CSharp
         m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
@@ -15245,7 +15239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i: 2
   isAbridged: 0
-  gm: {fileID: 0}
+  gm: {fileID: 2046008407}
 --- !u!114 &1632455046 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7178688430101504886, guid: 9b150e7c914118142a4c331a62698813, type: 3}
@@ -17675,7 +17669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPlayerNo: {fileID: 1555802428}
   playerMoney: {fileID: 0}
-  gsm: {fileID: 0}
+  gsm: {fileID: 2046008407}
   player: {fileID: 0}
 --- !u!114 &1940690555
 MonoBehaviour:
@@ -18009,7 +18003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i: 0
   isAbridged: 0
-  gm: {fileID: 0}
+  gm: {fileID: 2046008407}
 --- !u!1 &1972705607
 GameObject:
   m_ObjectHideFlags: 0
@@ -18299,7 +18293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1991183671
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18335,14 +18329,9 @@ MonoBehaviour:
   setupMenuPanel: {fileID: 1913882491}
   exitPopup: {fileID: 1420930151}
   propPopup: {fileID: 466509227}
-  spacePopup: {fileID: 0}
   debugMenu: {fileID: 715015708}
-  mortgageMenu: {fileID: 0}
-  sellMenu: {fileID: 0}
-  buyMenu: {fileID: 0}
-  boardMenu: {fileID: 0}
   testing: 1
-  gm: {fileID: 0}
+  gm: {fileID: 2046008407}
   board: {fileID: 1902617333}
   spaceText: {fileID: 1664986655}
 --- !u!114 &1995986104
@@ -18833,7 +18822,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2046008406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a708beb675c58a04c9a201ce6daab191, type: 3}
+  m_Script: {fileID: 11500000, guid: e34733f2ffa7d5d4f81d785963e1716a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 1902617333}
@@ -18842,12 +18831,11 @@ MonoBehaviour:
   player3: {fileID: 118772614}
   player4: {fileID: 1426922027}
   player5: {fileID: 414879512}
-  cameraController: {fileID: 0}
-  propertyDisplay: {fileID: 0}
   currentPlayer: 1
   noOfPlayers: 0
   freeParking: 0
   playerList: []
+  turnState: 0
 --- !u!4 &2046008408
 Transform:
   m_ObjectHideFlags: 0
