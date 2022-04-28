@@ -9,6 +9,7 @@ TagManager:
   - PotCard
   - Button
   - Button2
+  - Popup
   layers:
   - Default
   - TransparentFX

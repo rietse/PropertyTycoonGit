@@ -169,6 +169,7 @@ public class GameManager : MonoBehaviour
         CheckSpace(playerList[currentPlayer - 1].GetPos());
         selectedPos = playerList[currentPlayer - 1].GetPos();
         propertyDisplay.SetDisplay(board.GetSpace(selectedPos), selectedPos);
+        turnState = TurnState.SELL;
     }
 
     public void CheckSpace(int pos)
