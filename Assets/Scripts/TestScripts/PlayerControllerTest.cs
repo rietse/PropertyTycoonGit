@@ -44,4 +44,30 @@ public class PlayerControllerTest : MonoBehaviour
     {
         PlayerMoneyText();
     }
+
+    public void Buy()
+    {
+        gsm.GetComponent<GameManagerTest>().PurchaseProperty();
+    }
+
+    public void Sell()
+    {
+        gsm.GetComponent<GameManagerTest>().SellProperty();
+    }
+
+    public void UpgradeProperty()
+    {
+        gsm.GetComponent<GameManagerTest>().UpgradeProperty();
+    }
+
+    public void DegradeProperty()
+    {
+        gsm.GetComponent<GameManagerTest>().DegradeProperty();
+    }
+
+    public void Mortgage()
+    {
+        gsm.GetComponent<GameManagerTest>().MortgageProperty();
+    }
+
 }

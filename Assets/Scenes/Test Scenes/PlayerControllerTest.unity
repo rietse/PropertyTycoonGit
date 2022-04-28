@@ -8896,10 +8896,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 945424717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a4413e4f8d274b43bfeabf10424ee43, type: 3}
+  m_Script: {fileID: 11500000, guid: 7864d9824efb43845a90bc2c902c3cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gsm: {fileID: 2046008406}
+  currentPlayerNo: {fileID: 0}
+  playerMoney: {fileID: 0}
+  gsm: {fileID: 2046008407}
+  player: {fileID: 0}
 --- !u!114 &945424720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8945,7 +8948,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 945424719}
-        m_TargetAssemblyTypeName: ButtonScripts, Assembly-CSharp
+        m_TargetAssemblyTypeName: PlayerControllerTest, Scripts
         m_MethodName: Sell
         m_Mode: 1
         m_Arguments:
@@ -14853,10 +14856,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1593816726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a4413e4f8d274b43bfeabf10424ee43, type: 3}
+  m_Script: {fileID: 11500000, guid: 7864d9824efb43845a90bc2c902c3cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gsm: {fileID: 2046008406}
+  currentPlayerNo: {fileID: 0}
+  playerMoney: {fileID: 0}
+  gsm: {fileID: 2046008407}
+  player: {fileID: 0}
 --- !u!114 &1593816729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14902,7 +14908,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1593816728}
-        m_TargetAssemblyTypeName: ButtonScripts, Assembly-CSharp
+        m_TargetAssemblyTypeName: PlayerControllerTest, Scripts
         m_MethodName: Buy
         m_Mode: 1
         m_Arguments:

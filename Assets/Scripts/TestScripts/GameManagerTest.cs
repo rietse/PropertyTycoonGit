@@ -403,19 +403,16 @@ public class GameManagerTest : MonoBehaviour
         {
             playerList[currentPlayer - 1].PurchaseProperty(currentPlayer);
         }
-        propertyDisplay.RefreshDisplay();
     }
 
     public void SellProperty()
     {
         playerList[currentPlayer - 1].SellProperty(currentPlayer);
-        propertyDisplay.RefreshDisplay();
     }
 
     public void MortgageProperty()
     {
         playerList[currentPlayer - 1].MortgageProperty(currentPlayer);
-        propertyDisplay.RefreshDisplay();
     }
 
     public void UpgradeProperty()
@@ -424,7 +421,6 @@ public class GameManagerTest : MonoBehaviour
         {
             playerList[currentPlayer - 1].UpgradeProperty(currentPlayer);
         }
-        propertyDisplay.RefreshDisplay();
     }
 
     public void DegradeProperty()
@@ -433,7 +429,6 @@ public class GameManagerTest : MonoBehaviour
         {
             playerList[currentPlayer - 1].DegradeProperty(currentPlayer);
         }
-        propertyDisplay.RefreshDisplay();
     }
 
     public void JailFine()
