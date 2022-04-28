@@ -15,6 +15,7 @@ public class MainMenuManager: MonoBehaviour
     public GameObject sellMenu;
     public GameObject buyMenu;
     public GameObject boardMenu;
+    public GameObject customMenu;
     public PropertyDisplay propertyDisplay;
     public bool testing = true;
     private bool gameActive;
@@ -75,6 +76,11 @@ public class MainMenuManager: MonoBehaviour
         {
             Application.Quit();
         }
+    }
+
+    public void Customise()
+    {
+        customMenu.gameObject.SetActive(!customMenu.gameObject.activeSelf);
     }
 
     public void ShowSpaceData()
