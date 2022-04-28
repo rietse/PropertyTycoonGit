@@ -7,17 +7,17 @@ public class PlayerControllerTest : MonoBehaviour
 {
     public TextMeshProUGUI currentPlayerNo;
     public TextMeshProUGUI playerMoney;
-    public GameManager gsm;
+    public GameManagerTest gsm;
     public PlayerController player;
 
     public void Dice()
     {
-        gsm.GetComponent<GameManager>().RollDice();
+        gsm.GetComponent<GameManagerTest>().RollDice();
         currentPlayerText();
     }
     public void Move()
     {
-        gsm.GetComponent<GameManager>().MovePlayer();
+        gsm.GetComponent<GameManagerTest>().MovePlayer();
     }
 
     void currentPlayerText()
@@ -26,13 +26,13 @@ public class PlayerControllerTest : MonoBehaviour
     }
     public void EndTurn()
     {
-        gsm.GetComponent<GameManager>().NextPlayer();
+        gsm.GetComponent<GameManagerTest>().NextPlayer();
         currentPlayerText();
     }
 
     public void Bankrupt()
     {
-        gsm.GetComponent<GameManager>().Bankrupt();
+        gsm.GetComponent<GameManagerTest>().Bankrupt();
     }
 
     void PlayerMoneyText()

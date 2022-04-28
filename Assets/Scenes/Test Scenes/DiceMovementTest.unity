@@ -490,7 +490,7 @@ MonoBehaviour:
   diceResult: {fileID: 1823144402}
   doublesCounter: {fileID: 1862050483}
   hasMoved: {fileID: 1381964537}
-  gsm: {fileID: 0}
+  gsm: {fileID: 2046008407}
   player1: {fileID: 1245480695}
 --- !u!1001 &56452861
 PrefabInstance:
@@ -12251,7 +12251,7 @@ MonoBehaviour:
   diceResult: {fileID: 1823144402}
   doublesCounter: {fileID: 1862050483}
   hasMoved: {fileID: 1381964537}
-  gsm: {fileID: 0}
+  gsm: {fileID: 2046008407}
   player1: {fileID: 1245480695}
 --- !u!1001 &1336003469
 PrefabInstance:
@@ -13622,7 +13622,7 @@ MonoBehaviour:
   diceResult: {fileID: 1823144402}
   doublesCounter: {fileID: 1862050483}
   hasMoved: {fileID: 1381964537}
-  gsm: {fileID: 0}
+  gsm: {fileID: 2046008407}
   player1: {fileID: 1245480695}
 --- !u!1 &1468348360
 GameObject:
@@ -18763,7 +18763,7 @@ MonoBehaviour:
   diceResult: {fileID: 1823144402}
   doublesCounter: {fileID: 1862050483}
   hasMoved: {fileID: 1381964537}
-  gsm: {fileID: 0}
+  gsm: {fileID: 2046008407}
   player1: {fileID: 1245480695}
 --- !u!1001 &2064988403
 PrefabInstance:

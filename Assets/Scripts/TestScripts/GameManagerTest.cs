@@ -120,8 +120,6 @@ public class GameManagerTest : MonoBehaviour
             {
                 SetCurrentPlayer((GetCurrentPlayer() + 1));
             }
-            cameraController.SetCurrentPlayer(currentPlayer);
-            cameraController.SwitchCameraPlayer();
             playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
 
             validPlayer = CheckBankrupt();
