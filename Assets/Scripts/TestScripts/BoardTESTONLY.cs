@@ -77,6 +77,16 @@ public class BoardTESTONLY : MonoBehaviour
         return deck;
     }
 
+    public List<GameObject> OppCardList()
+    {
+        return oppCardList;
+    }
+
+    public List<GameObject> PotCardList()
+    {
+        return potCardList;
+    }
+
     public int[] DrawCard(string c)
     {
         int[] cardEffect = null;

@@ -172,6 +172,7 @@ public class GameManagerTest : MonoBehaviour
                     if ((space.GetComponent<Property>().GetMortgaged() == false) && (playerList[board.GetState(pos) - 1].IsInJail() == false))
                     {
                         rent = space.GetComponent<Property>().GetRent();
+                        if (CheckUndevelopedMonopoly(board.GetState(pos)) == true) { rent = rent * 2; }
                         print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ?" + rent + " rent!");
                         playerList[currentPlayer - 1].PayRent(rent);
                         playerList[board.GetState(pos) - 1].RecieveRent(rent);
@@ -233,6 +234,27 @@ public class GameManagerTest : MonoBehaviour
         {
             TriggerCardEffect(cardEffect);
         }
+    }
+
+    bool CheckUndevelopedMonopoly(int player)
+    {
+        int pos = playerList[currentPlayer - 1].GetPos();
+        if (playerList[currentPlayer - 1].CheckMonopoly(board.GetSpace(pos).GetComponent<Property>().GetColour(), pos) == true) //checks if we have a monopoly first, no point doing the rest otherwise - E
+        {
+            for (int i = 0; i < 40; i++)
+            {
+                GameObject space = board.GetSpace(i);
+                if (space.GetComponent<Space>().GetName() == "PROP") //checks if the space is a property before doing property unique checks on it - E
+                {
+                    if (space.GetComponent<Property>().GetDevelopmentLevel() != 0 && space.GetComponent<Property>().GetType() == board.GetSpace(pos).GetComponent<Property>().GetType()) //checks if the dev level isn't 0 and it's a part of the checked monopoly - E
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        else { return false; }
+        return true; //if all checks suceed, we have determined it's an undeveloped monopoly, so double rent! - E
     }
 
     void TriggerCardEffect(int[] cardEffect)
