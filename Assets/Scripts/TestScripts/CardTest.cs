@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CardTest : MonoBehaviour
 {
@@ -105,5 +106,10 @@ public class CardTest : MonoBehaviour
     void DiceResultText()
     {
         diceResult.SetText("diceResult = " + gsm.RollDice().ToString());
+    }
+
+    public void ReturnStartMenu()
+    {
+        SceneManager.LoadScene("Main");
     }
 }
