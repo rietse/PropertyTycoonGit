@@ -1,0 +1,76 @@
+\hypertarget{_property_house_manager_8cs_source}{}\doxysection{Property\+House\+Manager.\+cs}
+\label{_property_house_manager_8cs_source}\index{Assets/Scripts/PropertyHouseManager.cs@{Assets/Scripts/PropertyHouseManager.cs}}
+\mbox{\hyperlink{_property_house_manager_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00001}00001 \textcolor{keyword}{using} System.Collections;}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00002}00002 \textcolor{keyword}{using} System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00003}00003 \textcolor{keyword}{using} UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00005}\mbox{\hyperlink{class_property_house_manager}{00005}} \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_property_house_manager}{PropertyHouseManager}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00006}00006 \{}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00007}\mbox{\hyperlink{class_property_house_manager_a74c7452e0900fa71694a954ef823250e}{00007}}     \textcolor{keyword}{public} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_property_house_manager_a74c7452e0900fa71694a954ef823250e}{state}} = 0;}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00008}\mbox{\hyperlink{class_property_house_manager_acdf6b5a8196d490fa4b38db756e1a509}{00008}}     \textcolor{keyword}{public} GameObject \mbox{\hyperlink{class_property_house_manager_adcbca312436730ffd9194688f2b4e0cd}{house1}}, \mbox{\hyperlink{class_property_house_manager_ac4be1826c494613448ace83241da6b62}{house2}}, \mbox{\hyperlink{class_property_house_manager_a9e342fc9fb515db238c31150f3ded5e7}{house3}}, \mbox{\hyperlink{class_property_house_manager_aa679cec1543d29772d6d51036e45c234}{house4}}, \mbox{\hyperlink{class_property_house_manager_acdf6b5a8196d490fa4b38db756e1a509}{hotel}};}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00010}\mbox{\hyperlink{class_property_house_manager_a9f5961818a5b68b234bacd6a78b4f454}{00010}}     \textcolor{keyword}{public} Vector3 \mbox{\hyperlink{class_property_house_manager_a9f5961818a5b68b234bacd6a78b4f454}{offset}}; \textcolor{comment}{//used to make sure the houses are in their designated location on the space -\/ E}}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00012}00012     \textcolor{keywordtype}{void} Start()}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00013}00013     \{}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00014}00014         \mbox{\hyperlink{class_property_house_manager_a13b85430f6c3e4babc20d86a9548aba9}{UpdateHouses}}(0); \textcolor{comment}{//ensures all houses are hidden at the start of the game -\/ E}}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00015}00015     \}}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00017}00017     \textcolor{comment}{//Sets position of house}}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00018}\mbox{\hyperlink{class_property_house_manager_a7b48b2fbf3ce6ca52c97cdea0764321d}{00018}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_property_house_manager_a7b48b2fbf3ce6ca52c97cdea0764321d}{SetPosition}}(Vector3 pos)}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00019}00019     \{}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00020}00020         transform.position = pos + \mbox{\hyperlink{class_property_house_manager_a9f5961818a5b68b234bacd6a78b4f454}{offset}}; ;}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00021}00021     \}}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00023}00023     \textcolor{comment}{//Updates number of houses on a space}}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00024}\mbox{\hyperlink{class_property_house_manager_a13b85430f6c3e4babc20d86a9548aba9}{00024}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_property_house_manager_a13b85430f6c3e4babc20d86a9548aba9}{UpdateHouses}}(\textcolor{keywordtype}{int} x)}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00025}00025     \{}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00026}00026         \mbox{\hyperlink{class_property_house_manager_a74c7452e0900fa71694a954ef823250e}{state}} = x;}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00027}00027         \textcolor{keywordflow}{switch}(\mbox{\hyperlink{class_property_house_manager_a74c7452e0900fa71694a954ef823250e}{state}})}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00028}00028         \{}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00029}00029             \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00030}00030                 HideAll();}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00031}00031                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00032}00032             \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00033}00033                 HideAll();}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00034}00034                 \mbox{\hyperlink{class_property_house_manager_adcbca312436730ffd9194688f2b4e0cd}{house1}}.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00035}00035                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00036}00036             \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00037}00037                 HideAll();}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00038}00038                 \mbox{\hyperlink{class_property_house_manager_adcbca312436730ffd9194688f2b4e0cd}{house1}}.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00039}00039                 \mbox{\hyperlink{class_property_house_manager_ac4be1826c494613448ace83241da6b62}{house2}}.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00040}00040                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00041}00041             \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00042}00042                 HideAll();}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00043}00043                 \mbox{\hyperlink{class_property_house_manager_adcbca312436730ffd9194688f2b4e0cd}{house1}}.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00044}00044                 \mbox{\hyperlink{class_property_house_manager_ac4be1826c494613448ace83241da6b62}{house2}}.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00045}00045                 \mbox{\hyperlink{class_property_house_manager_a9e342fc9fb515db238c31150f3ded5e7}{house3}}.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00046}00046                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00047}00047             \textcolor{keywordflow}{case} 4:}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00048}00048                 HideAll();}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00049}00049                 \mbox{\hyperlink{class_property_house_manager_adcbca312436730ffd9194688f2b4e0cd}{house1}}.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00050}00050                 \mbox{\hyperlink{class_property_house_manager_ac4be1826c494613448ace83241da6b62}{house2}}.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00051}00051                 \mbox{\hyperlink{class_property_house_manager_a9e342fc9fb515db238c31150f3ded5e7}{house3}}.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00052}00052                 \mbox{\hyperlink{class_property_house_manager_aa679cec1543d29772d6d51036e45c234}{house4}}.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00053}00053                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00054}00054             \textcolor{keywordflow}{case} 5:}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00055}00055                 HideAll();}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00056}00056                 \mbox{\hyperlink{class_property_house_manager_acdf6b5a8196d490fa4b38db756e1a509}{hotel}}.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00057}00057                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00058}00058         \}}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00059}00059     \}}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00061}00061     \textcolor{comment}{//Removes all houses from a space}}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00062}00062     \textcolor{keywordtype}{void} HideAll()}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00063}00063     \{}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00064}00064         \mbox{\hyperlink{class_property_house_manager_adcbca312436730ffd9194688f2b4e0cd}{house1}}.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00065}00065         \mbox{\hyperlink{class_property_house_manager_ac4be1826c494613448ace83241da6b62}{house2}}.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00066}00066         \mbox{\hyperlink{class_property_house_manager_a9e342fc9fb515db238c31150f3ded5e7}{house3}}.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00067}00067         \mbox{\hyperlink{class_property_house_manager_aa679cec1543d29772d6d51036e45c234}{house4}}.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00068}00068         \mbox{\hyperlink{class_property_house_manager_acdf6b5a8196d490fa4b38db756e1a509}{hotel}}.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00069}00069     \}}
+\DoxyCodeLine{\Hypertarget{_property_house_manager_8cs_source_l00070}00070 \}}
+
+\end{DoxyCode}
