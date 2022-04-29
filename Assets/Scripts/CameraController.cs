@@ -10,7 +10,8 @@ public class CameraController : MonoBehaviour
 
     public void InitialiseCameras()
     {
-        mainCamera.enabled = true; //ensures we start on the main camera, disables the rest then goes to the current player view - E
+        //ensures we start on the main camera, disables the rest then goes to the current player view
+        mainCamera.enabled = true; 
         player1Camera.enabled = false;
         player2Camera.enabled = false;
         player3Camera.enabled = false;
@@ -20,11 +21,13 @@ public class CameraController : MonoBehaviour
         SwitchCameraView();
     }
 
+    //Selects the player that the camera will follow
     public void SetCurrentPlayer(int player)
     {
         currentPlayer = player;
     }
 
+    //Enables and Disables the cameras attached to each player in order to change the camera view to focus on the intended player
     public void SwitchCameraPlayer()
     {
         switch (currentPlayer)
@@ -55,6 +58,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    //Changes the camera view between the main, zoomed out view to a camera view following an individual player
     public void SwitchCameraView()
     {
         if (playerCameraActive == true)

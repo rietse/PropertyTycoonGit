@@ -23,33 +23,34 @@ public class Card : MonoBehaviour
     8 - where move (if #6 = 1 (0,39), if #6 = 2 (~))
     9 - goto jail? (0,1)
     10 - get out of jail free? (0,1)
-    11 - birthday? (0,1) (yeah this card needs its own seperate thing otherwise things are gonna get messy... fast.)
-    Have fun memorising all this guys :) - E
+    11 - birthday? (0,1)
     */
-    void Start()
-    {
 
-    }
-
+    //Returns the ID number of a card
     public int GetID()
     {
         return idNum;
     }
 
+    //Returns the type enum of a card
     public string GetType()
     {
         return type.ToString();
     }
+
+    //Returns the description of a card
     public string GetDescription()
     {
         return cardDescription;
     }
 
+    //Returns the effects of a card
     public int[] GetEffects()
     {
         return cardEffects;
     }
 
+    //Replaces the effect of a card with a given value
     public void SetEffect(int pos, int val)
     {
         cardEffects[pos] = val;

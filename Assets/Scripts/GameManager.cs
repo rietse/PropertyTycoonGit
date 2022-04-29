@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public Board board;
-    public PlayerController player1, player2, player3, player4, player5; //max 5 players, so might as well hook up all these guys - E
+    public PlayerController player1, player2, player3, player4, player5; //max 5 players, so might as well hook up all these guys
     public CameraController cameraController;
     public PropertyDisplay propertyDisplay;
     public MainMenuManager menuManager;
@@ -15,34 +15,15 @@ public class GameManager : MonoBehaviour
     public int noOfPlayers = 0;
     public int freeParking = 0;
     public List<PlayerController> playerList = new List<PlayerController>();
-
     private int[] currentCard;
     private int currentRoll;
     public int selectedPos = 0;
-
-    //SEANS STUFF SORRY IF SCUFFED
     public enum TurnState {MOVING, BUY, SELL}
     public TurnState turnState;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    //Sets up number of players, players positions and cameras, as well as initialising the turnstate enum
     public void InitialiseGame()
     {
-        if (noOfPlayers == 0)
-        {
-            //get number of players once we can choose how many are gonna play, for now I'm setting it to all 5 so I can test this works, we might also  chuck this somewhere else, it's just here as a reminder to code this lol - E
-            noOfPlayers = 5;
-        }
         InitialisePlayers();
         InitialiseCameras();
         board.InitialisePlayerPositions();
@@ -51,15 +32,17 @@ public class GameManager : MonoBehaviour
         turnState = TurnState.MOVING;
     }
 
+    //Initialises the camera position
     void InitialiseCameras()
     {
         cameraController.SetCurrentPlayer(currentPlayer);
         cameraController.InitialiseCameras();
     }
 
+    //Initialises the number of players and their tokens
     void InitialisePlayers()
     {
-        //always gonna be at least 2 players including AI, you can't play Property Tycoon on your own - E
+        //always gonna be at least 2 players including AI, you can't play Property Tycoon on your own
         playerList.Add(player1);
         playerList.Add(player2);
 
@@ -77,16 +60,17 @@ public class GameManager : MonoBehaviour
         }
         SetOffsets();
 
-        player1.SetActiveModel(1); //remove these lines once the UI start menu lets players choose their pieces - E
-        player2.SetActiveModel(2); //it's just here so I can check my code codes - E
+        //Assigns a token to each player
+        player1.SetActiveModel(1);
+        player2.SetActiveModel(2);
         player3.SetActiveModel(3);
         player4.SetActiveModel(4);
         player5.SetActiveModel(5);
     }
 
+    //Changes the position of the player tokens so they don't intersect
     void SetOffsets()
     {
-        //so I can actually tell whats happening and the spheres aren't inside each other - E
         player1.SetOffset(0.0f, 0.0f);
         player2.SetOffset(4.0f, 0.0f);
         player3.SetOffset(-4.0f, 0.0f);
@@ -94,15 +78,18 @@ public class GameManager : MonoBehaviour
         player5.SetOffset(0.0f, -4.0f);
     }
 
+    //Returns free parking integer
     public int GetFreeParking()
     {
         return freeParking;
     }
 
+    //Returns the number of players
     int GetNoOfPlayers()
     {
         return noOfPlayers;
     }
+
 
     void SetNoOfPlayers(int n)
     {
@@ -170,7 +157,6 @@ public class GameManager : MonoBehaviour
         CheckSpace(playerList[currentPlayer - 1].GetPos());
         selectedPos = playerList[currentPlayer - 1].GetPos();
         propertyDisplay.SetDisplay(board.GetSpace(selectedPos), selectedPos);
-        turnState = TurnState.SELL;
     }
 
     public void CheckSpace(int pos)

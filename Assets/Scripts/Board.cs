@@ -9,10 +9,11 @@ public class Board : MonoBehaviour
     public List<GameObject> oppCardList;
     public List<GameObject> potCardList;
     public GameManager gameManager;
-    public int[] spaceStates = new int[40]; //Key: 0 - unowned, 1 to 5 - owned by said player, 6 - special space cannot be buy - E
+    public int[] spaceStates = new int[40]; //Key: 0 - unowned, 1 to 5 - owned by said player, 6 - special space cannot be buy
     public BoardSpaceCustomisation boardSpaceCustomisation;
     public CardPopup cardPopup;
 
+    //Initialises all the data used by the board
     void Start()
     {
         spaces = GameObject.FindGameObjectsWithTag("Space");
@@ -25,15 +26,18 @@ public class Board : MonoBehaviour
         boardSpaceCustomisation.InitialisePropertyList();
     }
 
+    //Sets all of the player positions to Go
     public void InitialisePlayerPositions()
     {
         foreach (GameObject p in players)
         {
             p.transform.position = spaces[0].transform.position;
+            //Offsets the tokens so they don't intersect each other
             p.GetComponent<PlayerController>().OffsetPlayer();
         }
     }
 
+    //Initialises the space data by setting variables of each instance of the "Space" class
     void InitialiseSpaceStates()
     {
         int price = 0;
@@ -67,7 +71,7 @@ public class Board : MonoBehaviour
     }
 
     List<GameObject> ShuffleCards(List<GameObject> deck)
-    { //Fisher-Yates shuffle algorithm, grabs a random object, puts it at the 'end' of the list then repeats until it reaches the start - E
+    { //Fisher-Yates shuffle algorithm, grabs a random object, puts it at the 'end' of the list then repeats until it reaches the start
         List<GameObject> tempDeck = new List<GameObject>(deck);
         deck.Clear();
 
@@ -82,6 +86,7 @@ public class Board : MonoBehaviour
         return deck;
     }
 
+    //Removes a card from either list of cards depending on whether it is an Opportunity card or Pot luck and returns the effect of the selected card
     public int[] DrawCard(string c)
     {
         int[] cardEffect = null;
@@ -108,6 +113,7 @@ public class Board : MonoBehaviour
         return cardEffect;
     }
 
+    //Triggers the UI element representing the chosen card to become active
     public void TriggerLatestCard(bool drawNew)
     {
 
@@ -130,31 +136,36 @@ public class Board : MonoBehaviour
         }
     }
 
+    //Returns whether a new card has been drawn
     public bool CheckDrawNew()
     {
         return cardPopup.ValidNewDraw();
     }
 
+    //Returns a specified integer from the spaceStates array
     public int GetState(int i)
     {
         return spaceStates[i];
     }
 
+    //Changes the value of one specific integer from the spaceStates array
     public void SetState(int i, int state)
     {
         spaceStates[i] = state;
     }
 
+    //Returns a specified Space GameObject from the spaces array
     public GameObject GetSpace(int i)
     {
         return spaces[i];
     }
 
+    //Returns the development level (i.e. number of houses) of a specified property
     public int GetHouses(int i)
     {
         int devLevel = spaces[i].GetComponent<Property>().GetDevelopmentLevel();
 
-        if((devLevel > 0) && (devLevel < 5)) //devLevels 1-4 = the number of houses on the spot which is pretty convenient, 0 or 5 indicates nothing or a hotel so no need to return a value - E
+        if((devLevel > 0) && (devLevel < 5)) //devLevels 1-4 = the number of houses on the spot which is pretty convenient, 0 or 5 indicates nothing or a hotel so no need to return a value
         {
             return devLevel;
         }
@@ -164,9 +175,10 @@ public class Board : MonoBehaviour
         }
     }
 
+    //Returns a value indicating if a specified property has a hotel or not
     public int GetHotels(int i)
     {
-        if (spaces[i].GetComponent<Property>().GetDevelopmentLevel() == 5) //development level 5 is a hotel so we just need to check that - E
+        if (spaces[i].GetComponent<Property>().GetDevelopmentLevel() == 5) //development level 5 is a hotel so we just need to check that
         {
             return 1;
         }

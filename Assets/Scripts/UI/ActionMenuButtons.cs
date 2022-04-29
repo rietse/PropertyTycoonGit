@@ -56,14 +56,7 @@ public class ActionMenuButtons : MonoBehaviour
                 }
                 break;
             case ButtonTypes.ENDTURN:
-                if (gm.turnState == GameManager.TurnState.SELL || gm.turnState == GameManager.TurnState.BUY)
-                {
                     gameObject.GetComponent<Button>().interactable = true;
-                }
-                else
-                {
-                    gameObject.GetComponent<Button>().interactable = false;
-                }
                 break;
             default:
                 break;
