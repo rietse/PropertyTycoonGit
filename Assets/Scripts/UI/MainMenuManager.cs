@@ -265,4 +265,14 @@ public class MainMenuManager: MonoBehaviour
     {
         gm.GetComponent<CameraController>().SwitchCameraView();
     }
+
+    public void UpgradeProp()
+    {
+        gm.UpgradeProperty();
+    }
+
+    public void DegradeProp()
+    {
+        gm.DegradeProperty();
+    }
 }
