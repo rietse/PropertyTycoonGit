@@ -6,6 +6,7 @@ using TMPro;
 public class PlayerControllerTest : MonoBehaviour
 {
     public TextMeshProUGUI currentPlayerNo;
+    public TextMeshProUGUI diceResult;
     public TextMeshProUGUI playerMoney;
     public GameManagerTest gsm;
     public PlayerControllerTESTONLY player;
@@ -14,6 +15,7 @@ public class PlayerControllerTest : MonoBehaviour
     {
         gsm.GetComponent<GameManagerTest>().RollDice();
         currentPlayerText();
+        DiceResultText();
     }
     public void Move()
     {
@@ -38,6 +40,11 @@ public class PlayerControllerTest : MonoBehaviour
     void PlayerMoneyText()
     {
         playerMoney.SetText("Player " + gsm.GetCurrentPlayer().ToString() + ": " + player.GetMoney());
+    }
+
+    void DiceResultText()
+    {
+        diceResult.SetText("diceResult = " + gsm.RollDice().ToString());
     }
 
     public void UpdateMoney()

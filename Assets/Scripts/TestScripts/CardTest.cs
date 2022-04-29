@@ -14,11 +14,13 @@ public class CardTest : MonoBehaviour
     public PlayerControllerTESTONLY player;
     public string oppList;
     public string potList;
+    public TextMeshProUGUI diceResult;
 
     public void Dice()
     {
         gsm.GetComponent<GameManagerTest>().RollDice();
         currentPlayerText();
+        DiceResultText();
     }
     public void Move()
     {
@@ -98,5 +100,10 @@ public class CardTest : MonoBehaviour
     void PotCardListText()
     {
         PotLuckList.SetText(potList);
+    }
+
+    void DiceResultText()
+    {
+        diceResult.SetText("diceResult = " + gsm.RollDice().ToString());
     }
 }
