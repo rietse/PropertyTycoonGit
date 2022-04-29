@@ -8,6 +8,7 @@ public class Board : MonoBehaviour
     public GameObject[] players;
     public List<GameObject> oppCardList;
     public List<GameObject> potCardList;
+    public GameManager gameManager;
     public int[] spaceStates = new int[40]; //Key: 0 - unowned, 1 to 5 - owned by said player, 6 - special space cannot be buy - E
     public BoardSpaceCustomisation boardSpaceCustomisation;
     public CardPopup cardPopup;
@@ -104,8 +105,34 @@ public class Board : MonoBehaviour
         print(card.GetComponent<Card>().GetDescription());
         cardEffect = card.GetComponent<Card>().GetEffects();
         cardPopup.LatestCard(card);
-        cardPopup.Popup();
         return cardEffect;
+    }
+
+    public void TriggerLatestCard(bool drawNew)
+    {
+
+        if (drawNew == true)
+        {
+            if(cardPopup.GetNewDraw() == 1)
+            {
+                DrawCard("OPP");
+            }
+            else
+            {
+                DrawCard("POT");
+            }
+            cardPopup.Popup();
+        }
+        else
+        {
+            int[] effect = cardPopup.GetCardEffects();
+            gameManager.TriggerCardEffect(effect);
+        }
+    }
+
+    public bool CheckDrawNew()
+    {
+        return cardPopup.ValidNewDraw();
     }
 
     public int GetState(int i)

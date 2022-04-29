@@ -226,5 +226,19 @@ public class MainMenuManager: MonoBehaviour
         buyMenuText.text = buyString;
     }
 
+    public void TriggerCard()
+    {
+        board.TriggerLatestCard(false);
+    }
 
+    public void DrawNewCard()
+    {
+        if (board.CheckDrawNew() == true)
+        {
+            ExitPopup();
+            board.TriggerLatestCard(true);
+        }
+        else
+            print("Can't draw a new card!");
+    }
 }

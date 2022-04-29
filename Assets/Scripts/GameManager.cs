@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public CameraController cameraController;
     public PropertyDisplay propertyDisplay;
     public MainMenuManager menuManager;
+    public CardPopup cardPopup;
     public int currentPlayer = 1;
     public int noOfPlayers = 0;
     public int freeParking = 0;
@@ -270,7 +271,7 @@ public class GameManager : MonoBehaviour
 
         if (cardEffect != null)
         {
-            TriggerCardEffect(cardEffect);
+            cardPopup.Popup();
         }
     }
 
@@ -295,7 +296,7 @@ public class GameManager : MonoBehaviour
         return true; //if all checks suceed, we have determined it's an undeveloped monopoly, so double rent! - E
     }
 
-    void TriggerCardEffect(int[] cardEffect)
+    public void TriggerCardEffect(int[] cardEffect)
     {
         int money, moveVal = 0;
 

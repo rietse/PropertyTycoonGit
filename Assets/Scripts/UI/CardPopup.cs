@@ -38,4 +38,31 @@ public class CardPopup : MonoBehaviour
     {
         cardPanel.SetActive(false);
     }
+
+    public int[] GetCardEffects()
+    {
+        return latestCard.GetComponent<Card>().GetEffects();
+    }
+
+    public GameObject GetCard()
+    {
+        return latestCard;
+    }
+
+    public bool ValidNewDraw()
+    {
+        if (GetNewDraw() == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public int GetNewDraw()
+    {
+        return (latestCard.GetComponent<Card>().GetEffects())[0];
+    }
 }
