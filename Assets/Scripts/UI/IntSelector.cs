@@ -7,12 +7,12 @@ using TMPro;
 public class IntSelector : MonoBehaviour
 {
     public int total;
-    public TextMeshProUGUI i1, i2, i3, i4;
+    public TextMeshProUGUI i1, i2, i3, i4; //the four integers of the apocalypse - E
 
-    public void InitialiseText(int i)
+    public void InitialiseText(int i) //initialises the number - E
     {
         string s = i.ToString();
-        switch(s.Length)
+        switch(s.Length) //switch case my beloved determines the number of digits so they go where they are supposed to - E
         {
             case 1:
                 i1.text = "0";
@@ -52,7 +52,7 @@ public class IntSelector : MonoBehaviour
         total = i;
     }
 
-    void CalculateTotal()
+    void CalculateTotal() //classic primary school multiplication here you love to see it - E
     {
         int i = 0;
         i += Convert.ToInt32(i1.text) * 1000;
@@ -62,10 +62,10 @@ public class IntSelector : MonoBehaviour
         SetTotal(i);
     }
 
-    public void PressUB1()
+    public void PressUB1() //ik this is super bad having the same method like 8 times, but don't judge me I've done so much coding that as long as it works I don't care about anything else :( - E
     {
         int i = Convert.ToInt32(i1.text);
-        if (i == 9)
+        if (i == 9) //loops back if at 9 - E
         {
             i1.text = "0";
         }
@@ -73,7 +73,7 @@ public class IntSelector : MonoBehaviour
         {
             i1.text = (Convert.ToInt32(i1.text) + 1).ToString();
         }
-        CalculateTotal();
+        CalculateTotal(); //gotta keep this updated - E
     }
 
     public void PressUB2()
@@ -116,7 +116,7 @@ public class IntSelector : MonoBehaviour
         }
         CalculateTotal();
     }
-    public void PressDB1()
+    public void PressDB1() //same as the above 4 methods, but decreases the digit - E
     {
         int i = Convert.ToInt32(i1.text);
         if (i == 0)

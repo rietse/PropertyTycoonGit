@@ -10,6 +10,7 @@ public class Board : MonoBehaviour
     public List<GameObject> potCardList;
     public int[] spaceStates = new int[40]; //Key: 0 - unowned, 1 to 5 - owned by said player, 6 - special space cannot be buy - E
     public BoardSpaceCustomisation boardSpaceCustomisation;
+    public CardPopup cardPopup;
 
     void Start()
     {
@@ -102,6 +103,8 @@ public class Board : MonoBehaviour
 
         print(card.GetComponent<Card>().GetDescription());
         cardEffect = card.GetComponent<Card>().GetEffects();
+        cardPopup.LatestCard(card);
+        cardPopup.Popup();
         return cardEffect;
     }
 
