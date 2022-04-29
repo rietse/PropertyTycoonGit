@@ -14,11 +14,13 @@ public class PropertyHouseManager : MonoBehaviour
         UpdateHouses(0); //ensures all houses are hidden at the start of the game - E
     }
 
+    //Sets position of house
     public void SetPosition(Vector3 pos)
     {
         transform.position = pos + offset; ;
     }
 
+    //Updates number of houses on a space
     public void UpdateHouses(int x)
     {
         state = x;
@@ -56,6 +58,7 @@ public class PropertyHouseManager : MonoBehaviour
         }
     }
 
+    //Removes all houses from a space
     void HideAll()
     {
         house1.SetActive(false);

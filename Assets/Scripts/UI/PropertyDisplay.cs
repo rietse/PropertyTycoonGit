@@ -21,13 +21,15 @@ public class PropertyDisplay : MonoBehaviour
         gameManager.SetSelectedPos(pos);
     }
 
+    //Updates UI text displaying selected space data
     public void RefreshDisplay()
     {
         string type = currentSpace.GetComponent<Space>().GetType();
         string body = "Position: " + (currentPos + 1) + "\n";
-        displayTitle.text = currentSpace.GetComponent<Space>().GetName(); //sets title, duh - E
+        displayTitle.text = currentSpace.GetComponent<Space>().GetName();
 
-        switch (type) //*slaps switch case* this bad boy can hold so much parsing - E
+        //changes text based on space type and property data
+        switch (type)
         {
             case "GO":
                 body += "\nPass 'GO' to collect £200, you know the drill.";
@@ -99,6 +101,7 @@ public class PropertyDisplay : MonoBehaviour
         displayText.text = body;
     }
 
+    //returns owner of a property based on number ID
     string GetSpaceOwner(int pos)
     {
         switch(board.GetState(pos))

@@ -17,7 +17,8 @@ public class BoardSpaceCustomisation : MonoBehaviour
 
     public void InitialisePropertyList()
     {
-        for (int i = 0; i < 40; i++) //grabs every space in board.spaces[] that is a property, it wouldn't do to try some of these methods on the jail for example! - E
+        //grabs every space in board.spaces[] that is a property, it wouldn't do to try some of these methods on the jail for example!
+        for (int i = 0; i < 40; i++) 
         {
             if (board.GetSpace(i).GetComponent<Space>().GetType() == "PROP")
             {
@@ -25,9 +26,11 @@ public class BoardSpaceCustomisation : MonoBehaviour
                 propertyPositions.Add(i);
             }
         }
-        DisplayText(0); //defaults all data to the first property space (Old Creek my beloved) - E
+        //defaults all data to the first property space
+        DisplayText(0);
     }
 
+    //Sets name and updates space text on board
     void SetName(string text)
     {
         spaceName = text;
@@ -39,19 +42,22 @@ public class BoardSpaceCustomisation : MonoBehaviour
         return spaceName;
     }
 
-    public void SetIntCounter(int i, int j) //sets the values in the counters to their corresponding rent/price value - E
+    //sets the values in the counters to their corresponding rent/price value
+    public void SetIntCounter(int i, int j) 
     {
         intSelectors[i].InitialiseText(j);
         values[i] = j;
     }
 
-    public int GetIntCounter(int i) //grabs the value in the int counter, pretty self explainatory - E
+    //Returns value in int counter
+    public int GetIntCounter(int i)
     {
         int j = intSelectors[i].GetTotal();
         values[i] = j;
         return j;
     }
 
+    //Updates space text on board
     public void DisplayText(int space)
     {
         displayedPos = space; //updates the pointer for where we are in the list - E
@@ -68,7 +74,8 @@ public class BoardSpaceCustomisation : MonoBehaviour
         SetIntCounter(6, rentList[5]);
     }
 
-    public void SaveText() //this is where the fun begins... not. - E
+    //Saves text to space objects
+    public void SaveText() 
     {
         List<int> rentList = propertySpaces[displayedPos].GetComponent<Property>().GetRentList();
         for(int i = 0; i < 6; i++)
@@ -84,6 +91,7 @@ public class BoardSpaceCustomisation : MonoBehaviour
         print("Space " + propertyPositions[displayedPos] + " data saved!");
     }
 
+    //Resets space text to space defaults
     public void ResetText()
     {
         propertySpaces[displayedPos].GetComponent<Space>().ResetName(); //grabs the space's default values to reset it - E

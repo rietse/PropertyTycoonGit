@@ -18,6 +18,7 @@ public class Property : Space
     private List<int> defaultRentList;
     private int defaultPrice;
 
+    //Initialises rent list and price list
     void Start()
     {
         defaultRentList = rentList;
@@ -29,16 +30,19 @@ public class Property : Space
         price = p;
     }
 
+    //Resets property price to its default price
     public void ResetPrice()
     {
         price = defaultPrice;
     }
 
+    //Resets list of rent prices to default rent list
     public void ResetRentList()
     {
         rentList = defaultRentList;
     }
 
+    //Sets upgrade costs based on property colour
     public void InitialiseUpgradeCost()
     {
         switch(colour)
@@ -62,6 +66,7 @@ public class Property : Space
         }
     }
 
+    //Sets position of houses on the board
     public void InitialiseHousePositions()
     {
         propertyHouseManager.SetPosition(transform.position);
@@ -112,12 +117,14 @@ public class Property : Space
         return developmentLevel;
     }
 
+    //Increases development level by 1 and places a house on the intended property
     public void UpgradeProperty()
     {
         developmentLevel += 1;
         propertyHouseManager.UpdateHouses(developmentLevel);
     }
 
+    //Decreases development level by 1 and removes a house from the intended property
     public void DegradeProperty()
     {
         developmentLevel += -1;

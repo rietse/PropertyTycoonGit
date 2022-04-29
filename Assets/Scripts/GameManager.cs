@@ -152,11 +152,12 @@ public class GameManager : MonoBehaviour
                 validPlayer = true; //this is just here so I don't get another loop that breaks unity - E
             }
         }
+
         //Resets the turnstate
         turnState = TurnState.MOVING;
     }
 
-    //M
+    //Moves the player and updates relevant UI
     public void MovePlayer()
     {
         playerList[currentPlayer - 1].Move(currentRoll, false);
@@ -165,6 +166,7 @@ public class GameManager : MonoBehaviour
         propertyDisplay.SetDisplay(board.GetSpace(selectedPos), selectedPos);
     }
 
+    //Checks the type of space the player is on, and triggers the relevant effects of said space type
     public void CheckSpace(int pos)
     {
         GameObject space = board.GetSpace(pos);
@@ -194,8 +196,10 @@ public class GameManager : MonoBehaviour
                 turnState = TurnState.SELL;
                 break;
             case "PROP":
+                //checks if the property is owned by another player
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
+                    //checks if rent should be paid
                     if (space.GetComponent<Property>().GetMortgaged() == false && (playerList[board.GetState(pos) - 1].IsInJail() == false))
                     {
                         rent = space.GetComponent<Property>().GetRent();
@@ -274,6 +278,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Checks for Monopoly state
     bool CheckUndevelopedMonopoly(int player)
     {
         int pos = playerList[currentPlayer - 1].GetPos();
@@ -295,6 +300,7 @@ public class GameManager : MonoBehaviour
         return true; //if all checks suceed, we have determined it's an undeveloped monopoly, so double rent! - E
     }
 
+    //Triggers the effects of a drawn card to occur (e.g. gives money to current player)
     public void TriggerCardEffect(int[] cardEffect)
     {
         int money, moveVal = 0;
@@ -395,12 +401,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //TO-DO: right now you can keep rolling infinitely BEFORE moving...i should fix that - R
-    //literally why I've been reminding myself in the logs to merge the roll with the move buttons so this can't happen, so instead we have a button the does the roll, then the move, but don't do this until the game is ready to game because it good for testies - E
-    //also the player can escape jail the turn after by pressing move as it doesn't do a jail check, I'mma add this in, if it still happens here is a comment to hopefully remind me maybe - E
+    //Checks whether the players can roll dice, what number of dice should be rolled, and uses RNG to simulate a dice roll
     public int RollDice()
     {
-        //moved the code from MovementController.cs to here in line with the documentation and also having this in a central GSM is easier for me - E
         if (!playerList[currentPlayer - 1].IsInJail()) {
             if (playerList[currentPlayer - 1].GetReroll())
             {
@@ -433,6 +436,7 @@ public class GameManager : MonoBehaviour
         return 0;
     }
 
+    //Checks the amount of money a player has, and if its 0, runs the bankrupt function
     private void CheckMoney()
     {
         int money = playerList[currentPlayer - 1].GetMoney();
@@ -442,11 +446,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Checks if the current player is bankrupt
     public bool CheckBankrupt()
     {
         return !(playerList[currentPlayer - 1].GetBankrupt());
     }
 
+    //Triggers the SetBankrupt() function in the PLayerController and moves on to the next player
     public void Bankrupt()
     {
         playerList[currentPlayer - 1].SetBankrupt();
@@ -454,6 +460,7 @@ public class GameManager : MonoBehaviour
         NextPlayer();
     }
 
+    //Sets the current property to be owned by the current player, after checking they have passed go
     public void PurchaseProperty()
     {
         if (playerList[currentPlayer - 1].GetHasPassedGo())
@@ -467,18 +474,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Sells the selected property
     public void SellProperty()
     {
         playerList[currentPlayer - 1].SellProperty(currentPlayer, selectedPos);
         propertyDisplay.RefreshDisplay();
     }
 
+    //Mortgages the selected property
     public void MortgageProperty()
     {
         playerList[currentPlayer - 1].MortgageProperty(currentPlayer, selectedPos);
         propertyDisplay.RefreshDisplay();
     }
 
+    //Upgrades the selected property
     public void UpgradeProperty()
     {
         if (playerList[currentPlayer - 1].GetHasPassedGo())
@@ -488,6 +498,7 @@ public class GameManager : MonoBehaviour
         propertyDisplay.RefreshDisplay();
     }
 
+    //Downgrades the selected property
     public void DegradeProperty()
     {
         if (playerList[currentPlayer - 1].GetHasPassedGo())
@@ -497,6 +508,7 @@ public class GameManager : MonoBehaviour
         propertyDisplay.RefreshDisplay();
     }
 
+    //Removes money from the current player if they are in jail
     public void JailFine()
     {
         // the player can't just pay the fine immediately after being sent, the next time it's their turn they can pay - R
@@ -512,6 +524,7 @@ public class GameManager : MonoBehaviour
         else print("Player " + currentPlayer + " must wait a turn to leave jail!");
     }
 
+    //Uses a get out of jail free card if the player has one
     public void UseJailCard()
     {
         if (playerList[currentPlayer - 1].GetFreeJailCards() > 0)
@@ -521,16 +534,19 @@ public class GameManager : MonoBehaviour
         } else print("Player " + currentPlayer + " doesn't have a get out of jail free card!");
     }
 
+    //Sends the player to jail
     public void GoToJail()
     {
         playerList[currentPlayer - 1].GoToJail();
     }
 
+    //Sets the selected space value
     public void SetSelectedPos(int i)
     {
         selectedPos = i;
     }
 
+    //Returns the selected space value
     public int GetSelectedPos()
     {
         return selectedPos;

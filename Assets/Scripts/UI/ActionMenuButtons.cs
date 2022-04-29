@@ -56,7 +56,7 @@ public class ActionMenuButtons : MonoBehaviour
                 }
                 break;
             case ButtonTypes.ENDTURN:
-                    gameObject.GetComponent<Button>().interactable = true;
+                gameObject.GetComponent<Button>().interactable = true;
                 break;
             default:
                 break;

@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> model = new List<GameObject>();
     public int currentModel;
 
-    private string currPlayerNo = "1"; //need to change this when we have roll dice to determine order, for now this just stops it being blank - E
+    private string currPlayerNo = "1";
     public int currentPos;
     public int currentMoney;
     public int jailFreeCards = 0;
@@ -27,17 +27,20 @@ public class PlayerController : MonoBehaviour
     public bool inJail = false;
     public int jailCounter = 0;
 
+    //Initialises player money
     void Start()
     {
         currentMoney = 1500;
         SetMoneyText(currPlayerNo);
     }
 
+    //Disables the selected player token model
     void DisableModel()
     {
         model[currentModel].SetActive(false);
     }
 
+    //Activates a different model depending on specified ID number
     public void SetActiveModel(int x)
     {
         model[currentModel].SetActive(false);
@@ -45,106 +48,126 @@ public class PlayerController : MonoBehaviour
         model[x].SetActive(true);
     }
 
+    //Returns ID of the current player positon
     public int GetPos()
     {
         return currentPos;
     }
 
+    //Changes the current player position depending on specified ID number
     public void SetPos(int x)
     {
         currentPos = x;
         transform.position = board.spaces[x].transform.position + offset;
     }
 
+    //Returns player money
     public int GetMoney()
     {
         return currentMoney;
     }
 
+    //Removes rent money from payee
     public void PayRent(int rent)
     {
         currentMoney = currentMoney - rent;
         SetMoneyText(currPlayerNo);
     }
 
+    //Adds rent money to reciever
     public void RecieveRent(int rent)
     {
         currentMoney = currentMoney + rent;
     }
 
+    //Sets bankrupt bool and disables bankrupt player model
     public void SetBankrupt()
     {
         isBankrupt = true;
         DisableModel();
     }
 
+    //Returns whether player is bankrupt or not
     public bool GetBankrupt()
     {
         return isBankrupt;
     }
 
+    //Sets player model offset so models don't intersect
     public void SetOffset(float x, float z)
     {
         offset.x = x;
         offset.z = z;
     }
 
+    //Applies offset to character model
     public void OffsetPlayer()
     {
         transform.position += offset;
     }
 
+    //Updates UI text displaying player money
     public void SetMoneyText(string playerNo)
     {
         currPlayerNo = playerNo;
         moneyText.text = "Player " + currPlayerNo + " Current Money: £" + currentMoney.ToString();
     }
 
+    //Changes has rolled bool depending on specified bool value
     public void SetHasRolled(bool rolled)
     {
         hasRolled = rolled;
     }
 
+    //Returns bool value of has rolled
     public bool GetHasRolled()
     {
         return hasRolled;
     }
 
+    //Changes has moved bool depending on specified bool value
     public void SetHasMoved(bool moved)
     {
         hasMoved = moved;
     }
 
+    //Returns bool value of has moved
     public bool GetHasMoved()
     {
         return hasMoved;
     }
 
+    //Changes reroll bool depending on specified bool value
     public void SetReroll(bool reroll)
     {
         canReroll = reroll;
     }
 
+    //returns bool value of can reroll
     public bool GetReroll()
     {
         return canReroll;
     }
 
+    //Initialises doubles counter
     public void AddDoublesCounter()
     {
         doublesCounter += 1;
     }
 
+    //Returns int value of doubles counter
     public int GetDoublesCounter()
     {
         return doublesCounter;
     }
 
+    //Resets value of doubles counter to 0
     public void ResetDoublesCounter()
     {
         doublesCounter = 0;
     }
 
+    //Moves current player's position
     public void Move(int d, bool overrideMove)
     {
         if ((!IsInJail()) && (((!GetHasMoved()) && GetHasRolled()) || (overrideMove == true)))
@@ -168,6 +191,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Rotates player depending on board location
     void RotatePlayer()
     {
         float r = 0.0f;
@@ -185,16 +209,19 @@ public class PlayerController : MonoBehaviour
         transform.rotation = rotation;
     }
 
+    //Changes has passed go value depending on specified bool value
     public void SetHasPassedGo(bool passed)
     {
         hasPassedGo = passed;
     }
 
+    //Returns bool has passed go
     public bool GetHasPassedGo()
     {
         return hasPassedGo;
     }
 
+    //Triggers the game rule effects of passing go for the first time
     public void PassGo()
     {
         currentMoney += 200;
@@ -203,6 +230,7 @@ public class PlayerController : MonoBehaviour
         SetHasPassedGo(true);
     }
 
+    //Sets the current property to be owned by the current player and removes the property price from player money
     public void PurchaseProperty(int player)
     {
         currPlayerNo = player.ToString(); //might as well keep this updated ig - E
@@ -245,6 +273,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Sets the selected property to not be owned by the current player and adds selling price of property to player money
     public void SellProperty(int player, int pos)
     {
         currPlayerNo = player.ToString(); //might as well keep this updated ig - E
@@ -274,6 +303,7 @@ public class PlayerController : MonoBehaviour
         else print("Can't sell the space " + pos + "!");
     }
 
+    //Sets the selected property to be mortgaged
     public void MortgageProperty(int player, int pos)
     {
         currPlayerNo = player.ToString(); //might as well keep this updated ig - E
@@ -350,6 +380,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Checks if a property has been developed
     bool CheckUndeveloped(GameObject s)
     {
         if (s.GetComponent<Space>().GetType() == "PROP")
@@ -359,6 +390,7 @@ public class PlayerController : MonoBehaviour
         return true;
     }
 
+    //Upgrades the development level of a property
     public void UpgradeProperty(int player, int pos)
     {
         currPlayerNo = player.ToString(); //might as well keep this updated ig - E
@@ -394,6 +426,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Downgrades the development level of a property
     public void DegradeProperty(int player, int pos)
     {
         currPlayerNo = player.ToString(); //might as well keep this updated ig - E
@@ -418,6 +451,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Checks if a player has Monopoly
     public bool CheckMonopoly(string colour, int pos)
     {
         for (int i = 0; i < 40; i++)
@@ -435,6 +469,7 @@ public class PlayerController : MonoBehaviour
         return true;
     }
 
+    //Returns the total number of houses owned by a player
     public int GetTotalOwnedHouses(int player)
     {
         int houses = 0;
@@ -450,6 +485,7 @@ public class PlayerController : MonoBehaviour
         return houses; 
     }
 
+    //Returns the total number of hotels owned by a player
     public int GetTotalOwnedHotels(int player)
     {
         int hotels = 0;
@@ -465,47 +501,56 @@ public class PlayerController : MonoBehaviour
         return hotels;
     }
 
+    //Gives the player a get out of jail free card
     public void RecieveFreeJailCard()
     {
         jailFreeCards += 1;
     }
 
+    //Uses a get out of jail free card
     public void UseFreeJailCard()
     {
         LeaveJail();
         jailFreeCards -= 1;
     }
 
+    //Returns any get out of jail free cards
     public int GetFreeJailCards()
     {
         return jailFreeCards;
     }
 
+    //Sets the in jail bool to specified bool value
     public void SetInJail(bool jailed)
     {
         inJail = jailed;
     }
 
+    //returns bool value of in jail
     public bool IsInJail()
     {
         return inJail;
     }
 
+    //Increments jail counter
     public void AddJailCounter()
     {
         jailCounter += 1;
     }
 
+    //Resets jail counter to 0
     public void ResetJailCounter()
     {
         jailCounter = 0;
     }
 
+    //Returns int value of jail counter
     public int GetJailCounter()
     {
         return jailCounter;
     }
 
+    //Sends player to jail
     public void GoToJail()
     {
         SetPos(10);
@@ -515,7 +560,7 @@ public class PlayerController : MonoBehaviour
         inJail = true;
     }
 
-    //TO-DO: add the jail free card method - R
+    //Removes money from player as a jail fine
     public void JailFine()
     {
         currentMoney -= 50;
@@ -523,6 +568,7 @@ public class PlayerController : MonoBehaviour
         LeaveJail();
     }
 
+    //Removes player from jail
     void LeaveJail()
     {
         inJail = false;
