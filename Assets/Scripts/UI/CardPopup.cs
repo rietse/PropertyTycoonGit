@@ -9,12 +9,14 @@ public class CardPopup : MonoBehaviour
     public GameObject cardPanel;
     public GameObject latestCard;
 
+    //Updates latest card pulled and updates text
     public void LatestCard(GameObject card)
     {
         latestCard = card;
         DisplayText();
     }
 
+    //Updates card UI text
     void DisplayText()
     {
         if (latestCard.GetComponent<Card>().GetType() == "OPP")
@@ -29,11 +31,13 @@ public class CardPopup : MonoBehaviour
         cardDescription.text = latestCard.GetComponent<Card>().GetDescription();
     }
 
+    //Sets card popup window to be active
     public void Popup()
     {
         cardPanel.SetActive(true);
     }
 
+    //Sets card popup window to be disabled
     public void HidePopup()
     {
         cardPanel.SetActive(false);
@@ -49,6 +53,7 @@ public class CardPopup : MonoBehaviour
         return latestCard;
     }
 
+    //Checks if new draw is valid
     public bool ValidNewDraw()
     {
         if (GetNewDraw() == 0)

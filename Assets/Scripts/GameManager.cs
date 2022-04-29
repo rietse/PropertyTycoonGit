@@ -159,11 +159,12 @@ public class GameManager : MonoBehaviour
                 validPlayer = true; //this is just here so I don't get another loop that breaks unity - E
             }
         }
+
         //Resets the turnstate
         turnState = TurnState.MOVING;
     }
 
-    //M
+    //Moves the player and updates relevant UI
     public void MovePlayer()
     {
         playerList[currentPlayer - 1].Move(currentRoll, false);
@@ -172,6 +173,7 @@ public class GameManager : MonoBehaviour
         propertyDisplay.SetDisplay(board.GetSpace(selectedPos), selectedPos);
     }
 
+    //Checks the type of space the player is on, and triggers the relevant effects of said space type
     public void CheckSpace(int pos)
     {
         GameObject space = board.GetSpace(pos);
@@ -183,7 +185,7 @@ public class GameManager : MonoBehaviour
         {
             case "PARK":
                 playerList[currentPlayer - 1].RecieveRent(freeParking);
-                print("Player " + currentPlayer + " recieved £" + freeParking + " from free parking!");
+                print("Player " + currentPlayer + " recieved ï¿½" + freeParking + " from free parking!");
                 freeParking = 0;
                 turnState = TurnState.SELL;
                 break;
@@ -201,13 +203,15 @@ public class GameManager : MonoBehaviour
                 turnState = TurnState.SELL;
                 break;
             case "PROP":
+                //checks if the property is owned by another player
                 if ((board.GetState(pos) != 0) && (board.GetState(pos) != currentPlayer))
                 {
+                    //checks if rent should be paid
                     if (space.GetComponent<Property>().GetMortgaged() == false && (playerList[board.GetState(pos) - 1].IsInJail() == false))
                     {
                         rent = space.GetComponent<Property>().GetRent();
                         if (CheckUndevelopedMonopoly(board.GetState(pos)) == true) { rent = rent * 2; }
-                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
+                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
                         playerList[currentPlayer - 1].PayRent(rent);
                         playerList[board.GetState(pos) - 1].RecieveRent(rent);
                     }
@@ -220,12 +224,12 @@ public class GameManager : MonoBehaviour
             case "TAX":
                 if(pos == 4) //income tax position - E
                 {
-                    print("Player " + currentPlayer + " has to pay £200 in taxes!");
+                    print("Player " + currentPlayer + " has to pay ï¿½200 in taxes!");
                     playerList[currentPlayer - 1].PayRent(200);
                 }
                 else if (pos == 38) //super tax position - E
                 {
-                    print("Player " + currentPlayer + " has to pay £100 in taxes!");
+                    print("Player " + currentPlayer + " has to pay ï¿½100 in taxes!");
                     playerList[currentPlayer - 1].PayRent(100);
                 }
                 turnState = TurnState.SELL;
@@ -242,7 +246,7 @@ public class GameManager : MonoBehaviour
                         if (board.GetState(35) == board.GetState(pos)) { rentD = rentD * 2; }
                         rent = Convert.ToInt32(rentD); //just need to borrow a double because ints don't decimal - E
 
-                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
+                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
                         playerList[currentPlayer - 1].PayRent(rent);
                         playerList[board.GetState(pos) - 1].RecieveRent(rent);
 
@@ -262,7 +266,7 @@ public class GameManager : MonoBehaviour
                         }
                         else { rent = currentRoll * 4; }
 
-                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
+                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
                         playerList[currentPlayer - 1].PayRent(rent);
                         playerList[board.GetState(pos) - 1].RecieveRent(rent);
 
@@ -281,6 +285,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Checks for Monopoly state
     bool CheckUndevelopedMonopoly(int player)
     {
         int pos = playerList[currentPlayer - 1].GetPos();
@@ -302,6 +307,7 @@ public class GameManager : MonoBehaviour
         return true; //if all checks suceed, we have determined it's an undeveloped monopoly, so double rent! - E
     }
 
+    //Triggers the effects of a drawn card to occur (e.g. gives money to current player)
     public void TriggerCardEffect(int[] cardEffect)
     {
         int money, moveVal = 0;
@@ -313,19 +319,19 @@ public class GameManager : MonoBehaviour
             if (cardEffect[1] == 1)
             {
                 playerList[currentPlayer - 1].RecieveRent(money);
-                print("Player " + currentPlayer + " recieved £" + money + " from a card!");
+                print("Player " + currentPlayer + " recieved ï¿½" + money + " from a card!");
                 playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
             }
             if (cardEffect[2] == 1)
             {
                 playerList[currentPlayer - 1].PayRent(money);
-                print("Player " + currentPlayer + " paid £" + money + " from a card!");
+                print("Player " + currentPlayer + " paid ï¿½" + money + " from a card!");
                 playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
             }
             if (cardEffect[3] == 1)
             {
                 freeParking += money;
-                print("Player " + currentPlayer + "'s fine of £" + money + " went to the free parking fund (total: £" + freeParking + ")!");
+                print("Player " + currentPlayer + "'s fine of ï¿½" + money + " went to the free parking fund (total: ï¿½" + freeParking + ")!");
             }
 
             //all movement effects go here - E
@@ -384,16 +390,13 @@ public class GameManager : MonoBehaviour
                 }
                 playerList[currentPlayer - 1].RecieveRent(money * noOfPlayers); //...then gives the birthday money * the number of players after - E
                 playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
-                print("Player " + currentPlayer + " recieved £" + money + " from each player for their birthday!");
+                print("Player " + currentPlayer + " recieved ï¿½" + money + " from each player for their birthday!");
             }
     }
 
-    //TO-DO: right now you can keep rolling infinitely BEFORE moving...i should fix that - R
-    //literally why I've been reminding myself in the logs to merge the roll with the move buttons so this can't happen, so instead we have a button the does the roll, then the move, but don't do this until the game is ready to game because it good for testies - E
-    //also the player can escape jail the turn after by pressing move as it doesn't do a jail check, I'mma add this in, if it still happens here is a comment to hopefully remind me maybe - E
+    //Checks whether the players can roll dice, what number of dice should be rolled, and uses RNG to simulate a dice roll
     public int RollDice()
     {
-        //moved the code from MovementController.cs to here in line with the documentation and also having this in a central GSM is easier for me - E
         if (!playerList[currentPlayer - 1].IsInJail()) {
             if (playerList[currentPlayer - 1].GetReroll())
             {
@@ -426,6 +429,7 @@ public class GameManager : MonoBehaviour
         return 0;
     }
 
+    //Checks the amount of money a player has, and if its 0, runs the bankrupt function
     private void CheckMoney()
     {
         int money = playerList[currentPlayer - 1].GetMoney();
@@ -435,11 +439,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Checks if the current player is bankrupt
     public bool CheckBankrupt()
     {
         return !(playerList[currentPlayer - 1].GetBankrupt());
     }
 
+    //Triggers the SetBankrupt() function in the PLayerController and moves on to the next player
     public void Bankrupt()
     {
         playerList[currentPlayer - 1].SetBankrupt();
@@ -447,6 +453,7 @@ public class GameManager : MonoBehaviour
         NextPlayer();
     }
 
+    //Sets the current property to be owned by the current player, after checking they have passed go
     public void PurchaseProperty()
     {
         if (playerList[currentPlayer - 1].GetHasPassedGo())
@@ -460,18 +467,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Sells the selected property
     public void SellProperty()
     {
         playerList[currentPlayer - 1].SellProperty(currentPlayer, selectedPos);
         propertyDisplay.RefreshDisplay();
     }
 
+    //Mortgages the selected property
     public void MortgageProperty()
     {
         playerList[currentPlayer - 1].MortgageProperty(currentPlayer, selectedPos);
         propertyDisplay.RefreshDisplay();
     }
 
+    //Upgrades the selected property
     public void UpgradeProperty()
     {
         if (playerList[currentPlayer - 1].GetHasPassedGo())
@@ -481,6 +491,7 @@ public class GameManager : MonoBehaviour
         propertyDisplay.RefreshDisplay();
     }
 
+    //Downgrades the selected property
     public void DegradeProperty()
     {
         if (playerList[currentPlayer - 1].GetHasPassedGo())
@@ -490,6 +501,7 @@ public class GameManager : MonoBehaviour
         propertyDisplay.RefreshDisplay();
     }
 
+    //Removes money from the current player if they are in jail
     public void JailFine()
     {
         // the player can't just pay the fine immediately after being sent, the next time it's their turn they can pay - R
@@ -519,16 +531,19 @@ public class GameManager : MonoBehaviour
         } else print("Player " + currentPlayer + " doesn't have a get out of jail free card!");
     }
 
+    //Sends the player to jail
     public void GoToJail()
     {
         playerList[currentPlayer - 1].GoToJail();
     }
 
+    //Sets the selected space value
     public void SetSelectedPos(int i)
     {
         selectedPos = i;
     }
 
+    //Returns the selected space value
     public int GetSelectedPos()
     {
         return selectedPos;

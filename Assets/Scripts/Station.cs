@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Station : Space
 {
+    //Holds price and mortgage data for Station spaces
     public int statPrice;
     public bool isMortgaged = false;
 

@@ -13,6 +13,7 @@ public class Space : MonoBehaviour
     public TextMeshPro boardSpacePrice;
     public string defaultName;
 
+    //Initialises the property name and text
     public void InitialiseText()
     {
         if (type == Type.PROP || type == Type.STAT || type == Type.UTIL) //grabs the stored spaceName, allows player to customise buyable tiles without messing with gameplay tiles - E
@@ -30,16 +31,19 @@ public class Space : MonoBehaviour
         defaultName = spaceName;
     }
 
+    //Resets the space name to its default name
     public void ResetName()
     {
         spaceName = defaultName;
     }
 
+    //Initialise the displayed price of a property
     public void InitialisePriceText(int p)
     {
         boardSpacePrice.SetText("£" + p);
     }
 
+    //Updates board text
     public void RefreshText(int i)
     {
         InitialiseText();
@@ -50,6 +54,7 @@ public class Space : MonoBehaviour
     {
         return type.ToString();
     }
+
     public string GetName()
     {
         return spaceName;

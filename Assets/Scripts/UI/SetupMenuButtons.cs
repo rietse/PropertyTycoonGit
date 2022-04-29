@@ -37,6 +37,7 @@ public class SetupMenuButtons : MonoBehaviour
         //disabling selected button so it appears to stay selected persistently
         gameObject.GetComponent<Button>().interactable = false;
 
+        //UNFINISHED
         if (isAbridged)
         {
             //talk to gm

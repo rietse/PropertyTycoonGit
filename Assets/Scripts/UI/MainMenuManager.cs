@@ -17,7 +17,6 @@ public class MainMenuManager: MonoBehaviour
     public GameObject boardMenu;
     public GameObject customMenu;
     public PropertyDisplay propertyDisplay;
-    public bool testing = true;
     private bool gameActive;
 
     public GameManager gm;
@@ -28,7 +27,7 @@ public class MainMenuManager: MonoBehaviour
     public TextMeshProUGUI propText;
     public TextMeshProUGUI buyMenuText;
 
-
+    //Updates UI text indicating current space and current owned properties
     void Update()
     {
         if (gameActive)
@@ -41,6 +40,7 @@ public class MainMenuManager: MonoBehaviour
         }
     }
 
+    //Button function to start game
     public void StartGame()
     {
         if (gm.noOfPlayers > 0)
@@ -51,41 +51,49 @@ public class MainMenuManager: MonoBehaviour
         }  
     }
 
+    //Button function to activate game setup menu
     public void GameSetup()
     {
         setupMenuPanel.gameObject.SetActive(true);
     }
 
+    //Shifts board customisation UI
     public void ShiftLeft()
     {
         BoardSpaceCustomisation.ShiftLeft();
     }
 
+    //Shifts board customisation UI
     public void ShiftRight()
     {
         BoardSpaceCustomisation.ShiftRight();
     }
 
+    //Saves Customisation input text
     public void SaveCustomSpace()
     {
         BoardSpaceCustomisation.SaveText();
     }
 
+    //Resets customisation text
     public void ResetCustomSpace()
     {
         BoardSpaceCustomisation.ResetText();
     }
 
+    //Button function reactivates customisation menu
     public void CloseCustomMenu()
     {
         customMenu.gameObject.SetActive(false);
     }
 
+    //UNFINISHED
     public void Options()
     {
         //put something here
     }
 
+    //Button function closes all open popups
     public void ExitPopup()
     {
         GameObject[] popups = GameObject.FindGameObjectsWithTag("Popup");
@@ -95,36 +103,38 @@ public class MainMenuManager: MonoBehaviour
         }
     }
 
+    //Button function quits game
     public void ExitGame()
     {
-        Debug.Log("Quit");
-        if (!testing)
-        {
-            Application.Quit();
-        }
+        Application.Quit();
     }
 
+    //Button function opens customisation menu
     public void Customise()
     {
         customMenu.gameObject.SetActive(!customMenu.gameObject.activeSelf);
     }
 
+    //Button function opens space data menu
     public void ShowSpaceData()
     {
         spacePopup.gameObject.SetActive(!spacePopup.gameObject.activeSelf);
         boardMenu.gameObject.SetActive(spacePopup.gameObject.activeSelf);
     }
 
+    //Button function activates owned property data panel
     public void ShowPropData()
     {
         propPopup.gameObject.SetActive(!propPopup.gameObject.activeSelf);
     }
 
+    //Toggles debug menu
     public void ShowDebugMenu()
     {
         debugMenu.gameObject.SetActive(!debugMenu.gameObject.activeSelf);
     }
 
+    //Updates UI text displaying current position
     public void SetSpaceText()
     {
         int curPos = gm.playerList[gm.currentPlayer-1].currentPos;
@@ -132,35 +142,41 @@ public class MainMenuManager: MonoBehaviour
         spaceText.text = "Current Position: " + curspace.GetName();
     }
 
+    //Button function to move player
     public void Move()
     {
         gm.RollDice();
         gm.MovePlayer();
     }
 
+    //Button function to end turn
     public void EndTurn()
     {
         gm.NextPlayer();
     }
 
+    //Button function to open buy menu
     public void BuyMenu()
     {
         buyMenu.gameObject.SetActive(true);
         UpdateBuyMenu();
     }
 
+    //Button function to buy property
     public void Buy()
     {
         gm.PurchaseProperty();
         buyMenu.SetActive(false);
     }
 
+    //Button function to open mortage menu
     public void MortgageMenu()
     {
         mortgageMenu.gameObject.SetActive(true);
         boardMenu.gameObject.SetActive(true);
     }
 
+    //Button function to mortgage property
     public void Mortgage()
     {
         gm.MortgageProperty();
@@ -168,13 +184,14 @@ public class MainMenuManager: MonoBehaviour
         boardMenu.gameObject.SetActive(false);
     }
 
+    //Button function to open sell menu
     public void SellMenu()
     {
         sellMenu.gameObject.SetActive(true);
         boardMenu.gameObject.SetActive(true);
     }
 
-    //change this
+    //Button function to sell property
     public void Sell()
     {
         gm.SellProperty();
@@ -182,6 +199,7 @@ public class MainMenuManager: MonoBehaviour
         boardMenu.gameObject.SetActive(false);
     }
 
+    //Updates UI text displaying owned properties
     private void UpdatePropDisplay()
     {
         string propString = "";
@@ -202,6 +220,7 @@ public class MainMenuManager: MonoBehaviour
         propText.text = propString;
     }
 
+    //Updates UI text on buy menu
     private void UpdateBuyMenu()
     {
         string buyString = "";
@@ -226,11 +245,13 @@ public class MainMenuManager: MonoBehaviour
         buyMenuText.text = buyString;
     }
 
+    //Triggers card popup
     public void TriggerCard()
     {
         board.TriggerLatestCard(false);
     }
 
+    //Opens new card popup
     public void DrawNewCard()
     {
         if (board.CheckDrawNew() == true)
