@@ -517,6 +517,7 @@ public class GameManager : MonoBehaviour
         else print("Player " + currentPlayer + " must wait a turn to leave jail!");
     }
 
+    //Uses a get out of jail free card if the player has one
     public int GetCurrentPlayerFreeJailCards()
     {
         return playerList[currentPlayer - 1].GetFreeJailCards();
