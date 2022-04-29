@@ -10233,7 +10233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4817867485657866881, guid: 1c0376006c3bb714da9baf5695132126, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ExitPopup
+      value: OpenExitPopup
       objectReference: {fileID: 0}
     - target: {fileID: 4817867485657866881, guid: 1c0376006c3bb714da9baf5695132126, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -18773,11 +18773,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4817867485657866881, guid: 1c0376006c3bb714da9baf5695132126, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ExitPopup
+      value: OpenExitPopup
       objectReference: {fileID: 0}
     - target: {fileID: 4817867485657866881, guid: 1c0376006c3bb714da9baf5695132126, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MainMenuButtons, Scripts
+      value: MainMenuManager, Scripts
       objectReference: {fileID: 0}
     - target: {fileID: 4817867485657866881, guid: 1c0376006c3bb714da9baf5695132126, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -26611,7 +26611,6 @@ MonoBehaviour:
   boardMenu: {fileID: 1236882586}
   customMenu: {fileID: 768190344}
   propertyDisplay: {fileID: 466509231}
-  testing: 1
   gm: {fileID: 2046008407}
   board: {fileID: 1902617333}
   BoardSpaceCustomisation: {fileID: 2046008410}

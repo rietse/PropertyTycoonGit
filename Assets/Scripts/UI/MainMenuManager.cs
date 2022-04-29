@@ -103,6 +103,12 @@ public class MainMenuManager: MonoBehaviour
         }
     }
 
+    //Button function opens exit popup menu
+    public void OpenExitPopup()
+    {
+        exitPopup.gameObject.SetActive(true);
+    }
+
     //Button function quits game
     public void ExitGame()
     {
