@@ -303,21 +303,6 @@ public class GameManager : MonoBehaviour
     public void TriggerCardEffect(int[] cardEffect)
     {
         int money, moveVal = 0;
-
-        if (cardEffect[0] == 1) //checks if the card lets you draw an OPP card instead of triggering said card - E
-        {
-            //we actually need to check if the player wants to though, another to add to the "do later" pile - E
-            board.DrawCard("OPP");
-            print("draw a new OPP card code should trigger?");
-        }
-        else if (cardEffect[0] == 2) //checks if the card lets you draw a POT card instead of triggering said card - E
-        {
-            //same as above, do this pls future me - E
-            board.DrawCard("POT");
-            print("draw a new POT card code should trigger?");
-        }
-        else //now we know the card effect is actually gonna happen we can go through them and activate them here... ugh so many IF statements this is so bad... - E
-        {
             //all effects involving transferring money - E
             if (cardEffect[4] == 1) { money = (playerList[currentPlayer - 1].GetTotalOwnedHouses(currentPlayer) * 40) + (playerList[currentPlayer - 1].GetTotalOwnedHotels(currentPlayer) * 115); } //checks what money value needs to be handled here, so we don't have to figure it out every single transaction - E
             else if (cardEffect[4] == 2) { money = (playerList[currentPlayer - 1].GetTotalOwnedHouses(currentPlayer) * 25) + (playerList[currentPlayer - 1].GetTotalOwnedHotels(currentPlayer) * 100); }
@@ -397,7 +382,6 @@ public class GameManager : MonoBehaviour
                 playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
                 print("Player " + currentPlayer + " recieved £" + money + " from each player for their birthday!");
             }
-        }
     }
 
     //TO-DO: right now you can keep rolling infinitely BEFORE moving...i should fix that - R
