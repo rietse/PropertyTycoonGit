@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class JailTest : MonoBehaviour
 {
@@ -96,5 +98,10 @@ public class JailTest : MonoBehaviour
     void jailCounterText()
     {
         jailCounter.SetText("jailCounter = " + player.GetJailCounter().ToString());
+    }
+
+    public void ReturnStartMenu()
+    {
+        SceneManager.LoadScene("Main");
     }
 }

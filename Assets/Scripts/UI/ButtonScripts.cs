@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonScripts : MonoBehaviour
 {
@@ -83,5 +84,25 @@ public class ButtonScripts : MonoBehaviour
     public void SwitchCamera()
     {
         gsm.GetComponent<CameraController>().SwitchCameraView();
+    }
+
+    public void LoadDiceMoveTest()
+    {
+        SceneManager.LoadScene("DiceMovementTest");
+    }
+
+    public void LoadPlayerControllerTest()
+    {
+        SceneManager.LoadScene("PlayerControllerTest");
+    }
+
+    public void LoadJailTest()
+    {
+        SceneManager.LoadScene("JailTest");
+    }
+
+    public void LoadCardTest()
+    {
+        SceneManager.LoadScene("CardTest");
     }
 }

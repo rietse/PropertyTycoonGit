@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerControllerTest : MonoBehaviour
 {
@@ -75,5 +76,10 @@ public class PlayerControllerTest : MonoBehaviour
     public void Mortgage()
     {
         gsm.GetComponent<GameManagerTest>().MortgageProperty();
+    }
+
+    public void ReturnStartMenu()
+    {
+        SceneManager.LoadScene("Main");
     }
 }
