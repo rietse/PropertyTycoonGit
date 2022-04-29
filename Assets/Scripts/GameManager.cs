@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public MainMenuManager menuManager;
     public CardPopup cardPopup;
     public GameObject jailPopup;
+    public WinScreen winScreen;
     public int currentPlayer = 1;
     public int noOfPlayers = 0;
     public int freeParking = 0;
@@ -153,6 +154,7 @@ public class GameManager : MonoBehaviour
             //Checks win condition
             if (currentPlayer == lastValidPlayer)
             {
+                winScreen.ShowScreen();
                 print("Win"); //we need to do win code here eventally, a single line saying "Win" isn't that entertaining - E
                 validPlayer = true; //this is just here so I don't get another loop that breaks unity - E
             }
