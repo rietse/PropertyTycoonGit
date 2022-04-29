@@ -1,0 +1,535 @@
+\hypertarget{class_game_manager}{}\doxysection{Game\+Manager Class Reference}
+\label{class_game_manager}\index{GameManager@{GameManager}}
+Inheritance diagram for Game\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_game_manager_a5f2e323ab8cdf07561895d070658dea1}{Turn\+State}} \{ \mbox{\hyperlink{class_game_manager_a5f2e323ab8cdf07561895d070658dea1aaf5a690fd5ec6f789dbfc51ec6a891ba}{MOVING}}
+, \mbox{\hyperlink{class_game_manager_a5f2e323ab8cdf07561895d070658dea1ac45b496ec0828772c8088e4118f09b33}{BUY}}
+, \mbox{\hyperlink{class_game_manager_a5f2e323ab8cdf07561895d070658dea1a860926e6fc3f191e18ee7a98259164b8}{SELL}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_game_manager_a5e99e804b96a6fec2d425b873e0e3331}{Initialise\+Game}} ()
+\item 
+int \mbox{\hyperlink{class_game_manager_a8e74394b15071777e336da1e64ff374c}{Get\+Free\+Parking}} ()
+\item 
+int \mbox{\hyperlink{class_game_manager_a6aabc07c09470699b8f3ebf12dfc0816}{Get\+Current\+Player}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_a569093f456d460ec41e3b19ae57eccd9}{Next\+Player}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_a943a3c2d48df78ea00d4d700210ce357}{Move\+Player}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_a714f8dd6079c96e57258bf479c922a12}{Check\+Space}} (int pos)
+\item 
+void \mbox{\hyperlink{class_game_manager_ad9208181f52b5f491e306d2291a1121e}{Trigger\+Card\+Effect}} (int\mbox{[}$\,$\mbox{]} card\+Effect)
+\item 
+int \mbox{\hyperlink{class_game_manager_a7f325a85d96499cec90cdc3279e8838c}{Roll\+Dice}} ()
+\item 
+bool \mbox{\hyperlink{class_game_manager_aab2cd9afd15b2ebd6a8b3425d257330a}{Check\+Bankrupt}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_a101dd9c28e2b3bcf1680d0faacf4e293}{Bankrupt}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_acdc7b7ff480915264c0d0ff6f905277f}{Purchase\+Property}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_ad6619b3eeaacc9dae942b4288e4df7f0}{Sell\+Property}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_a161855c2c793e6e3245fd5d137e92eee}{Mortgage\+Property}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_a515ad8f2da05f837f2da7aca21e817d0}{Upgrade\+Property}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_aafba67927caa9c7fd455d3ee8b7c148e}{Degrade\+Property}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_aa06a96720d9942baf8513662b765a42d}{Jail\+Fine}} ()
+\item 
+int \mbox{\hyperlink{class_game_manager_aa968f2f6dd6c0cde6fd5a6020f06e862}{Get\+Current\+Player\+Free\+Jail\+Cards}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_a683952dc0073489c00f1789a5cb577c1}{Use\+Jail\+Card}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_a5b4ba7524246aaae85f2021deeb6b8bf}{Go\+To\+Jail}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_a75594522715a5bfa2a4c9c6ef58bfd8a}{Set\+Selected\+Pos}} (int i)
+\item 
+int \mbox{\hyperlink{class_game_manager_a00b2cf1f9dda4c33c7df00975f0f52f4}{Get\+Selected\+Pos}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_board}{Board}} \mbox{\hyperlink{class_game_manager_a1acb44bf8ecead479b154b3308405256}{board}}
+\item 
+\mbox{\hyperlink{class_player_controller}{Player\+Controller}} \mbox{\hyperlink{class_game_manager_a4d5408da103ac125f7a6577516ebb654}{player1}}
+\item 
+\mbox{\hyperlink{class_player_controller}{Player\+Controller}} \mbox{\hyperlink{class_game_manager_a288fb2fbc257f783c33908667fb3fe71}{player2}}
+\item 
+\mbox{\hyperlink{class_player_controller}{Player\+Controller}} \mbox{\hyperlink{class_game_manager_a5ae242df626b2508ca59b78925442b9e}{player3}}
+\item 
+\mbox{\hyperlink{class_player_controller}{Player\+Controller}} \mbox{\hyperlink{class_game_manager_a40c620198849641488af8123469a33c8}{player4}}
+\item 
+\mbox{\hyperlink{class_player_controller}{Player\+Controller}} \mbox{\hyperlink{class_game_manager_a487c1e574d2d4d33f6ac69de4a471e21}{player5}}
+\item 
+\mbox{\hyperlink{class_camera_controller}{Camera\+Controller}} \mbox{\hyperlink{class_game_manager_a97c0edd3eee4f4b2f92cd2117d32149c}{camera\+Controller}}
+\item 
+Property\+Display \mbox{\hyperlink{class_game_manager_ad8dc70ad9f0aa1c6736532185443a8af}{property\+Display}}
+\item 
+Main\+Menu\+Manager \mbox{\hyperlink{class_game_manager_a9f57a355157191239de3d93788ce31e9}{menu\+Manager}}
+\item 
+Card\+Popup \mbox{\hyperlink{class_game_manager_aa61b0a5215b4886d5a5a99a62aeb7a6a}{card\+Popup}}
+\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a7c171c30f3c581b62d007f4dd1593870}{jail\+Popup}}
+\item 
+Win\+Screen \mbox{\hyperlink{class_game_manager_a2d7ff0d35dd9caed406f9a884e25b0f6}{win\+Screen}}
+\item 
+int \mbox{\hyperlink{class_game_manager_aa42ba1ab5ae6bb3b28d0aace203b9279}{current\+Player}} = 1
+\item 
+int \mbox{\hyperlink{class_game_manager_a00e917d543c34319f66ee834e8c7bce0}{no\+Of\+Players}} = 0
+\item 
+int \mbox{\hyperlink{class_game_manager_a5b86c64428ec7ff478c972179764ef7d}{free\+Parking}} = 0
+\item 
+List$<$ \mbox{\hyperlink{class_player_controller}{Player\+Controller}} $>$ \mbox{\hyperlink{class_game_manager_a9e2b556db98e515a50153ca07c2ad02a}{player\+List}} = new List$<$\mbox{\hyperlink{class_player_controller}{Player\+Controller}}$>$()
+\item 
+int \mbox{\hyperlink{class_game_manager_aa34b378877893b9a6ad223580c94ad3a}{selected\+Pos}} = 0
+\item 
+\mbox{\hyperlink{class_game_manager_a5f2e323ab8cdf07561895d070658dea1}{Turn\+State}} \mbox{\hyperlink{class_game_manager_a011063f509219108f49f778a6b3f755e}{turn\+State}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00006}{6}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_game_manager_a5f2e323ab8cdf07561895d070658dea1}\label{class_game_manager_a5f2e323ab8cdf07561895d070658dea1}} 
+\index{GameManager@{GameManager}!TurnState@{TurnState}}
+\index{TurnState@{TurnState}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{TurnState}{TurnState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_game_manager_a5f2e323ab8cdf07561895d070658dea1}{Game\+Manager.\+Turn\+State}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOVING@{MOVING}!GameManager@{GameManager}}\index{GameManager@{GameManager}!MOVING@{MOVING}}}\mbox{\Hypertarget{class_game_manager_a5f2e323ab8cdf07561895d070658dea1aaf5a690fd5ec6f789dbfc51ec6a891ba}\label{class_game_manager_a5f2e323ab8cdf07561895d070658dea1aaf5a690fd5ec6f789dbfc51ec6a891ba}} 
+MOVING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUY@{BUY}!GameManager@{GameManager}}\index{GameManager@{GameManager}!BUY@{BUY}}}\mbox{\Hypertarget{class_game_manager_a5f2e323ab8cdf07561895d070658dea1ac45b496ec0828772c8088e4118f09b33}\label{class_game_manager_a5f2e323ab8cdf07561895d070658dea1ac45b496ec0828772c8088e4118f09b33}} 
+BUY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SELL@{SELL}!GameManager@{GameManager}}\index{GameManager@{GameManager}!SELL@{SELL}}}\mbox{\Hypertarget{class_game_manager_a5f2e323ab8cdf07561895d070658dea1a860926e6fc3f191e18ee7a98259164b8}\label{class_game_manager_a5f2e323ab8cdf07561895d070658dea1a860926e6fc3f191e18ee7a98259164b8}} 
+SELL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00023}{23}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_manager_a101dd9c28e2b3bcf1680d0faacf4e293}\label{class_game_manager_a101dd9c28e2b3bcf1680d0faacf4e293}} 
+\index{GameManager@{GameManager}!Bankrupt@{Bankrupt}}
+\index{Bankrupt@{Bankrupt}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{Bankrupt()}{Bankrupt()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Bankrupt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00449}{449}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_aab2cd9afd15b2ebd6a8b3425d257330a}\label{class_game_manager_aab2cd9afd15b2ebd6a8b3425d257330a}} 
+\index{GameManager@{GameManager}!CheckBankrupt@{CheckBankrupt}}
+\index{CheckBankrupt@{CheckBankrupt}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{CheckBankrupt()}{CheckBankrupt()}}
+{\footnotesize\ttfamily bool Game\+Manager.\+Check\+Bankrupt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00443}{443}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a714f8dd6079c96e57258bf479c922a12}\label{class_game_manager_a714f8dd6079c96e57258bf479c922a12}} 
+\index{GameManager@{GameManager}!CheckSpace@{CheckSpace}}
+\index{CheckSpace@{CheckSpace}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{CheckSpace()}{CheckSpace()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Check\+Space (\begin{DoxyParamCaption}\item[{int}]{pos }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00177}{177}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_aafba67927caa9c7fd455d3ee8b7c148e}\label{class_game_manager_aafba67927caa9c7fd455d3ee8b7c148e}} 
+\index{GameManager@{GameManager}!DegradeProperty@{DegradeProperty}}
+\index{DegradeProperty@{DegradeProperty}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{DegradeProperty()}{DegradeProperty()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Degrade\+Property (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00495}{495}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a6aabc07c09470699b8f3ebf12dfc0816}\label{class_game_manager_a6aabc07c09470699b8f3ebf12dfc0816}} 
+\index{GameManager@{GameManager}!GetCurrentPlayer@{GetCurrentPlayer}}
+\index{GetCurrentPlayer@{GetCurrentPlayer}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{GetCurrentPlayer()}{GetCurrentPlayer()}}
+{\footnotesize\ttfamily int Game\+Manager.\+Get\+Current\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00102}{102}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_aa968f2f6dd6c0cde6fd5a6020f06e862}\label{class_game_manager_aa968f2f6dd6c0cde6fd5a6020f06e862}} 
+\index{GameManager@{GameManager}!GetCurrentPlayerFreeJailCards@{GetCurrentPlayerFreeJailCards}}
+\index{GetCurrentPlayerFreeJailCards@{GetCurrentPlayerFreeJailCards}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{GetCurrentPlayerFreeJailCards()}{GetCurrentPlayerFreeJailCards()}}
+{\footnotesize\ttfamily int Game\+Manager.\+Get\+Current\+Player\+Free\+Jail\+Cards (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00521}{521}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a8e74394b15071777e336da1e64ff374c}\label{class_game_manager_a8e74394b15071777e336da1e64ff374c}} 
+\index{GameManager@{GameManager}!GetFreeParking@{GetFreeParking}}
+\index{GetFreeParking@{GetFreeParking}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{GetFreeParking()}{GetFreeParking()}}
+{\footnotesize\ttfamily int Game\+Manager.\+Get\+Free\+Parking (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00084}{84}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a00b2cf1f9dda4c33c7df00975f0f52f4}\label{class_game_manager_a00b2cf1f9dda4c33c7df00975f0f52f4}} 
+\index{GameManager@{GameManager}!GetSelectedPos@{GetSelectedPos}}
+\index{GetSelectedPos@{GetSelectedPos}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{GetSelectedPos()}{GetSelectedPos()}}
+{\footnotesize\ttfamily int Game\+Manager.\+Get\+Selected\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00548}{548}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a5b4ba7524246aaae85f2021deeb6b8bf}\label{class_game_manager_a5b4ba7524246aaae85f2021deeb6b8bf}} 
+\index{GameManager@{GameManager}!GoToJail@{GoToJail}}
+\index{GoToJail@{GoToJail}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{GoToJail()}{GoToJail()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Go\+To\+Jail (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00536}{536}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a5e99e804b96a6fec2d425b873e0e3331}\label{class_game_manager_a5e99e804b96a6fec2d425b873e0e3331}} 
+\index{GameManager@{GameManager}!InitialiseGame@{InitialiseGame}}
+\index{InitialiseGame@{InitialiseGame}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{InitialiseGame()}{InitialiseGame()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Initialise\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00027}{27}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_aa06a96720d9942baf8513662b765a42d}\label{class_game_manager_aa06a96720d9942baf8513662b765a42d}} 
+\index{GameManager@{GameManager}!JailFine@{JailFine}}
+\index{JailFine@{JailFine}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{JailFine()}{JailFine()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Jail\+Fine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00505}{505}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a161855c2c793e6e3245fd5d137e92eee}\label{class_game_manager_a161855c2c793e6e3245fd5d137e92eee}} 
+\index{GameManager@{GameManager}!MortgageProperty@{MortgageProperty}}
+\index{MortgageProperty@{MortgageProperty}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{MortgageProperty()}{MortgageProperty()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Mortgage\+Property (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00478}{478}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a943a3c2d48df78ea00d4d700210ce357}\label{class_game_manager_a943a3c2d48df78ea00d4d700210ce357}} 
+\index{GameManager@{GameManager}!MovePlayer@{MovePlayer}}
+\index{MovePlayer@{MovePlayer}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{MovePlayer()}{MovePlayer()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Move\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00168}{168}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a569093f456d460ec41e3b19ae57eccd9}\label{class_game_manager_a569093f456d460ec41e3b19ae57eccd9}} 
+\index{GameManager@{GameManager}!NextPlayer@{NextPlayer}}
+\index{NextPlayer@{NextPlayer}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{NextPlayer()}{NextPlayer()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Next\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00114}{114}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_acdc7b7ff480915264c0d0ff6f905277f}\label{class_game_manager_acdc7b7ff480915264c0d0ff6f905277f}} 
+\index{GameManager@{GameManager}!PurchaseProperty@{PurchaseProperty}}
+\index{PurchaseProperty@{PurchaseProperty}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{PurchaseProperty()}{PurchaseProperty()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Purchase\+Property (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00457}{457}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a7f325a85d96499cec90cdc3279e8838c}\label{class_game_manager_a7f325a85d96499cec90cdc3279e8838c}} 
+\index{GameManager@{GameManager}!RollDice@{RollDice}}
+\index{RollDice@{RollDice}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{RollDice()}{RollDice()}}
+{\footnotesize\ttfamily int Game\+Manager.\+Roll\+Dice (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00398}{398}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_ad6619b3eeaacc9dae942b4288e4df7f0}\label{class_game_manager_ad6619b3eeaacc9dae942b4288e4df7f0}} 
+\index{GameManager@{GameManager}!SellProperty@{SellProperty}}
+\index{SellProperty@{SellProperty}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{SellProperty()}{SellProperty()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Sell\+Property (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00471}{471}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a75594522715a5bfa2a4c9c6ef58bfd8a}\label{class_game_manager_a75594522715a5bfa2a4c9c6ef58bfd8a}} 
+\index{GameManager@{GameManager}!SetSelectedPos@{SetSelectedPos}}
+\index{SetSelectedPos@{SetSelectedPos}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{SetSelectedPos()}{SetSelectedPos()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Set\+Selected\+Pos (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00542}{542}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_ad9208181f52b5f491e306d2291a1121e}\label{class_game_manager_ad9208181f52b5f491e306d2291a1121e}} 
+\index{GameManager@{GameManager}!TriggerCardEffect@{TriggerCardEffect}}
+\index{TriggerCardEffect@{TriggerCardEffect}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{TriggerCardEffect()}{TriggerCardEffect()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Trigger\+Card\+Effect (\begin{DoxyParamCaption}\item[{int\mbox{[}$\,$\mbox{]}}]{card\+Effect }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00311}{311}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a515ad8f2da05f837f2da7aca21e817d0}\label{class_game_manager_a515ad8f2da05f837f2da7aca21e817d0}} 
+\index{GameManager@{GameManager}!UpgradeProperty@{UpgradeProperty}}
+\index{UpgradeProperty@{UpgradeProperty}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{UpgradeProperty()}{UpgradeProperty()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Upgrade\+Property (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00485}{485}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a683952dc0073489c00f1789a5cb577c1}\label{class_game_manager_a683952dc0073489c00f1789a5cb577c1}} 
+\index{GameManager@{GameManager}!UseJailCard@{UseJailCard}}
+\index{UseJailCard@{UseJailCard}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{UseJailCard()}{UseJailCard()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Use\+Jail\+Card (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00526}{526}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_game_manager_a1acb44bf8ecead479b154b3308405256}\label{class_game_manager_a1acb44bf8ecead479b154b3308405256}} 
+\index{GameManager@{GameManager}!board@{board}}
+\index{board@{board}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{board}{board}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_board}{Board}} Game\+Manager.\+board}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00008}{8}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a97c0edd3eee4f4b2f92cd2117d32149c}\label{class_game_manager_a97c0edd3eee4f4b2f92cd2117d32149c}} 
+\index{GameManager@{GameManager}!cameraController@{cameraController}}
+\index{cameraController@{cameraController}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{cameraController}{cameraController}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_camera_controller}{Camera\+Controller}} Game\+Manager.\+camera\+Controller}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00010}{10}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_aa61b0a5215b4886d5a5a99a62aeb7a6a}\label{class_game_manager_aa61b0a5215b4886d5a5a99a62aeb7a6a}} 
+\index{GameManager@{GameManager}!cardPopup@{cardPopup}}
+\index{cardPopup@{cardPopup}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{cardPopup}{cardPopup}}
+{\footnotesize\ttfamily Card\+Popup Game\+Manager.\+card\+Popup}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00013}{13}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_aa42ba1ab5ae6bb3b28d0aace203b9279}\label{class_game_manager_aa42ba1ab5ae6bb3b28d0aace203b9279}} 
+\index{GameManager@{GameManager}!currentPlayer@{currentPlayer}}
+\index{currentPlayer@{currentPlayer}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{currentPlayer}{currentPlayer}}
+{\footnotesize\ttfamily int Game\+Manager.\+current\+Player = 1}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00016}{16}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a5b86c64428ec7ff478c972179764ef7d}\label{class_game_manager_a5b86c64428ec7ff478c972179764ef7d}} 
+\index{GameManager@{GameManager}!freeParking@{freeParking}}
+\index{freeParking@{freeParking}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{freeParking}{freeParking}}
+{\footnotesize\ttfamily int Game\+Manager.\+free\+Parking = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00018}{18}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a7c171c30f3c581b62d007f4dd1593870}\label{class_game_manager_a7c171c30f3c581b62d007f4dd1593870}} 
+\index{GameManager@{GameManager}!jailPopup@{jailPopup}}
+\index{jailPopup@{jailPopup}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{jailPopup}{jailPopup}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+jail\+Popup}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00014}{14}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a9f57a355157191239de3d93788ce31e9}\label{class_game_manager_a9f57a355157191239de3d93788ce31e9}} 
+\index{GameManager@{GameManager}!menuManager@{menuManager}}
+\index{menuManager@{menuManager}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{menuManager}{menuManager}}
+{\footnotesize\ttfamily Main\+Menu\+Manager Game\+Manager.\+menu\+Manager}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00012}{12}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a00e917d543c34319f66ee834e8c7bce0}\label{class_game_manager_a00e917d543c34319f66ee834e8c7bce0}} 
+\index{GameManager@{GameManager}!noOfPlayers@{noOfPlayers}}
+\index{noOfPlayers@{noOfPlayers}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{noOfPlayers}{noOfPlayers}}
+{\footnotesize\ttfamily int Game\+Manager.\+no\+Of\+Players = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00017}{17}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a4d5408da103ac125f7a6577516ebb654}\label{class_game_manager_a4d5408da103ac125f7a6577516ebb654}} 
+\index{GameManager@{GameManager}!player1@{player1}}
+\index{player1@{player1}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{player1}{player1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player_controller}{Player\+Controller}} Game\+Manager.\+player1}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00009}{9}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a288fb2fbc257f783c33908667fb3fe71}\label{class_game_manager_a288fb2fbc257f783c33908667fb3fe71}} 
+\index{GameManager@{GameManager}!player2@{player2}}
+\index{player2@{player2}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{player2}{player2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player_controller}{Player\+Controller}} Game\+Manager.\+player2}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00009}{9}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a5ae242df626b2508ca59b78925442b9e}\label{class_game_manager_a5ae242df626b2508ca59b78925442b9e}} 
+\index{GameManager@{GameManager}!player3@{player3}}
+\index{player3@{player3}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{player3}{player3}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player_controller}{Player\+Controller}} Game\+Manager.\+player3}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00009}{9}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a40c620198849641488af8123469a33c8}\label{class_game_manager_a40c620198849641488af8123469a33c8}} 
+\index{GameManager@{GameManager}!player4@{player4}}
+\index{player4@{player4}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{player4}{player4}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player_controller}{Player\+Controller}} Game\+Manager.\+player4}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00009}{9}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a487c1e574d2d4d33f6ac69de4a471e21}\label{class_game_manager_a487c1e574d2d4d33f6ac69de4a471e21}} 
+\index{GameManager@{GameManager}!player5@{player5}}
+\index{player5@{player5}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{player5}{player5}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player_controller}{Player\+Controller}} Game\+Manager.\+player5}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00009}{9}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a9e2b556db98e515a50153ca07c2ad02a}\label{class_game_manager_a9e2b556db98e515a50153ca07c2ad02a}} 
+\index{GameManager@{GameManager}!playerList@{playerList}}
+\index{playerList@{playerList}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{playerList}{playerList}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_player_controller}{Player\+Controller}}$>$ Game\+Manager.\+player\+List = new List$<$\mbox{\hyperlink{class_player_controller}{Player\+Controller}}$>$()}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00019}{19}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_ad8dc70ad9f0aa1c6736532185443a8af}\label{class_game_manager_ad8dc70ad9f0aa1c6736532185443a8af}} 
+\index{GameManager@{GameManager}!propertyDisplay@{propertyDisplay}}
+\index{propertyDisplay@{propertyDisplay}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{propertyDisplay}{propertyDisplay}}
+{\footnotesize\ttfamily Property\+Display Game\+Manager.\+property\+Display}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00011}{11}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_aa34b378877893b9a6ad223580c94ad3a}\label{class_game_manager_aa34b378877893b9a6ad223580c94ad3a}} 
+\index{GameManager@{GameManager}!selectedPos@{selectedPos}}
+\index{selectedPos@{selectedPos}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{selectedPos}{selectedPos}}
+{\footnotesize\ttfamily int Game\+Manager.\+selected\+Pos = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00022}{22}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a011063f509219108f49f778a6b3f755e}\label{class_game_manager_a011063f509219108f49f778a6b3f755e}} 
+\index{GameManager@{GameManager}!turnState@{turnState}}
+\index{turnState@{turnState}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{turnState}{turnState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_manager_a5f2e323ab8cdf07561895d070658dea1}{Turn\+State}} Game\+Manager.\+turn\+State}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00024}{24}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+\mbox{\Hypertarget{class_game_manager_a2d7ff0d35dd9caed406f9a884e25b0f6}\label{class_game_manager_a2d7ff0d35dd9caed406f9a884e25b0f6}} 
+\index{GameManager@{GameManager}!winScreen@{winScreen}}
+\index{winScreen@{winScreen}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{winScreen}{winScreen}}
+{\footnotesize\ttfamily Win\+Screen Game\+Manager.\+win\+Screen}
+
+
+
+Definition at line \mbox{\hyperlink{_game_manager_8cs_source_l00015}{15}} of file \mbox{\hyperlink{_game_manager_8cs_source}{Game\+Manager.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_game_manager_8cs}{Game\+Manager.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,236 @@
+\hypertarget{class_board}{}\doxysection{Board Class Reference}
+\label{class_board}\index{Board@{Board}}
+Inheritance diagram for Board\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_board}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_board_af01c91fe061c2274dc52d730552dcd61}{Initialise\+Player\+Positions}} ()
+\item 
+int\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_board_a658d39032491bbe142e99e50ecbe3b60}{Draw\+Card}} (string c)
+\item 
+void \mbox{\hyperlink{class_board_af3334d9bb8619c0ce7c5d325a6113f23}{Trigger\+Latest\+Card}} (bool draw\+New)
+\item 
+bool \mbox{\hyperlink{class_board_a122c39cdd262a75b9a67799c1868e2fb}{Check\+Draw\+New}} ()
+\item 
+int \mbox{\hyperlink{class_board_a3af59b8fb21da2cd30bb6e55f50df2d2}{Get\+State}} (int i)
+\item 
+void \mbox{\hyperlink{class_board_a5388aa4c2eae964d5194ed6b42eeece3}{Set\+State}} (int i, int state)
+\item 
+Game\+Object \mbox{\hyperlink{class_board_afc269728a2e0ae5798c1beebdd7cbbc3}{Get\+Space}} (int i)
+\item 
+int \mbox{\hyperlink{class_board_acf749d29b6791d19a7b1e0a5b6f0976e}{Get\+Houses}} (int i)
+\item 
+int \mbox{\hyperlink{class_board_af575cef7a77d4bce437713d8d0fdcbca}{Get\+Hotels}} (int i)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_board_a95d648a3c22fb9f61fba622392752e70}{spaces}}
+\item 
+Game\+Object\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_board_a00c8b77af17a0373124d793be0ec4aa2}{players}}
+\item 
+List$<$ Game\+Object $>$ \mbox{\hyperlink{class_board_a26bc3e58d57d2c0b44bc5c7fb31786af}{opp\+Card\+List}}
+\item 
+List$<$ Game\+Object $>$ \mbox{\hyperlink{class_board_a84bcabbae8b512892cfbdd575f37f672}{pot\+Card\+List}}
+\item 
+\mbox{\hyperlink{class_game_manager}{Game\+Manager}} \mbox{\hyperlink{class_board_a9d5641d99fa94a66ccb652f8ac1dec98}{game\+Manager}}
+\item 
+int\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_board_aa2559db5eee4419cce186dec9b2cf4eb}{space\+States}} = new int\mbox{[}40\mbox{]}
+\item 
+Board\+Space\+Customisation \mbox{\hyperlink{class_board_a61166dd7f583208ce599f5c131912f94}{board\+Space\+Customisation}}
+\item 
+Card\+Popup \mbox{\hyperlink{class_board_a92c631bc3cf8b9abe82c86bc0a3e759a}{card\+Popup}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00005}{5}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_board_a122c39cdd262a75b9a67799c1868e2fb}\label{class_board_a122c39cdd262a75b9a67799c1868e2fb}} 
+\index{Board@{Board}!CheckDrawNew@{CheckDrawNew}}
+\index{CheckDrawNew@{CheckDrawNew}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{CheckDrawNew()}{CheckDrawNew()}}
+{\footnotesize\ttfamily bool Board.\+Check\+Draw\+New (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00140}{140}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_a658d39032491bbe142e99e50ecbe3b60}\label{class_board_a658d39032491bbe142e99e50ecbe3b60}} 
+\index{Board@{Board}!DrawCard@{DrawCard}}
+\index{DrawCard@{DrawCard}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{DrawCard()}{DrawCard()}}
+{\footnotesize\ttfamily int\mbox{[}$\,$\mbox{]} Board.\+Draw\+Card (\begin{DoxyParamCaption}\item[{string}]{c }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00090}{90}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_af575cef7a77d4bce437713d8d0fdcbca}\label{class_board_af575cef7a77d4bce437713d8d0fdcbca}} 
+\index{Board@{Board}!GetHotels@{GetHotels}}
+\index{GetHotels@{GetHotels}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{GetHotels()}{GetHotels()}}
+{\footnotesize\ttfamily int Board.\+Get\+Hotels (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00179}{179}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_acf749d29b6791d19a7b1e0a5b6f0976e}\label{class_board_acf749d29b6791d19a7b1e0a5b6f0976e}} 
+\index{Board@{Board}!GetHouses@{GetHouses}}
+\index{GetHouses@{GetHouses}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{GetHouses()}{GetHouses()}}
+{\footnotesize\ttfamily int Board.\+Get\+Houses (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00164}{164}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_afc269728a2e0ae5798c1beebdd7cbbc3}\label{class_board_afc269728a2e0ae5798c1beebdd7cbbc3}} 
+\index{Board@{Board}!GetSpace@{GetSpace}}
+\index{GetSpace@{GetSpace}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{GetSpace()}{GetSpace()}}
+{\footnotesize\ttfamily Game\+Object Board.\+Get\+Space (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00158}{158}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_a3af59b8fb21da2cd30bb6e55f50df2d2}\label{class_board_a3af59b8fb21da2cd30bb6e55f50df2d2}} 
+\index{Board@{Board}!GetState@{GetState}}
+\index{GetState@{GetState}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{GetState()}{GetState()}}
+{\footnotesize\ttfamily int Board.\+Get\+State (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00146}{146}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_af01c91fe061c2274dc52d730552dcd61}\label{class_board_af01c91fe061c2274dc52d730552dcd61}} 
+\index{Board@{Board}!InitialisePlayerPositions@{InitialisePlayerPositions}}
+\index{InitialisePlayerPositions@{InitialisePlayerPositions}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{InitialisePlayerPositions()}{InitialisePlayerPositions()}}
+{\footnotesize\ttfamily void Board.\+Initialise\+Player\+Positions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00030}{30}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_a5388aa4c2eae964d5194ed6b42eeece3}\label{class_board_a5388aa4c2eae964d5194ed6b42eeece3}} 
+\index{Board@{Board}!SetState@{SetState}}
+\index{SetState@{SetState}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{SetState()}{SetState()}}
+{\footnotesize\ttfamily void Board.\+Set\+State (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{state }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00152}{152}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_af3334d9bb8619c0ce7c5d325a6113f23}\label{class_board_af3334d9bb8619c0ce7c5d325a6113f23}} 
+\index{Board@{Board}!TriggerLatestCard@{TriggerLatestCard}}
+\index{TriggerLatestCard@{TriggerLatestCard}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{TriggerLatestCard()}{TriggerLatestCard()}}
+{\footnotesize\ttfamily void Board.\+Trigger\+Latest\+Card (\begin{DoxyParamCaption}\item[{bool}]{draw\+New }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00117}{117}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_board_a61166dd7f583208ce599f5c131912f94}\label{class_board_a61166dd7f583208ce599f5c131912f94}} 
+\index{Board@{Board}!boardSpaceCustomisation@{boardSpaceCustomisation}}
+\index{boardSpaceCustomisation@{boardSpaceCustomisation}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{boardSpaceCustomisation}{boardSpaceCustomisation}}
+{\footnotesize\ttfamily Board\+Space\+Customisation Board.\+board\+Space\+Customisation}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00013}{13}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_a92c631bc3cf8b9abe82c86bc0a3e759a}\label{class_board_a92c631bc3cf8b9abe82c86bc0a3e759a}} 
+\index{Board@{Board}!cardPopup@{cardPopup}}
+\index{cardPopup@{cardPopup}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{cardPopup}{cardPopup}}
+{\footnotesize\ttfamily Card\+Popup Board.\+card\+Popup}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00014}{14}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_a9d5641d99fa94a66ccb652f8ac1dec98}\label{class_board_a9d5641d99fa94a66ccb652f8ac1dec98}} 
+\index{Board@{Board}!gameManager@{gameManager}}
+\index{gameManager@{gameManager}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{gameManager}{gameManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_manager}{Game\+Manager}} Board.\+game\+Manager}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00011}{11}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_a26bc3e58d57d2c0b44bc5c7fb31786af}\label{class_board_a26bc3e58d57d2c0b44bc5c7fb31786af}} 
+\index{Board@{Board}!oppCardList@{oppCardList}}
+\index{oppCardList@{oppCardList}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{oppCardList}{oppCardList}}
+{\footnotesize\ttfamily List$<$Game\+Object$>$ Board.\+opp\+Card\+List}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00009}{9}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_a00c8b77af17a0373124d793be0ec4aa2}\label{class_board_a00c8b77af17a0373124d793be0ec4aa2}} 
+\index{Board@{Board}!players@{players}}
+\index{players@{players}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{players}{players}}
+{\footnotesize\ttfamily Game\+Object \mbox{[}$\,$\mbox{]} Board.\+players}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00008}{8}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_a84bcabbae8b512892cfbdd575f37f672}\label{class_board_a84bcabbae8b512892cfbdd575f37f672}} 
+\index{Board@{Board}!potCardList@{potCardList}}
+\index{potCardList@{potCardList}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{potCardList}{potCardList}}
+{\footnotesize\ttfamily List$<$Game\+Object$>$ Board.\+pot\+Card\+List}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00010}{10}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_a95d648a3c22fb9f61fba622392752e70}\label{class_board_a95d648a3c22fb9f61fba622392752e70}} 
+\index{Board@{Board}!spaces@{spaces}}
+\index{spaces@{spaces}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{spaces}{spaces}}
+{\footnotesize\ttfamily Game\+Object \mbox{[}$\,$\mbox{]} Board.\+spaces}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00007}{7}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+\mbox{\Hypertarget{class_board_aa2559db5eee4419cce186dec9b2cf4eb}\label{class_board_aa2559db5eee4419cce186dec9b2cf4eb}} 
+\index{Board@{Board}!spaceStates@{spaceStates}}
+\index{spaceStates@{spaceStates}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{spaceStates}{spaceStates}}
+{\footnotesize\ttfamily int \mbox{[}$\,$\mbox{]} Board.\+space\+States = new int\mbox{[}40\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_board_8cs_source_l00012}{12}} of file \mbox{\hyperlink{_board_8cs_source}{Board.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_board_8cs}{Board.\+cs}}\end{DoxyCompactItemize}

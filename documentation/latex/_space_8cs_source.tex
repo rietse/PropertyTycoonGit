@@ -1,0 +1,73 @@
+\hypertarget{_space_8cs_source}{}\doxysection{Space.\+cs}
+\label{_space_8cs_source}\index{Assets/Scripts/Space.cs@{Assets/Scripts/Space.cs}}
+\mbox{\hyperlink{_space_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00001}00001 \textcolor{keyword}{using} System.Collections;}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00002}00002 \textcolor{keyword}{using} System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00003}00003 \textcolor{keyword}{using} UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00004}00004 \textcolor{keyword}{using} TMPro;}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00006}\mbox{\hyperlink{class_space}{00006}} \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_space}{Space}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00007}00007 \{}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00008}\mbox{\hyperlink{class_space_ad4f9099d52309a2be10a00989f069c88}{00008}}     \textcolor{keyword}{public} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_space_ad4f9099d52309a2be10a00989f069c88}{idNum}};}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00009}\mbox{\hyperlink{class_space_ac609e3622d30689b7cc91d68606bb022}{00009}}     \textcolor{keyword}{public} \textcolor{keyword}{enum} \mbox{\hyperlink{class_space_ac609e3622d30689b7cc91d68606bb022}{Type}} \{ GO, JAIL, PARK, GOJAIL, POT, OPP, PROP, TAX, STAT, UTIL \}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00010}\mbox{\hyperlink{class_space_ae69b042c0ab17fb9034add0cbe667893}{00010}}     \textcolor{keyword}{public} \mbox{\hyperlink{class_space_ac609e3622d30689b7cc91d68606bb022}{Type}} \mbox{\hyperlink{class_space_ae69b042c0ab17fb9034add0cbe667893}{type}};}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00011}\mbox{\hyperlink{class_space_a908ce962fa252a827ced65d08d5116ed}{00011}}     \textcolor{keyword}{public} \textcolor{keywordtype}{string} \mbox{\hyperlink{class_space_a908ce962fa252a827ced65d08d5116ed}{spaceName}};}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00012}\mbox{\hyperlink{class_space_afe299502062f9610e52d0a0636ab775e}{00012}}     \textcolor{keyword}{public} TextMeshPro \mbox{\hyperlink{class_space_afe299502062f9610e52d0a0636ab775e}{boardSpaceName}};}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00013}\mbox{\hyperlink{class_space_ae08d659d3c7f330f846e327537fe7ace}{00013}}     \textcolor{keyword}{public} TextMeshPro \mbox{\hyperlink{class_space_ae08d659d3c7f330f846e327537fe7ace}{boardSpacePrice}};}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00014}\mbox{\hyperlink{class_space_a40fd7fe2e83da9589cbce8f82dacaf50}{00014}}     \textcolor{keyword}{public} \textcolor{keywordtype}{string} \mbox{\hyperlink{class_space_a40fd7fe2e83da9589cbce8f82dacaf50}{defaultName}};}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00016}00016     \textcolor{comment}{//Initialises the property name and text}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00017}\mbox{\hyperlink{class_space_ac143eb20c9359203054ebf62ff89acaf}{00017}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_space_ac143eb20c9359203054ebf62ff89acaf}{InitialiseText}}()}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00018}00018     \{}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00019}00019         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_space_ae69b042c0ab17fb9034add0cbe667893}{type}} == \mbox{\hyperlink{class_space_ac609e3622d30689b7cc91d68606bb022}{Type}}.PROP || \mbox{\hyperlink{class_space_ae69b042c0ab17fb9034add0cbe667893}{type}} == \mbox{\hyperlink{class_space_ac609e3622d30689b7cc91d68606bb022}{Type}}.STAT || \mbox{\hyperlink{class_space_ae69b042c0ab17fb9034add0cbe667893}{type}} == \mbox{\hyperlink{class_space_ac609e3622d30689b7cc91d68606bb022}{Type}}.UTIL) \textcolor{comment}{//grabs the stored spaceName, allows player to customise buyable tiles without messing with gameplay tiles -\/ E}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00020}00020         \{}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00021}00021             \mbox{\hyperlink{class_space_afe299502062f9610e52d0a0636ab775e}{boardSpaceName}}.SetText(\mbox{\hyperlink{class_space_a908ce962fa252a827ced65d08d5116ed}{spaceName}});}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00022}00022         \}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00023}00023         \textcolor{keywordflow}{else} \textcolor{comment}{//if its nor purchasable, then we hide the price text as we don't want it to show on those tiles -\/ E}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00024}00024         \{}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00025}00025             \mbox{\hyperlink{class_space_ae08d659d3c7f330f846e327537fe7ace}{boardSpacePrice}}.SetText(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00026}00026         \}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00027}00027     \}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00029}\mbox{\hyperlink{class_space_a4e9c4be7eaa89f7ae013d4e8c50e0319}{00029}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_space_a4e9c4be7eaa89f7ae013d4e8c50e0319}{SetDefaultName}}()}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00030}00030     \{}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00031}00031         \mbox{\hyperlink{class_space_a40fd7fe2e83da9589cbce8f82dacaf50}{defaultName}} = \mbox{\hyperlink{class_space_a908ce962fa252a827ced65d08d5116ed}{spaceName}};}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00032}00032     \}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00034}00034     \textcolor{comment}{//Resets the space name to its default name}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00035}\mbox{\hyperlink{class_space_a8373964a9ccf38022d46c5eef9ee1d56}{00035}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_space_a8373964a9ccf38022d46c5eef9ee1d56}{ResetName}}()}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00036}00036     \{}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00037}00037         \mbox{\hyperlink{class_space_a908ce962fa252a827ced65d08d5116ed}{spaceName}} = \mbox{\hyperlink{class_space_a40fd7fe2e83da9589cbce8f82dacaf50}{defaultName}};}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00038}00038     \}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00040}00040     \textcolor{comment}{//Initialise the displayed price of a property}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00041}\mbox{\hyperlink{class_space_a720b040dee43eb237a90eeb3c4235105}{00041}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_space_a720b040dee43eb237a90eeb3c4235105}{InitialisePriceText}}(\textcolor{keywordtype}{int} p)}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00042}00042     \{}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00043}00043         \mbox{\hyperlink{class_space_ae08d659d3c7f330f846e327537fe7ace}{boardSpacePrice}}.SetText(\textcolor{stringliteral}{"{}£"{}} + p);}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00044}00044     \}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00046}00046     \textcolor{comment}{//Updates board text}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00047}\mbox{\hyperlink{class_space_a581d3e5c0d02ca8f9701c54c1b86b9db}{00047}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_space_a581d3e5c0d02ca8f9701c54c1b86b9db}{RefreshText}}(\textcolor{keywordtype}{int} i)}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00048}00048     \{}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00049}00049         \mbox{\hyperlink{class_space_ac143eb20c9359203054ebf62ff89acaf}{InitialiseText}}();}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00050}00050         \mbox{\hyperlink{class_space_a720b040dee43eb237a90eeb3c4235105}{InitialisePriceText}}(i);}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00051}00051     \}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00053}\mbox{\hyperlink{class_space_ac34d37b4f138e0c72b9955144e28a232}{00053}}     \textcolor{keyword}{public} \textcolor{keywordtype}{string} \mbox{\hyperlink{class_space_ac34d37b4f138e0c72b9955144e28a232}{GetType}}()}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00054}00054     \{}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00055}00055         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_space_ae69b042c0ab17fb9034add0cbe667893}{type}}.ToString();}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00056}00056     \}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00058}\mbox{\hyperlink{class_space_a5e8ba152c3e9169bba8f1a9507471786}{00058}}     \textcolor{keyword}{public} \textcolor{keywordtype}{string} \mbox{\hyperlink{class_space_a5e8ba152c3e9169bba8f1a9507471786}{GetName}}()}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00059}00059     \{}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00060}00060         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_space_a908ce962fa252a827ced65d08d5116ed}{spaceName}};}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00061}00061     \}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00063}\mbox{\hyperlink{class_space_a0dafca60b611f715cbcebdaa0c5ff789}{00063}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_space_a0dafca60b611f715cbcebdaa0c5ff789}{SetName}}(\textcolor{keywordtype}{string} n)}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00064}00064     \{}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00065}00065         \mbox{\hyperlink{class_space_a908ce962fa252a827ced65d08d5116ed}{spaceName}} = n;}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00066}00066     \}}
+\DoxyCodeLine{\Hypertarget{_space_8cs_source_l00067}00067 \}}
+
+\end{DoxyCode}
