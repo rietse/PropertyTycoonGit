@@ -241,4 +241,28 @@ public class MainMenuManager: MonoBehaviour
         else
             print("Can't draw a new card!");
     }
+
+    public void PayJailFine()
+    {
+        ExitPopup();
+        gm.JailFine();
+    }
+
+    public void UseJailCard()
+    {
+        if (gm.GetCurrentPlayerFreeJailCards() > 0)
+        {
+            ExitPopup();
+            gm.UseJailCard();
+        }
+        else
+        {
+            print("Player doesn't have a jail card!");
+        }
+    }
+
+    public void SwitchCamera()
+    {
+        gm.GetComponent<CameraController>().SwitchCameraView();
+    }
 }

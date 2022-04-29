@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public PropertyDisplay propertyDisplay;
     public MainMenuManager menuManager;
     public CardPopup cardPopup;
+    public GameObject jailPopup;
     public int currentPlayer = 1;
     public int noOfPlayers = 0;
     public int freeParking = 0;
@@ -138,6 +139,10 @@ public class GameManager : MonoBehaviour
                     playerList[currentPlayer - 1].SetInJail(false);
                     playerList[currentPlayer - 1].SetPos(10);
                     playerList[currentPlayer - 1].ResetJailCounter();
+                }
+                else if (playerList[currentPlayer - 1].GetJailCounter() >= 1)
+                {
+                    jailPopup.SetActive(true);
                 }
             }
 
@@ -506,9 +511,14 @@ public class GameManager : MonoBehaviour
         else print("Player " + currentPlayer + " must wait a turn to leave jail!");
     }
 
+    public int GetCurrentPlayerFreeJailCards()
+    {
+        return playerList[currentPlayer - 1].GetFreeJailCards();
+    }
+
     public void UseJailCard()
     {
-        if (playerList[currentPlayer - 1].GetFreeJailCards() > 0)
+        if (GetCurrentPlayerFreeJailCards() > 0)
         {
             playerList[currentPlayer - 1].UseFreeJailCard();
             print("Player " + currentPlayer + " used a get out of jail free card!");
