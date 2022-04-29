@@ -10,6 +10,8 @@ public class PropertyDisplay : MonoBehaviour
     public TextMeshProUGUI displayText;
     public TextMeshProUGUI displayTitle;
 
+    public GameObject upButton, deButton;
+
     private GameObject currentSpace;
     private int currentPos;
 
@@ -24,6 +26,8 @@ public class PropertyDisplay : MonoBehaviour
     //Updates UI text displaying selected space data
     public void RefreshDisplay()
     {
+        upButton.SetActive(false);
+        deButton.SetActive(false);
         string type = currentSpace.GetComponent<Space>().GetType();
         string body = "Position: " + (currentPos + 1) + "\n";
         displayTitle.text = currentSpace.GetComponent<Space>().GetName();
@@ -51,6 +55,8 @@ public class PropertyDisplay : MonoBehaviour
                 body += "\nLand here to draw an 'Opportunity Knocks Card'! Gamble away your future with the draw of a card!";
                 break;
             case "PROP":
+                upButton.SetActive(true);
+                deButton.SetActive(true);
                 List<int> rent = currentSpace.GetComponent<Property>().GetRentList();
                 string mortgaged = "";
                 body += "Owned By: " + GetSpaceOwner(currentPos) + "\n";

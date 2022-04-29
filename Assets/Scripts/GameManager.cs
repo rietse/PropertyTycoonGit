@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public PropertyDisplay propertyDisplay;
     public MainMenuManager menuManager;
     public CardPopup cardPopup;
+    public GameObject jailPopup;
     public int currentPlayer = 1;
     public int noOfPlayers = 0;
     public int freeParking = 0;
@@ -143,6 +144,10 @@ public class GameManager : MonoBehaviour
                     playerList[currentPlayer - 1].SetPos(10);
                     playerList[currentPlayer - 1].ResetJailCounter();
                 }
+                else if (playerList[currentPlayer - 1].GetJailCounter() >= 1)
+                {
+                    jailPopup.SetActive(true);
+                }
             }
 
             //Checks win condition
@@ -178,7 +183,7 @@ public class GameManager : MonoBehaviour
         {
             case "PARK":
                 playerList[currentPlayer - 1].RecieveRent(freeParking);
-                print("Player " + currentPlayer + " recieved £" + freeParking + " from free parking!");
+                print("Player " + currentPlayer + " recieved ï¿½" + freeParking + " from free parking!");
                 freeParking = 0;
                 turnState = TurnState.SELL;
                 break;
@@ -204,7 +209,7 @@ public class GameManager : MonoBehaviour
                     {
                         rent = space.GetComponent<Property>().GetRent();
                         if (CheckUndevelopedMonopoly(board.GetState(pos)) == true) { rent = rent * 2; }
-                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
+                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
                         playerList[currentPlayer - 1].PayRent(rent);
                         playerList[board.GetState(pos) - 1].RecieveRent(rent);
                     }
@@ -217,12 +222,12 @@ public class GameManager : MonoBehaviour
             case "TAX":
                 if(pos == 4) //income tax position - E
                 {
-                    print("Player " + currentPlayer + " has to pay £200 in taxes!");
+                    print("Player " + currentPlayer + " has to pay ï¿½200 in taxes!");
                     playerList[currentPlayer - 1].PayRent(200);
                 }
                 else if (pos == 38) //super tax position - E
                 {
-                    print("Player " + currentPlayer + " has to pay £100 in taxes!");
+                    print("Player " + currentPlayer + " has to pay ï¿½100 in taxes!");
                     playerList[currentPlayer - 1].PayRent(100);
                 }
                 turnState = TurnState.SELL;
@@ -239,7 +244,7 @@ public class GameManager : MonoBehaviour
                         if (board.GetState(35) == board.GetState(pos)) { rentD = rentD * 2; }
                         rent = Convert.ToInt32(rentD); //just need to borrow a double because ints don't decimal - E
 
-                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
+                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
                         playerList[currentPlayer - 1].PayRent(rent);
                         playerList[board.GetState(pos) - 1].RecieveRent(rent);
 
@@ -259,7 +264,7 @@ public class GameManager : MonoBehaviour
                         }
                         else { rent = currentRoll * 4; }
 
-                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " £" + rent + " rent!");
+                        print("Player " + currentPlayer + " owes player " + board.GetState(pos) + " ï¿½" + rent + " rent!");
                         playerList[currentPlayer - 1].PayRent(rent);
                         playerList[board.GetState(pos) - 1].RecieveRent(rent);
 
@@ -304,21 +309,6 @@ public class GameManager : MonoBehaviour
     public void TriggerCardEffect(int[] cardEffect)
     {
         int money, moveVal = 0;
-
-        if (cardEffect[0] == 1) //checks if the card lets you draw an OPP card instead of triggering said card - E
-        {
-            //we actually need to check if the player wants to though, another to add to the "do later" pile - E
-            board.DrawCard("OPP");
-            print("draw a new OPP card code should trigger?");
-        }
-        else if (cardEffect[0] == 2) //checks if the card lets you draw a POT card instead of triggering said card - E
-        {
-            //same as above, do this pls future me - E
-            board.DrawCard("POT");
-            print("draw a new POT card code should trigger?");
-        }
-        else //now we know the card effect is actually gonna happen we can go through them and activate them here... ugh so many IF statements this is so bad... - E
-        {
             //all effects involving transferring money - E
             if (cardEffect[4] == 1) { money = (playerList[currentPlayer - 1].GetTotalOwnedHouses(currentPlayer) * 40) + (playerList[currentPlayer - 1].GetTotalOwnedHotels(currentPlayer) * 115); } //checks what money value needs to be handled here, so we don't have to figure it out every single transaction - E
             else if (cardEffect[4] == 2) { money = (playerList[currentPlayer - 1].GetTotalOwnedHouses(currentPlayer) * 25) + (playerList[currentPlayer - 1].GetTotalOwnedHotels(currentPlayer) * 100); }
@@ -327,19 +317,19 @@ public class GameManager : MonoBehaviour
             if (cardEffect[1] == 1)
             {
                 playerList[currentPlayer - 1].RecieveRent(money);
-                print("Player " + currentPlayer + " recieved £" + money + " from a card!");
+                print("Player " + currentPlayer + " recieved ï¿½" + money + " from a card!");
                 playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
             }
             if (cardEffect[2] == 1)
             {
                 playerList[currentPlayer - 1].PayRent(money);
-                print("Player " + currentPlayer + " paid £" + money + " from a card!");
+                print("Player " + currentPlayer + " paid ï¿½" + money + " from a card!");
                 playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
             }
             if (cardEffect[3] == 1)
             {
                 freeParking += money;
-                print("Player " + currentPlayer + "'s fine of £" + money + " went to the free parking fund (total: £" + freeParking + ")!");
+                print("Player " + currentPlayer + "'s fine of ï¿½" + money + " went to the free parking fund (total: ï¿½" + freeParking + ")!");
             }
 
             //all movement effects go here - E
@@ -362,6 +352,7 @@ public class GameManager : MonoBehaviour
                 if (cardEffect[6] == 1) //check if we moving to a specific space... - E
                 {
                     playerList[currentPlayer - 1].SetPos(cardEffect[8]); //override the movement checks to send the player to a specific space, use for sending players "back" or where they don't collect their GO money - E
+                    CheckSpace(playerList[currentPlayer - 1].GetPos());
                 }
                 else if (cardEffect[6] == 2) //...or dynamically based on the current position - E
                 {
@@ -371,6 +362,7 @@ public class GameManager : MonoBehaviour
                         moveVal = 40 + cardEffect[8];
                     }
                     playerList[currentPlayer - 1].SetPos(moveVal); //same as above, but for moving forwards or back x places, usually the latter - E
+                    CheckSpace(playerList[currentPlayer - 1].GetPos());
                 }
             }
 
@@ -396,9 +388,8 @@ public class GameManager : MonoBehaviour
                 }
                 playerList[currentPlayer - 1].RecieveRent(money * noOfPlayers); //...then gives the birthday money * the number of players after - E
                 playerList[currentPlayer - 1].SetMoneyText(currentPlayer.ToString());
-                print("Player " + currentPlayer + " recieved £" + money + " from each player for their birthday!");
+                print("Player " + currentPlayer + " recieved ï¿½" + money + " from each player for their birthday!");
             }
-        }
     }
 
     //Checks whether the players can roll dice, what number of dice should be rolled, and uses RNG to simulate a dice roll
@@ -525,9 +516,14 @@ public class GameManager : MonoBehaviour
     }
 
     //Uses a get out of jail free card if the player has one
+    public int GetCurrentPlayerFreeJailCards()
+    {
+        return playerList[currentPlayer - 1].GetFreeJailCards();
+    }
+
     public void UseJailCard()
     {
-        if (playerList[currentPlayer - 1].GetFreeJailCards() > 0)
+        if (GetCurrentPlayerFreeJailCards() > 0)
         {
             playerList[currentPlayer - 1].UseFreeJailCard();
             print("Player " + currentPlayer + " used a get out of jail free card!");
