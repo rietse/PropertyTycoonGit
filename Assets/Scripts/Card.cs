@@ -31,6 +31,11 @@ public class Card : MonoBehaviour
 
     }
 
+    public int GetID()
+    {
+        return idNum;
+    }
+
     public string GetType()
     {
         return type.ToString();
