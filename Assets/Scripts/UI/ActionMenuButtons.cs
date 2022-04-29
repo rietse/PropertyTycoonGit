@@ -26,7 +26,7 @@ public class ActionMenuButtons : MonoBehaviour
                 }
                 break;
             case ButtonTypes.BUY:
-                if (gm.turnState == GameManager.TurnState.BUY)
+                if (gm.turnState == GameManager.TurnState.BUY && gm.playerList[gm.currentPlayer].GetHasPassedGo())
                 {
                     gameObject.GetComponent<Button>().interactable = true;
                 }

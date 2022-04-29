@@ -90,22 +90,25 @@ public class GameManager : MonoBehaviour
         return noOfPlayers;
     }
 
-
+    //Replaces the value of noOfPlayers with a specified integer
     void SetNoOfPlayers(int n)
     {
         noOfPlayers = n;
     }
 
+    //Returns the ID number of the current player
     public int GetCurrentPlayer()
     {
         return currentPlayer;
     }
 
+    //Replaces the ID number of the current player with a specified integer
     void SetCurrentPlayer(int n)
     {
         currentPlayer = n;
     }
 
+    //Changes to the next player in the sequence
     public void NextPlayer()
     {
         CheckMoney();
@@ -113,11 +116,12 @@ public class GameManager : MonoBehaviour
 
         int lastValidPlayer = currentPlayer;
         bool validPlayer = false;
-        while (validPlayer == false) //checks player is still playing - E
+        //checks player is still playing
+        while (validPlayer == false) 
         {
             if (currentPlayer >= noOfPlayers)
             {
-                //if it's the last player, go back to the first one pls and thanks - E
+                //if it's the last player, go back to the first one
                 SetCurrentPlayer(1);
             }
             else
@@ -141,16 +145,18 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+            //Checks win condition
             if (currentPlayer == lastValidPlayer)
             {
                 print("Win"); //we need to do win code here eventally, a single line saying "Win" isn't that entertaining - E
                 validPlayer = true; //this is just here so I don't get another loop that breaks unity - E
             }
         }
-
+        //Resets the turnstate
         turnState = TurnState.MOVING;
     }
 
+    //M
     public void MovePlayer()
     {
         playerList[currentPlayer - 1].Move(currentRoll, false);
