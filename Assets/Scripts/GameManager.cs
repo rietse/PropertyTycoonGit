@@ -346,6 +346,7 @@ public class GameManager : MonoBehaviour
                 if (cardEffect[6] == 1) //check if we moving to a specific space... - E
                 {
                     playerList[currentPlayer - 1].SetPos(cardEffect[8]); //override the movement checks to send the player to a specific space, use for sending players "back" or where they don't collect their GO money - E
+                    CheckSpace(playerList[currentPlayer - 1].GetPos());
                 }
                 else if (cardEffect[6] == 2) //...or dynamically based on the current position - E
                 {
@@ -355,6 +356,7 @@ public class GameManager : MonoBehaviour
                         moveVal = 40 + cardEffect[8];
                     }
                     playerList[currentPlayer - 1].SetPos(moveVal); //same as above, but for moving forwards or back x places, usually the latter - E
+                    CheckSpace(playerList[currentPlayer - 1].GetPos());
                 }
             }
 
